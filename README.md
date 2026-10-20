@@ -45,7 +45,7 @@
 
 ## 快速开始
 
-1. 在 [Releases](https://github.com/xiaoluo68/Infinite-query-X/releases/latest) 下载 `Infinite query X.exe`。
+1. 在 [Releases](https://github.com/xiaoluo68/Infinite-query-X/releases/latest) 下载 `Infinite-query-X-1.0.0.exe`（单文件，免安装）。
 2. 双击运行，程序会在本机 `127.0.0.1` 起一个服务，并用系统自带 Edge 的「应用窗口」模式打开界面。
 3. 关掉窗口后后台进程 60 秒内自动退出。
 
@@ -108,6 +108,6 @@ It watches exhibition / concert / event ticket status and restock history — no
 The UI follows a Motrix × HyperOS 4 "soft glass" design with a custom animated date picker, restock flow-edge light,
 Monet (Material 3 Expressive) theming, adjustable font and frame rate, tray behaviour and 8 languages.
 
-Download the single-file `Infinite query X.exe` from [Releases](https://github.com/xiaoluo68/Infinite-query-X/releases/latest),
+Download the single-file `Infinite-query-X-1.0.0.exe` from [Releases](https://github.com/xiaoluo68/Infinite-query-X/releases/latest),
 then double-click it. Full notes (Chinese) are in [docs/使用说明.md](docs/使用说明.md).
 Licensed under [MIT](LICENSE).
