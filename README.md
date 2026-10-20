@@ -98,7 +98,7 @@ py -m PyInstaller --noconfirm --clean --onefile --noconsole --icon icon.ico ^
 [MIT](LICENSE) © 2026 小羅同学
 
 界面灵感来自 Motrix 与 Xiaomi HyperOS 4；会员购接口部分基于
-[TaiMiao/Bili_Ticket_Monitor](https://github.com/TaiMiao/Bili_Ticket_Monitor)。
+[TaiMiao/Bili_Ticket_Monitor](https://github.com/TaiMiao/Bili_Ticket_Monitor)。（已获得原作者授权）
 Material Color Utilities 采用 Apache-2.0，许可证见 `static/vendor/LICENSE-material-color-utilities.txt`。
 
 ## English
