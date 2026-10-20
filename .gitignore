@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.spec
+build/
+dist/
+.venv/
+venv/
+
+# PyInstaller / 运行产物
+*.exe
+*.bwmonitor
+edge-profile/
+*.log
+
+# 本机状态
+config.json
+port.json
+fonts.json
+state/
+BW2026Monitor/
+
+# 预览图之外的临时截图
+shots/
+*.tmp
+
+# 系统
+Thumbs.db
+desktop.ini
+.DS_Store
