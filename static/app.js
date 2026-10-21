@@ -887,6 +887,21 @@
     I18N[lang] = Object.assign(I18N[lang] || {}, dict);
   }
 
+
+  const EXTRA_I18N_CITY = {
+    'zh-CN': { 'city.title': '选择城市', 'city.search': '搜索城市或拼音首字母', 'city.foot': '选择后立即刷新列表', 'city.empty': '没有匹配的城市', 'city.count': '{n} 个城市' },
+    'zh-TW': { 'city.title': '選擇城市', 'city.search': '搜尋城市或拼音首字母', 'city.foot': '選擇後立即重新整理列表', 'city.empty': '沒有符合的城市', 'city.count': '{n} 個城市' },
+    en: { 'city.title': 'Choose a city', 'city.search': 'Search city or initial', 'city.foot': 'Results refresh immediately', 'city.empty': 'No matching city', 'city.count': '{n} cities' },
+    ja: { 'city.title': '都市を選択', 'city.search': '都市名または頭文字で検索', 'city.foot': '選択するとすぐに更新されます', 'city.empty': '一致する都市がありません', 'city.count': '{n} 都市' },
+    ko: { 'city.title': '도시 선택', 'city.search': '도시 또는 첫 글자 검색', 'city.foot': '선택하면 바로 새로 고칩니다', 'city.empty': '일치하는 도시가 없습니다', 'city.count': '도시 {n}개' },
+    ru: { 'city.title': 'Выбор города', 'city.search': 'Поиск города или первой буквы', 'city.foot': 'Список обновится сразу', 'city.empty': 'Город не найден', 'city.count': 'Городов: {n}' },
+    de: { 'city.title': 'Stadt wählen', 'city.search': 'Stadt oder Anfangsbuchstabe suchen', 'city.foot': 'Liste wird sofort aktualisiert', 'city.empty': 'Keine passende Stadt', 'city.count': '{n} Städte' },
+    fr: { 'city.title': 'Choisir une ville', 'city.search': 'Rechercher une ville ou une initiale', 'city.foot': 'La liste se met à jour aussitôt', 'city.empty': 'Aucune ville correspondante', 'city.count': '{n} villes' },
+  };
+  for (const [lang, dict] of Object.entries(EXTRA_I18N_CITY)) {
+    I18N[lang] = Object.assign(I18N[lang] || {}, dict);
+  }
+
   const LANGS = ['zh-CN', 'zh-TW', 'en', 'ja', 'ko', 'ru', 'de', 'fr'];
 
   // 接口返回的中文状态 → 各语言显示
@@ -983,6 +998,10 @@
     dateToken: 0,
     datePicker: { open: false, anchor: '', month: '' },
     pagePicker: { open: false },
+    cities: [],
+    cityArea: 0,
+    cityName: '',
+    cityPicker: { open: false, filter: '', openedAt: 0 },
     notifications: { cursor: 0, ready: false, active: 0, pending: [] },
     fonts: [],
     meta: null,
@@ -1815,13 +1834,14 @@ ${vars(dark)}
       guideSub: '了解 Infinite query X 的基本操作与运行逻辑',
       updatesHeading: '版本更新',
       guideHeading: '操作演示',
-      updatesMeta: '9 个版本',
+      updatesMeta: '10 个版本',
       newTag: 'NEW',
       pause: '暂停',
       play: '播放',
       stepLabel: '步骤 {n} / {m}',
       updates: [
-        { version: 'v1.1.0', date: '2026-10-22', latest: true, desc: '新增票种价格与购票链接、新活动 / 开票提醒弹窗（四角与灵动岛、可调位置与停留时间）、页码选择器、全国扫描动画与动画效果等级。', tags: ['提醒', '灵动岛', '页码', '动效'] },
+        { version: 'v1.1.1', date: '2026-10-22', latest: true, desc: '新建页的城市选择换成与日期选择器同款的自绘弹层：分组城市网格、搜索过滤、逐组错峰浮现与弹性展开，选择后立即刷新结果。', tags: ['城市', '弹层', '动画'] },
+        { version: 'v1.1.0', date: '2026-10-22', desc: '新增票种价格与购票链接、新活动 / 开票提醒弹窗（四角与灵动岛、可调位置与停留时间）、页码选择器、全国扫描动画与动画效果等级。', tags: ['提醒', '灵动岛', '页码', '动效'] },
         { version: 'v1.0.0', date: '2026-10-21', desc: '正式版：自定义日期选择器（弹性动画、月历、今天 / 选中态）、日期查询小窗、界面字体导入与卡片流光，正式开源。', tags: ['1.0', '正式版', '开源'] },
         { version: 'v0.9.2beta', date: '2026-10-21', desc: '新建页新增日期查询小窗：按系统时间定位今天，逐日查看展览 / 演出 / 赛事 / 同人展 / 其他；设置新增界面字体（字体、字号、字重），并支持导入 TTF / OTF / WOFF 字体。', tags: ['日期查询', '字体', '小窗'] },
         { version: 'v0.9.1beta', date: '2026-10-21', desc: '新建页新增一键刷新；卡片加入可调色的缓慢旋转彩虹柔光流边；启动时播放柔光唤醒动画。', tags: ['刷新', '彩虹流边', '可调色'] },
@@ -1851,13 +1871,14 @@ ${vars(dark)}
       guideSub: 'Learn the basics and how Infinite query X works',
       updatesHeading: 'Version updates',
       guideHeading: 'Guided tour',
-      updatesMeta: '9 releases',
+      updatesMeta: '10 releases',
       newTag: 'NEW',
       pause: 'Pause',
       play: 'Play',
       stepLabel: 'Step {n} / {m}',
       updates: [
-        { version: 'v1.1.0', date: '2026-10-22', latest: true, desc: 'Ticket prices and purchase links, new-event and on-sale notification popups (corners or dynamic island, adjustable position and duration), page picker, nationwide scan animation and motion levels.', tags: ['Notifications', 'Dynamic island', 'Pagination', 'Motion'] },
+        { version: 'v1.1.1', date: '2026-10-22', latest: true, desc: 'The New page city selector is now a custom animated popover: grouped city grid, search filter, staggered reveal and spring open.', tags: ['City', 'Popover', 'Motion'] },
+        { version: 'v1.1.0', date: '2026-10-22', desc: 'Ticket prices and purchase links, new-event and on-sale notification popups (corners or dynamic island, adjustable position and duration), page picker, nationwide scan animation and motion levels.', tags: ['Notifications', 'Dynamic island', 'Pagination', 'Motion'] },
         { version: 'v1.0.0', date: '2026-10-21', desc: 'Official release: custom animated date picker, date lookup window, interface font import and card light edges. Open source.', tags: ['1.0', 'Stable', 'Open source'] },
         { version: 'v0.9.2beta', date: '2026-10-21', desc: 'Date lookup window on New (today from system time; browse exhibitions, shows, matches and doujin events by day), plus interface font settings with TTF / OTF / WOFF import.', tags: ['Date lookup', 'Font', 'Window'] },
         { version: 'v0.9.1beta', date: '2026-10-21', desc: 'One-tap refresh on New, adjustable slowly rotating rainbow light edges on cards, and a launch wake-up animation.', tags: ['Refresh', 'Rainbow edge', 'Custom color'] },
@@ -2564,8 +2585,8 @@ ${vars(dark)}
     });
     $('lang').value = state.lang;
     $('set-lang').value = state.lang;
-    const citySelect = $('city');
-    if (citySelect && citySelect.options.length) citySelect.options[0].textContent = t('cat.nationwide');
+    renderCityTrigger();
+    if (state.cityPicker.open) renderCityList();
     const notifyCity = $('set-notify-city');
     if (notifyCity && notifyCity.options.length) notifyCity.options[0].textContent = t('cat.nationwide');
     applyViewText();
@@ -2773,6 +2794,7 @@ ${vars(dark)}
 
     closePagePicker();
     closeDatePicker();
+    closeCityPicker();
     const previous = state.view;
     const oldSection = $(`view-${previous}`);
     const animate = options.animate !== false && motionOK();
@@ -3132,35 +3154,124 @@ ${vars(dark)}
 
   async function loadCities() {
     const res = await api('/api/cities');
-    const select = $('city');
     if (!res || !res.ok || !res.items || !res.items.length) return;
-    const current = select.value || '0';
+    state.cities = res.items;
+    renderCityTrigger();
+    if (state.cityPicker.open) renderCityList();
+  }
+
+  // ---------- 城市选择器 ----------
+  function cityGroups() {
     const groups = new Map();
-    for (const city of res.items) {
+    for (const city of state.cities) {
       const letter = city.letter || '#';
       if (!groups.has(letter)) groups.set(letter, []);
       groups.get(letter).push(city);
     }
-    const frag = document.createDocumentFragment();
-    const all = document.createElement('option');
-    all.value = '0';
-    all.textContent = t('cat.nationwide');
-    frag.appendChild(all);
-    for (const [letter, cities] of [...groups.entries()].sort((a, b) => a[0].localeCompare(b[0]))) {
-      const group = document.createElement('optgroup');
-      group.label = letter;
-      for (const city of cities) {
-        const option = document.createElement('option');
-        option.value = String(city.id);
-        option.textContent = city.num ? `${city.name} · ${city.num}` : city.name;
-        group.appendChild(option);
-      }
-      frag.appendChild(group);
+    return [...groups.entries()].sort((a, b) => a[0].localeCompare(b[0]));
+  }
+
+  function renderCityTrigger() {
+    const label = $('city-trigger-label');
+    if (!label) return;
+    if (!state.cityArea) {
+      label.textContent = t('cat.nationwide');
+      return;
     }
-    select.innerHTML = '';
-    select.appendChild(frag);
-    select.value = current;
-    if (!select.value) select.value = '0';
+    const city = state.cities.find((item) => Number(item.id) === Number(state.cityArea));
+    label.textContent = city ? city.name : state.cityName || t('cat.nationwide');
+  }
+
+  function positionCityPicker(anchor) {
+    const pop = $('city-popover');
+    if (!pop || !anchor) return;
+    const rect = anchor.getBoundingClientRect();
+    const width = pop.offsetWidth || 404;
+    const height = pop.offsetHeight || 420;
+    let left = rect.right - width;
+    left = Math.max(12, Math.min(window.innerWidth - width - 12, left));
+    let top = rect.bottom + 8;
+    let above = false;
+    if (top + height > window.innerHeight - 12) {
+      top = rect.top - height - 8;
+      above = true;
+    }
+    pop.style.left = `${Math.round(left)}px`;
+    pop.style.top = `${Math.max(12, Math.round(top))}px`;
+    pop.classList.toggle('is-above', above);
+  }
+
+  function renderCityList() {
+    const all = $('city-all');
+    const box = $('city-groups');
+    const count = $('city-count');
+    if (!all || !box) return;
+    const query = String(state.cityPicker.filter || '').trim().toLowerCase();
+    all.innerHTML = `<button type="button" class="city-chip is-all${
+      !state.cityArea ? ' is-active' : ''
+    }" data-city-id="0" data-city-name="${esc(t('cat.nationwide'))}">${esc(t('cat.nationwide'))}</button>`;
+    let shown = 0;
+    const html = cityGroups()
+      .map(([letter, cities], gi) => {
+        const matches = cities.filter((city) => {
+          if (!query) return true;
+          const name = String(city.name || '').toLowerCase();
+          const full = String(city.fullname || '').toLowerCase();
+          return name.includes(query) || full.includes(query) || String(letter).toLowerCase() === query;
+        });
+        if (!matches.length) return '';
+        shown += matches.length;
+        return `<section class="city-group" style="--gi:${gi}"><h4>${esc(letter)}</h4><div class="city-grid">${matches
+          .map(
+            (city) => `<button type="button" class="city-chip${
+              Number(city.id) === Number(state.cityArea) ? ' is-active' : ''
+            }" data-city-id="${city.id}" data-city-name="${esc(city.name)}"><span>${esc(city.name)}</span>${
+              city.num ? `<em>${city.num}</em>` : ''
+            }</button>`
+          )
+          .join('')}</div></section>`;
+      })
+      .join('');
+    box.innerHTML = html || `<div class="city-empty">${esc(t('city.empty'))}</div>`;
+    if (count) count.textContent = t('city.count', { n: shown });
+  }
+
+  function openCityPicker() {
+    const pop = $('city-popover');
+    const trigger = $('city-trigger');
+    if (!pop || !trigger) return;
+    state.cityPicker.open = true;
+    state.cityPicker.openedAt = performance.now();
+    state.cityPicker.filter = '';
+    const search = $('city-search');
+    if (search) search.value = '';
+    renderCityList();
+    trigger.setAttribute('aria-expanded', 'true');
+    pop.classList.add('is-open');
+    pop.setAttribute('aria-hidden', 'false');
+    positionCityPicker(trigger);
+    requestAnimationFrame(() => positionCityPicker(trigger));
+    if (!state.cities.length) loadCities();
+  }
+
+  function closeCityPicker() {
+    if (!state.cityPicker.open) return;
+    state.cityPicker.open = false;
+    $('city-trigger')?.setAttribute('aria-expanded', 'false');
+    $('city-popover')?.classList.remove('is-open');
+    $('city-popover')?.setAttribute('aria-hidden', 'true');
+  }
+
+  function selectCity(id, name) {
+    state.cityArea = Number(id) || 0;
+    state.cityName = name || '';
+    renderCityTrigger();
+    closeCityPicker();
+    const active = document.querySelector('#type-chips .chip.is-active');
+    loadList(active?.dataset.type || '', state.cityArea, 1);
+    requestAnimationFrame(() => {
+      if (motionOK()) $('results')?.scrollIntoView({ block: 'start', behavior: 'smooth' });
+    });
   }
 
   async function loadList(pType, area, page = 1, options = {}) {
@@ -3253,7 +3364,7 @@ ${vars(dark)}
         ok = true;
       } else {
         const active = document.querySelector('#type-chips .chip.is-active');
-        ok = await loadList(active?.dataset.type || '', Number($('city').value) || 0, 1, {
+        ok = await loadList(active?.dataset.type || '', state.cityArea || 0, 1, {
           fromRefresh: true,
         });
       }
@@ -4357,14 +4468,39 @@ ${vars(dark)}
     document.querySelectorAll('#type-chips .chip').forEach((chip) => {
       chip.addEventListener('click', () => {
         document.querySelectorAll('#type-chips .chip').forEach((c) => c.classList.toggle('is-active', c === chip));
-        loadList(chip.dataset.type || '', Number($('city').value) || 0, 1);
+        loadList(chip.dataset.type || '', state.cityArea || 0, 1);
       });
     });
 
-    $('city').addEventListener('change', () => {
-      const active = document.querySelector('#type-chips .chip.is-active');
-      loadList(active?.dataset.type || '', Number($('city').value) || 0, 1);
+    $('city-trigger').addEventListener('click', () => {
+      if (state.cityPicker.open) closeCityPicker();
+      else openCityPicker();
     });
+    let cityFilterTimer = 0;
+    $('city-search').addEventListener('input', (event) => {
+      state.cityPicker.filter = event.target.value || '';
+      clearTimeout(cityFilterTimer);
+      cityFilterTimer = setTimeout(renderCityList, 60);
+    });
+    const pickCity = (event) => {
+      const button = event.target.closest('[data-city-id]');
+      if (button) selectCity(button.dataset.cityId, button.dataset.cityName);
+    };
+    $('city-all').addEventListener('click', pickCity);
+    $('city-groups').addEventListener('click', pickCity);
+    document.addEventListener('pointerdown', (event) => {
+      if (!state.cityPicker.open) return;
+      if (event.target.closest('#city-popover, #city-trigger')) return;
+      closeCityPicker();
+    });
+    window.addEventListener('resize', () => {
+      if (state.cityPicker.open) positionCityPicker($('city-trigger'));
+    });
+    window.addEventListener('scroll', () => {
+      if (!state.cityPicker.open) return;
+      if (performance.now() - (state.cityPicker.openedAt || 0) < 400) return;
+      closeCityPicker();
+    }, true);
 
     $('btn-save').addEventListener('click', saveSettings);
 
@@ -4547,6 +4683,7 @@ ${vars(dark)}
       }
       if ($('date-window').classList.contains('is-open')) closeDateWindow();
       if (state.pagePicker.open) closePagePicker();
+      if (state.cityPicker.open) closeCityPicker();
     });
 
     document.querySelectorAll('[data-desktop-key]').forEach((input) => {

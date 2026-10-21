@@ -168,9 +168,11 @@
           <button class="chip" data-type="本地生活" data-i18n="cat.local">本地生活</button>
           <button class="chip" data-type="only同人展" data-i18n="cat.only">ONLY同人展</button>
         </div>
-        <select id="city" class="select small" data-i18n-title="cat.city">
-          <option value="0" data-i18n="cat.nationwide">全国</option>
-        </select>
+        <button class="city-trigger" id="city-trigger" type="button" aria-haspopup="dialog" aria-expanded="false" data-i18n-aria="cat.city">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-5.4 7-11a7 7 0 1 0-14 0c0 5.6 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
+          <span id="city-trigger-label">全国</span>
+          <svg class="city-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
       </div>
       <div class="hint" id="new-hint" data-i18n="new.hint"></div>
       <div class="results" id="results"></div>
@@ -650,6 +652,22 @@
           </label>
         </div>
       </div>
+<div class="city-popover" id="city-popover" role="dialog" aria-hidden="true" aria-label="City picker">
+  <div class="city-popover-head">
+    <div class="city-title"><b data-i18n="city.title">选择城市</b><span id="city-count"></span></div>
+    <label class="city-search">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+      <input id="city-search" type="text" data-i18n-ph="city.search" autocomplete="off" />
+    </label>
+  </div>
+  <div class="city-scroll" id="city-scroll">
+    <div class="city-all" id="city-all"></div>
+    <div class="city-groups" id="city-groups"></div>
+  </div>
+  <div class="city-popover-foot">
+    <span class="muted" data-i18n="city.foot">选择后立即刷新列表</span>
+  </div>
+</div>
 <div class="toast-wrap" id="toasts"></div>
 <div class="notify-host" id="notify-host" data-pos="br" aria-live="polite"></div>
 <script src="/static/vendor/material-color-utilities.min.js"></script>
