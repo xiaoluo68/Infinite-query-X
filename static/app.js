@@ -2771,6 +2771,8 @@ ${vars(dark)}
       return;
     }
 
+    closePagePicker();
+    closeDatePicker();
     const previous = state.view;
     const oldSection = $(`view-${previous}`);
     const animate = options.animate !== false && motionOK();
