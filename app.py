@@ -59,10 +59,11 @@ if str(_ROOT.parent) not in sys.path:  # 源码运行时，核心模块在上一
     sys.path.insert(0, str(_ROOT.parent))
 
 import bili_ticket_monitor_search as core  # noqa: E402
+from notify_hub import NotifyHub  # noqa: E402
 
 APP_NAME = "Infinite query X"
-APP_VERSION = "1.0.0"
-APP_BUILD = "20261021.15"  # 每次打包递增；用来识别残留的旧实例
+APP_VERSION = "1.1.0"
+APP_BUILD = "20261022.1"  # 每次打包递增；用来识别残留的旧实例
 APP_AUTHOR = "小羅同学"
 APP_CONTACT = "https://t.me/InfinitequeryX"
 APP_REPO = "https://github.com/TaiMiao/Bili_Ticket_Monitor"
@@ -209,6 +210,14 @@ DEFAULT_SETTINGS = {
     "desktopCloseToTray": False,
     "desktopHideTaskbar": False,
     "desktopHideFullscreen": False,
+    # 提醒弹窗：新活动 / 开票、关注城市（0=全国）、位置、停留毫秒
+    "notifyNew": True,
+    "notifySale": True,
+    "notifyCity": 0,
+    "notifyPos": "br",
+    "notifyDuration": 6000,
+    # 整体动效等级：full / soft / lite / off
+    "motion": "full",
 }
 
 
@@ -263,6 +272,20 @@ def load_settings() -> dict[str, Any]:
     except (TypeError, ValueError):
         weight = 400
     settings["fontWeight"] = weight if weight in (400, 500, 600) else 400
+    settings["notifyNew"] = bool(settings.get("notifyNew", True))
+    settings["notifySale"] = bool(settings.get("notifySale", True))
+    try:
+        settings["notifyCity"] = max(0, int(settings.get("notifyCity", 0)))
+    except (TypeError, ValueError):
+        settings["notifyCity"] = 0
+    pos = str(settings.get("notifyPos") or "br").lower()
+    settings["notifyPos"] = pos if pos in ("br", "bl", "tr", "tl", "island") else "br"
+    try:
+        settings["notifyDuration"] = max(3000, min(15000, int(settings.get("notifyDuration", 6000))))
+    except (TypeError, ValueError):
+        settings["notifyDuration"] = 6000
+    motion = str(settings.get("motion") or "full").lower()
+    settings["motion"] = motion if motion in ("full", "soft", "lite", "off") else "full"
     return settings
 
 
@@ -275,9 +298,15 @@ def save_settings(settings: dict[str, Any]) -> None:
 
 
 # ---------------- 数据拉取 ----------------
-_SEARCH_CACHE: dict[str, tuple[float, list[dict]]] = {}
+_SEARCH_CACHE: dict[str, tuple[float, dict[str, Any]]] = {}
 _ALL_LOCK = threading.Lock()
-_ALL_STATE: dict[str, Any] = {"stamp": 0.0, "running": False, "projects": [], "error": ""}
+_ALL_STATE: dict[str, Any] = {
+    "stamp": 0.0,
+    "running": False,
+    "projects": [],
+    "error": "",
+    "progress": {"done": 0, "total": 0},
+}
 
 
 def _session() -> "core.requests.Session":
@@ -294,6 +323,8 @@ def project_to_dict(project: "core.Project") -> dict[str, str]:
         "venue": "",
         "category": classify_category(project.name),
         "saleAt": project.sale_at,
+        "saleStart": 0,
+        "cityId": 0,
         "price": project.price,
         "status": project.status,
         "url": f"https://show.bilibili.com/platform/detail.html?id={project.project_id}",
@@ -317,23 +348,49 @@ def classify_category(name: str, p_type: str = "") -> str:
     return "其他"
 
 
-def search(keyword: str, page: int = 1, size: int = 20) -> list[dict]:
-    key = f"{keyword}|{page}|{size}"
+def search_pool(keyword: str, limit: int = 8, size: int = 20) -> dict[str, Any]:
+    """一次取回多页搜索结果（遇到重复/末页就停），前端再按 16 条一页分页。
+
+    会员购的无限流接口没有可靠的总页数，逐页请求还会偶发重复；
+    先合并成一个结果池，翻页就完全在本地做，页码和末页都准确。
+    """
+    key = f"pool|{keyword}|{size}"
     hit = _SEARCH_CACHE.get(key)
     if hit and time.monotonic() - hit[0] < 120:
-        return hit[1]
+        return dict(hit[1])
+    merged: list[dict] = []
+    seen: set[str] = set()
+    partial = True
     session = _session()
+    core._warm_session(session)
     try:
-        projects = core.search_projects(session, keyword, core.Config.TIMEOUT, size, page=page)
+        for page in range(1, max(1, min(12, limit)) + 1):
+            projects, _total, last = core.search_projects_page(
+                session, keyword, core.Config.TIMEOUT, size, page=page
+            )
+            fresh = [item for item in projects if item.project_id not in seen]
+            for project in fresh:
+                seen.add(project.project_id)
+                merged.append(project_to_dict(project))
+            if last or len(projects) < size or not fresh:
+                partial = False
+                break
+            time.sleep(core.Config.BROWSE_REQUEST_GAP)
     finally:
         session.close()
-    payload = [project_to_dict(p) for p in projects]
+    payload = {
+        "items": merged,
+        "total": len(merged),
+        "pages": max(1, -(-len(merged) // 16)),
+        "partial": partial,
+        "pagesize": 16,
+    }
     _SEARCH_CACHE[key] = (time.monotonic(), payload)
-    return payload
+    return dict(payload)
 
 
 # 会员购「类型」栏目：p_type 直接传中文分类名
-CATEGORY_TYPES = ("", "展览", "演出", "赛事", "本地生活", "only同人展")
+CATEGORY_TYPES = ("", "全部类型", "展览", "演出", "赛事", "本地生活", "only同人展")
 CITY_AREAS = {
     "全国": 0,
     "北京": 110100,
@@ -346,7 +403,8 @@ CITY_AREAS = {
     "天津": 120100,
     "南京": 320100,
 }
-_LIST_CACHE: dict[str, tuple[float, list[dict]]] = {}
+_LIST_CACHE: dict[str, tuple[float, dict[str, Any]]] = {}
+_PAGE_PROBE_CACHE: dict[str, tuple[float, int]] = {}
 
 
 def _list_item_to_dict(item: dict, p_type: str = "") -> dict[str, str] | None:
@@ -386,19 +444,30 @@ def _list_item_to_dict(item: dict, p_type: str = "") -> dict[str, str] | None:
         "venue": str(item.get("venue_name") or "").strip(),
         "category": classify_category(name, p_type),
         "saleAt": sale_at,
+        "saleStart": int(item.get("sale_start_time") or item.get("sale_start") or 0)
+        if str(item.get("sale_start_time") or item.get("sale_start") or "").isdigit()
+        else 0,
+        "cityId": int(item.get("cityId") or item.get("city_id") or 0),
         "price": price,
         "status": str(item.get("sale_flag") or "").strip(),
         "url": f"https://show.bilibili.com/platform/detail.html?id={project_id}",
     }
 
 
-def list_projects(
+def list_projects_page(
     session: "core.requests.Session",
     p_type: str = "",
     area: int = 0,
     page: int = 1,
     pagesize: int = 16,
-) -> list[dict]:
+) -> tuple[list[dict], bool, int]:
+    """拉一页列表，返回 (items, 是否末页, 接口累计条数)。
+
+    线上接口的 total 是「累计已经返回过的条数」，不是总条数；末页只能看
+    isLastBrush 或本页是否不足 pagesize。
+    """
+    if p_type == "":
+        p_type = "全部类型"
     params = {
         "version": 134,
         "platform": "web",
@@ -422,23 +491,83 @@ def list_projects(
             converted = _list_item_to_dict(raw, p_type)
             if converted:
                 items.append(converted)
-    return items
+    try:
+        total = int(data.get("total") or 0)
+    except (TypeError, ValueError):
+        total = 0
+    last = bool(data.get("isLastBrush")) or len(items) < max(1, pagesize)
+    return items, last, total
 
 
-def category_list(p_type: str, area: int = 0, page: int = 1) -> list[dict]:
+def list_projects(
+    session: "core.requests.Session",
+    p_type: str = "",
+    area: int = 0,
+    page: int = 1,
+    pagesize: int = 16,
+) -> list[dict]:
+    return list_projects_page(session, p_type, area, page, pagesize)[0]
+
+
+def category_pool(p_type: str, area: int = 0, limit: int = 12) -> dict[str, Any]:
+    """把某个类型 / 城市的前若干页合并成一个结果池，供前端本地分页。"""
     if p_type not in CATEGORY_TYPES:
         p_type = ""
-    key = f"{p_type}|{area}|{page}"
+    if p_type == "全部类型":
+        p_type = ""
+    key = f"pool|{p_type}|{area}"
     hit = _LIST_CACHE.get(key)
-    if hit and time.monotonic() - hit[0] < 90:
-        return hit[1]
+    if hit and time.monotonic() - hit[0] < 120:
+        return dict(hit[1])
+    merged: list[dict] = []
+    seen: set[str] = set()
+    partial = True
     session = _session()
+    core._warm_session(session)
     try:
-        items = list_projects(session, p_type, area, page)
+        for page in range(1, max(1, min(16, limit)) + 1):
+            items, last, _total = list_projects_page(session, p_type, area, page)
+            fresh = [item for item in items if item["id"] not in seen]
+            for item in fresh:
+                seen.add(item["id"])
+                merged.append(item)
+            if last or len(items) < 16 or not fresh:
+                partial = False
+                break
+            time.sleep(core.Config.BROWSE_REQUEST_GAP)
     finally:
         session.close()
-    _LIST_CACHE[key] = (time.monotonic(), items)
-    return items
+    payload = {
+        "items": merged,
+        "total": len(merged),
+        "pages": max(1, -(-len(merged) // 16)),
+        "partial": partial,
+        "pagesize": 16,
+    }
+    _LIST_CACHE[key] = (time.monotonic(), payload)
+    return dict(payload)
+
+
+def watch_items(city: int = 0) -> list[dict[str, Any]]:
+    """提醒中心的轻量扫描：按类型取每个分类的前两页（10 个请求）。"""
+    merged: dict[str, dict[str, Any]] = {}
+    session = _session()
+    core._warm_session(session)
+    try:
+        for p_type in LIST_P_TYPES:
+            for page in (1, 2):
+                try:
+                    items, last, _total = list_projects_page(session, p_type, city, page)
+                except Exception:  # noqa: BLE001 单个分类失败不影响别的
+                    break
+                for item in items:
+                    merged.setdefault(item["id"], item)
+                time.sleep(core.Config.BROWSE_REQUEST_GAP)
+                if last:
+                    break
+    finally:
+        session.close()
+    return list(merged.values())
 
 
 _CITY_CACHE: dict[str, Any] = {"stamp": 0.0, "list": []}
@@ -486,8 +615,17 @@ def fetch_cities(force: bool = False) -> list[dict[str, Any]]:
     return cities
 
 
+LIST_P_TYPES = ("展览", "演出", "赛事", "本地生活", "only同人展")
+
+
+def _publish_all(merged: dict[str, dict]) -> None:
+    items = sorted(merged.values(), key=lambda p: (p["date"] == "-", p["date"]), reverse=True)
+    with _ALL_LOCK:
+        _ALL_STATE["projects"] = items
+
+
 def fetch_all(force: bool = False) -> None:
-    """后台拉全国展会，结果放进 _ALL_STATE。"""
+    """后台拉全国展会，结果放进 _ALL_STATE（边拉边发布进度和增量结果）。"""
     with _ALL_LOCK:
         if _ALL_STATE["running"]:
             return
@@ -496,22 +634,37 @@ def fetch_all(force: bool = False) -> None:
                 return
         _ALL_STATE["running"] = True
         _ALL_STATE["error"] = ""
+        _ALL_STATE["progress"] = {"done": 0, "total": 0}
     try:
         merged: dict[str, dict] = {}
+        total_steps = len(LIST_P_TYPES) * 8 + 7  # 5 个分类 × 最多 8 页 + 关键词补漏
+        step = 0
         session = _session()
+        core._warm_session(session)
         try:
             # 先按「类型」栏目把展览 / 演出 / 赛事 / 本地生活 / only同人展 都翻一遍
-            for p_type in CATEGORY_TYPES[1:]:
+            for p_type in LIST_P_TYPES:
                 for page in range(1, 9):
+                    step += 1
+                    with _ALL_LOCK:
+                        _ALL_STATE["progress"] = {"done": step, "total": total_steps}
                     try:
-                        for item in list_projects(session, p_type, 0, page):
+                        items, last, _total = list_projects_page(session, p_type, 0, page)
+                        for item in items:
                             merged.setdefault(item["id"], item)
+                        if last:
+                            break
                     except Exception:  # noqa: BLE001 单个分类失败不影响整体
                         pass
+                    if step % 3 == 0:
+                        _publish_all(merged)
                     time.sleep(core.Config.BROWSE_REQUEST_GAP)
             # 再用几个关键词补漏（有些漫展在分类里靠后）
             for keyword, pages in (("漫展", 3), ("同人", 2), ("演出", 2)):
                 for page in range(1, pages + 1):
+                    step += 1
+                    with _ALL_LOCK:
+                        _ALL_STATE["progress"] = {"done": step, "total": total_steps}
                     try:
                         for project in core.search_projects(
                             session, keyword, core.Config.TIMEOUT, 20, page=page
@@ -519,12 +672,13 @@ def fetch_all(force: bool = False) -> None:
                             merged.setdefault(project.project_id, project_to_dict(project))
                     except Exception:  # noqa: BLE001
                         pass
+                    if step % 3 == 0:
+                        _publish_all(merged)
                     time.sleep(core.Config.BROWSE_REQUEST_GAP)
         finally:
             session.close()
-        items = sorted(merged.values(), key=lambda p: (p["date"] == "-", p["date"]), reverse=True)
+        _publish_all(merged)
         with _ALL_LOCK:
-            _ALL_STATE["projects"] = items
             _ALL_STATE["stamp"] = time.monotonic()
     except Exception as exc:  # noqa: BLE001
         with _ALL_LOCK:
@@ -563,9 +717,13 @@ def filter_projects_by_date(projects: list[dict], day: str) -> list[dict]:
 class Task:
     """一个展会的监控任务，线程里轮询，状态给前端读。"""
 
-    def __init__(self, project_id: str, name: str, settings: dict[str, Any]) -> None:
+    def __init__(
+        self, project_id: str, name: str, settings: dict[str, Any], city: str = ""
+    ) -> None:
         self.project_id = project_id
         self.name = name or f"票务 {project_id}"
+        self.city = city
+        self.url = f"https://show.bilibili.com/platform/detail.html?id={project_id}"
         self.interval = max(1.0, float(settings.get("interval", 2.0)))
         self.timeout = max(1.0, float(settings.get("timeout", 10.0)))
         self.log_enabled = bool(settings.get("log", False))
@@ -646,6 +804,10 @@ class Task:
                     "screen": ticket.screen,
                     "desc": ticket.desc,
                     "status": ticket.status,
+                    "ticketId": ticket.ticket_id,
+                    "price": ticket.price,
+                    "free": ticket.free,
+                    "saleStart": ticket.sale_start,
                     "restocks": int(stat.get("restocks", 0)),
                     "total": int(stat.get("total", 0)),
                     "last": float(stat.get("last", 0.0)),
@@ -655,6 +817,7 @@ class Task:
 
         self.last_error = ""
         self.updated = now
+        opened: list[str] = []
         with self.lock:
             self.tickets = payload
             if not self.board.ready:
@@ -672,6 +835,20 @@ class Task:
                         },
                     )
                     del self.changes[60:]
+                    if change.kind == "状态变化" and change.new == "预售中" and change.old != "预售中":
+                        opened.append(change.name)
+        for ticket_name in opened:
+            if NOTIFY_HUB is not None:
+                NOTIFY_HUB.push_sale_task(
+                    project_id=self.project_id,
+                    name=self.name,
+                    city=self.city,
+                    url=self.url,
+                    ticket=ticket_name,
+                    price=next(
+                        (t.price_text for t in tickets if t.name == ticket_name), ""
+                    ),
+                )
 
     def snapshot(self) -> dict[str, Any]:
         with self.lock:
@@ -696,12 +873,14 @@ class Manager:
         self.tasks: dict[str, Task] = {}
         self.lock = threading.Lock()
 
-    def start(self, project_id: str, name: str, settings: dict[str, Any]) -> dict[str, Any]:
+    def start(
+        self, project_id: str, name: str, settings: dict[str, Any], city: str = ""
+    ) -> dict[str, Any]:
         with self.lock:
             task = self.tasks.get(project_id)
             if task and task.running:
                 return task.snapshot()
-            task = Task(project_id, name, settings)
+            task = Task(project_id, name, settings, city)
             self.tasks[project_id] = task
             task.start()
             time.sleep(0.05)
@@ -728,6 +907,16 @@ class Manager:
 
 MANAGER = Manager()
 SETTINGS = load_settings()
+NOTIFY_HUB: Any = None
+try:
+    NOTIFY_HUB = NotifyHub(
+        STATE_DIR / "notify.json",
+        settings_getter=lambda: SETTINGS,
+        fetcher=watch_items,
+        interval=180.0,
+    )
+except Exception:  # noqa: BLE001 提醒不可用不应影响主程序
+    NOTIFY_HUB = None
 LAST_PING = time.monotonic()
 DESKTOP: Any = None
 
@@ -828,16 +1017,15 @@ class Handler(BaseHTTPRequestHandler):
 
         if route == "/api/search":
             keyword = (query.get("q") or [""])[0].strip()
-            page = int((query.get("page") or ["1"])[0] or 1)
             if not keyword:
-                self._json({"ok": True, "items": []})
+                self._json({"ok": True, "items": [], "pages": 1, "total": 0, "partial": False})
                 return
             try:
-                items = search(keyword, page)
+                payload = search_pool(keyword)
             except Exception as exc:  # noqa: BLE001
                 self._json({"ok": False, "error": f"{type(exc).__name__}: {exc}"})
                 return
-            self._json({"ok": True, "items": items, "page": page})
+            self._json({"ok": True, **payload, "page": 1, "keyword": keyword})
             return
 
         if route == "/api/list":
@@ -846,13 +1034,12 @@ class Handler(BaseHTTPRequestHandler):
                 area = int((query.get("area") or ["0"])[0] or 0)
             except ValueError:
                 area = 0
-            page = int((query.get("page") or ["1"])[0] or 1)
             try:
-                items = category_list(p_type, area, page)
+                payload = category_pool(p_type, area)
             except Exception as exc:  # noqa: BLE001
                 self._json({"ok": False, "error": f"{type(exc).__name__}: {exc}"})
                 return
-            self._json({"ok": True, "items": items, "page": page, "type": p_type, "area": area})
+            self._json({"ok": True, **payload, "page": 1, "type": p_type, "area": area})
             return
 
         if route == "/api/cities":
@@ -901,8 +1088,28 @@ class Handler(BaseHTTPRequestHandler):
                         "items": list(_ALL_STATE["projects"]),
                         "running": _ALL_STATE["running"],
                         "stamp": _ALL_STATE["stamp"],
+                        "progress": dict(_ALL_STATE.get("progress") or {}),
                     }
                 )
+            return
+
+        if route == "/api/notifications":
+            if NOTIFY_HUB is None:
+                self._json({"ok": True, "items": [], "latest": 0, "enabled": {"new": False, "sale": False}})
+                return
+            try:
+                after = int((query.get("after") or ["0"])[0] or 0)
+            except ValueError:
+                after = 0
+            peek = (query.get("peek") or ["0"])[0] == "1"
+            payload = NOTIFY_HUB.since(after, peek)
+            self._json(
+                {
+                    "ok": True,
+                    **payload,
+                    "enabled": NOTIFY_HUB.enabled(),
+                }
+            )
             return
 
         if route == "/api/fonts":
@@ -957,12 +1164,23 @@ class Handler(BaseHTTPRequestHandler):
             self._json({"ok": True, "status": DESKTOP.status() if DESKTOP is not None else {"native": False}})
             return
 
+        if route == "/api/notifications/test":
+            if NOTIFY_HUB is not None:
+                NOTIFY_HUB.push_sample(str(body.get("kind") or "new"))
+            self._json({"ok": True})
+            return
+
         if route == "/api/tasks":
             project_id = str(body.get("id") or "").strip()
             if not project_id:
                 self._json({"ok": False, "error": "缺少票务 ID"}, 400)
                 return
-            snapshot = MANAGER.start(project_id, str(body.get("name") or ""), SETTINGS)
+            snapshot = MANAGER.start(
+                project_id,
+                str(body.get("name") or ""),
+                SETTINGS,
+                str(body.get("city") or "").strip()[:20],
+            )
             self._json({"ok": True, "task": snapshot})
             return
 
@@ -1084,6 +1302,27 @@ class Handler(BaseHTTPRequestHandler):
             ):
                 if key in body:
                     SETTINGS[key] = bool(body[key])
+            for key in ("notifyNew", "notifySale"):
+                if key in body:
+                    SETTINGS[key] = bool(body[key])
+            if "notifyCity" in body:
+                try:
+                    SETTINGS["notifyCity"] = max(0, int(body["notifyCity"]))
+                except (TypeError, ValueError):
+                    pass
+            if "notifyPos" in body:
+                pos = str(body["notifyPos"]).strip().lower()
+                if pos in ("br", "bl", "tr", "tl", "island"):
+                    SETTINGS["notifyPos"] = pos
+            if "notifyDuration" in body:
+                try:
+                    SETTINGS["notifyDuration"] = max(3000, min(15000, int(body["notifyDuration"])))
+                except (TypeError, ValueError):
+                    pass
+            if "motion" in body:
+                motion = str(body["motion"]).strip().lower()
+                if motion in ("full", "soft", "lite", "off"):
+                    SETTINGS["motion"] = motion
             save_settings(SETTINGS)
             self._json({"ok": True, "settings": SETTINGS})
             return
@@ -1226,6 +1465,8 @@ def _launch_window(url: str) -> None:
 
 def main() -> int:
     if os.environ.get("BW_NO_WINDOW") == "1":  # 调试：只起服务，不开窗口
+        if NOTIFY_HUB is not None:
+            NOTIFY_HUB.start()
         port = pick_port()
         httpd = ThreadingHTTPServer(("127.0.0.1", port), Handler)
         httpd.daemon_threads = True
@@ -1265,6 +1506,8 @@ def main() -> int:
 
     httpd = ThreadingHTTPServer(("127.0.0.1", port), Handler)
     httpd.daemon_threads = True
+    if NOTIFY_HUB is not None:
+        NOTIFY_HUB.start()
     url = f"http://127.0.0.1:{port}/"
 
     threading.Thread(target=_launch_window, args=(url,), daemon=True).start()

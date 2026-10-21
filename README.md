@@ -1,50 +1,51 @@
 # Infinite query X
 
-**一个专门用来查看哔哩哔哩会员购余票监测工具**
+**哔哩哔哩会员购余票监测工具 · 图形界面版**
 
-通过 B 站会员购公开接口，实时监测漫展 / 演出 / 赛事的余票状态与回流情况，
+只读 B 站会员购公开接口，实时监测漫展 / 演出 / 赛事的余票状态与回流情况，
 **不做抢票、不代下单、不需要登录**。
 
-整体的界面以 **Motrix × Xiaomi HyperOS 4** 作为参考的柔光玻璃语言色调，简洁明了：左侧栏 + 任务卡片 + 状态栏，
+界面参考 **Motrix × Xiaomi HyperOS 4** 的柔光玻璃语言：左侧栏 + 任务卡片 + 状态栏，
 浅色 / 深色 / 跟随系统三套主题，单文件 exe，双击即用。
 
 ![界面预览](docs/images/preview-ui.png)
 
 ## 功能
 
-- 1.**多任务监测**：可查看每个展会简约报表卡片，快速获取展会重要信息，票种状态实时刷新，可同时监控多个展会；卡片头部可直达活动详情页。
- 
-- 2.**回流统计**：可记录每个票种的「今日回流次数」「最近可购时间」「累计可购时长」，以此来判断放票规律。
-  
-- 3.**新建 / 浏览**：可以按类型来浏览（全部 / 展览 / 演出 / 赛事 / 本地生活 / ONLY 同人展），
+- **多任务监测**：每个展会一张卡片，票种状态与价格实时刷新，可同时监控多个展会；卡片头部直达活动页，每个票种后带「购票」链接，跳到会员购对应票档的购票页。
+- **回流统计**：记录每个票种的「今日回流次数」「最近可购时间」「累计可购时长」，判断放票规律。
+- **新建 / 浏览**：按类型浏览（全部 / 展览 / 演出 / 赛事 / 本地生活 / ONLY 同人展），
   城市覆盖全国 452 个城市与地区（按拼音分组、带活动数），支持关键词搜索和一次拉取全国展会。
-  
-- 4.**日期查询**：日期栏默认按系统时间定位今天；点日期按钮弹出自绘日历（312 px 玻璃卡片，42 格，
+- **日期查询**：日期栏默认按系统时间定位今天；点日期按钮弹出自绘日历（312 px 玻璃卡片，42 格，
   翻月滑动、逐格错峰浮现），可翻日、选日、回到今天，并在日期小窗里按分类查看当天及跨天活动。
-  
-- 5.**一键刷新**：保留当前关键词 / 类型 / 城市 / 页码重新拉取，刷新时按钮旋转、完成弹「已刷新」。
- 
-- 6.**卡片流光**：界面卡片边缘会有一圈缓慢旋转的彩虹柔光流边，颜色可在设置里换成任意单色或自定义取色。
-  
-- 7.**界面字体**：系统字体 / 微软雅黑 / Segoe UI / 宋体 / 等宽，或导入本地 TTF / OTF / WOFF / WOFF2；
+- **提醒弹窗**：关注城市出现新活动、或监控票种开始可购时弹出玻璃提醒卡；位置支持左上 / 右上 / 左下 / 右下，或居中上方的 HyperOS 4 式**灵动岛**（药丸弹性展开、柔光扫过），停留时间 3–15 秒可调。
+- **页码选择**：新建页可点开页码弹层，选 1–最后一页中的任意一页，或直接输入页码；结果池本地分页，页码与末页准确。
+- **全国扫描**：点「全国展会」有实时进度条与条数，结果错峰入场，不再一下子换屏。
+- **一键刷新**：保留当前关键词 / 类型 / 城市 / 页码重新拉取，刷新时按钮旋转、完成弹「已刷新」。
+- **卡片流光**：卡片边缘一圈缓慢旋转的彩虹柔光流边，颜色可在设置里换成任意单色或自定义取色。
+- **界面字体**：系统字体 / 微软雅黑 / Segoe UI / 宋体 / 等宽，或导入本地 TTF / OTF / WOFF / WOFF2；
   字号 12–20 px、字重三档，即时生效并记住。
-  
-- 8.**帧率调节**：30 Hz 到检测到的显示器刷新率（最高 600 Hz），也可设为无限制。
-  
-- 9.**Monet 动态取色**：内置官方 Material Color Utilities 0.4.0，用 `SchemeExpressive` + 2025 规范
+- **帧率调节**：30 Hz 到检测到的显示器刷新率（最高 600 Hz），也可设为无限制。
+- **Monet 动态取色**：内置官方 Material Color Utilities 0.4.0，用 `SchemeExpressive` + 2025 规范
   生成 Material 3 Expressive 色板，支持选色 / 屏幕取色 / 图片取色，自动生成明暗三套配色。
-  
-- 10.**桌面窗口**：最小化到托盘、关闭驻留托盘、隐藏任务栏图标、隐藏最大化按钮。
- 
-- 11.**多语言体系**：简体中文、繁體中文、English、日本語、한국어、Русский、Deutsch、Français。
-  
-- 12.**无障碍功能**：当系统开启「减少动态效果」后，动画与流光自动降级为静态，界面仍完整可用。
+- **桌面窗口**：最小化到托盘、关闭驻留托盘、隐藏任务栏图标、隐藏最大化按钮。
+- **8 种语言**：简体中文、繁體中文、English、日本語、한국어、Русский、Deutsch、Français。
+- **动画效果**：完整 / 柔和 / 精简 / 关闭四档，统一控制启动动画、卡片流光、页面切换与弹窗动效；系统「减少动态效果」仍会优先降级。
+- **无障碍**：系统开启「减少动态效果」后，动画与流光自动降级为静态，界面仍完整可用。
 
 ## 界面
 
 | 日期选择器 | 日期小窗 |
 | --- | --- |
 | ![日期选择器](docs/images/preview-date.png) | ![日期小窗](docs/images/preview-date-window.png) |
+
+| 任务价格与购票链接 | 页码选择 |
+| --- | --- |
+| ![任务价格](docs/images/preview-task-price.png) | ![页码选择](docs/images/preview-page-picker.png) |
+
+| 右下角提醒 | 灵动岛 |
+| --- | --- |
+| ![提醒](docs/images/preview-notify.png) | ![灵动岛](docs/images/preview-island.png) |
 
 | 界面字体 | 卡片流光颜色 |
 | --- | --- |
@@ -70,6 +71,7 @@
 .
 ├─ app.py                         本地 HTTP 服务、监控线程、Edge 应用窗口、日期与字体接口
 ├─ bili_ticket_monitor_search.py  会员购接口、余票分类、全国活动汇总
+├─ notify_hub.py                  新活动 / 开票提醒的扫描、去重与队列
 ├─ desktop_shell.py               Windows 托盘、窗口隐藏、任务栏 / 最大化按钮
 ├─ static/
 │  ├─ index.html                  界面结构
@@ -97,9 +99,9 @@ py -m PyInstaller --noconfirm --clean --onefile --noconsole --icon icon.ico ^
   --hidden-import pystray._win32 --name "Infinite query X" app.py
 ```
 
-## 特别说明
+## 说明
 
-- 该软件只读会员购公开接口，只做余票监测，**不提供抢票 / 下单功能**。
+- 只读会员购公开接口，只做余票监测，**不提供抢票 / 下单功能**。
 - 会员购公开接口不返回剩余张数，因此只能做状态级统计（有票 / 售罄 / 预售等）。
 - 配置、端口、启动日志与导入的字体在 `%LOCALAPPDATA%\BW2026Monitor\`；Edge 窗口数据在同目录 `edge-profile`。
 - 桌面窗口行为仅 Windows 可用；托盘不可用时程序会拒绝隐藏任务栏 / 最小化到托盘，避免窗口找不回来。
@@ -109,7 +111,7 @@ py -m PyInstaller --noconfirm --clean --onefile --noconsole --icon icon.ico ^
 [MIT](LICENSE) © 2026 小羅同学
 
 界面灵感来自 Motrix 与 Xiaomi HyperOS 4；会员购接口部分基于
-[TaiMiao/Bili_Ticket_Monitor](https://github.com/TaiMiao/Bili_Ticket_Monitor)的开源项目而成，特别感谢TaiMiao作者的支持（已获得原作者授权）
+[TaiMiao/Bili_Ticket_Monitor](https://github.com/TaiMiao/Bili_Ticket_Monitor)。
 Material Color Utilities 采用 Apache-2.0，许可证见 `static/vendor/LICENSE-material-color-utilities.txt`。
 
 ## English
@@ -118,6 +120,8 @@ Material Color Utilities 采用 Apache-2.0，许可证见 `static/vendor/LICENSE
 It watches exhibition / concert / event ticket status and restock history — no purchasing, no login, no automation of orders.
 The UI follows a Motrix × HyperOS 4 "soft glass" design with a custom animated date picker, restock flow-edge light,
 Monet (Material 3 Expressive) theming, adjustable font and frame rate, tray behaviour and 8 languages.
+It also shows per-ticket prices with purchase links, new-event and on-sale notification popups (four corners or a
+HyperOS-style dynamic island with adjustable duration), a page picker, and Full / Soft / Lite / Off motion levels.
 
 Download the single-file `Infinite-query-X-1.0.0.exe` from [Releases](https://github.com/xiaoluo68/Infinite-query-X/releases/latest),
 then double-click it. Full notes (Chinese) are in [docs/使用说明.md](docs/使用说明.md).

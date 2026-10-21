@@ -190,6 +190,10 @@ class Ticket:
     screen: str
     desc: str
     status: str
+    ticket_id: int = 0  # 票种 ID，用于拼购票链接
+    price: int = 0  # 单价，单位：分
+    free: bool = False
+    sale_start: int = 0  # 开售时间（epoch 秒）
 
     @property
     def name(self) -> str:
@@ -198,6 +202,15 @@ class Ticket:
     @property
     def key(self) -> tuple[str, str]:
         return (self.screen, self.desc)
+
+    @property
+    def price_text(self) -> str:
+        if self.free:
+            return "免费"
+        if self.price <= 0:
+            return "-"
+        yuan = self.price / 100
+        return f"￥{yuan:.2f}".rstrip("0").rstrip(".") if yuan % 1 else f"￥{int(yuan)}"
 
 
 @dataclass(frozen=True)
@@ -245,6 +258,52 @@ def clean_text(value: object, *, limit: int = 120) -> str:
     """把接口里的字符串收拾干净：全角/不换行空格归一，连续空白压成一个。"""
     text = _SPACE_RE.sub(" ", str(value if value is not None else "")).strip()
     return text[:limit]
+
+
+def _int_or_zero(value: object) -> int:
+    try:
+        return int(value)  # type: ignore[arg-type]
+    except (TypeError, ValueError):
+        return 0
+
+
+def _epoch_seconds(value: object) -> int:
+    """把 unix 秒或 "2026-10-01 00:00:00" 统一成 epoch 秒；解析不了返回 0。"""
+    if isinstance(value, (int, float)):
+        return int(value) if value > 0 else 0
+    text = str(value or "").strip()
+    if not text:
+        return 0
+    if text.isdigit():
+        return int(text)
+    for fmt in ("%Y-%m-%d %H:%M:%S", "%Y-%m-%d %H:%M", "%Y-%m-%d"):
+        try:
+            return int(datetime.strptime(text, fmt).timestamp())
+        except ValueError:
+            continue
+    return 0
+
+
+_WARM_LOCK = threading.Lock()
+
+
+def _warm_session(session: requests.Session) -> None:
+    """搜索接口对没有 buvid 的会话会返回 81102084，先访问一次主站拿 cookie。"""
+    if getattr(session, "_iqx_warm", False):
+        return
+    with _WARM_LOCK:
+        if getattr(session, "_iqx_warm", False):
+            return
+        try:
+            if not session.cookies.get("buvid3"):
+                session.get(
+                    "https://www.bilibili.com/",
+                    headers=Config.HEADERS,
+                    timeout=min(float(Config.TIMEOUT), 8.0),
+                )
+        except Exception:  # noqa: BLE001 预热失败也让正式请求照常尝试
+            pass
+        setattr(session, "_iqx_warm", True)
 
 
 def _ticket_status(item: dict) -> str:
@@ -304,7 +363,15 @@ def _add_ticket(
     desc = clean_text(item.get("desc") or item.get("name"))
     if not desc:
         return
-    ticket = Ticket(screen_name, desc, _ticket_status(item))
+    ticket = Ticket(
+        screen_name,
+        desc,
+        _ticket_status(item),
+        ticket_id=_int_or_zero(item.get("id")),
+        price=_int_or_zero(item.get("price")),
+        free=bool(item.get("is_free")),
+        sale_start=_epoch_seconds(item.get("saleStart") or item.get("sale_start")),
+    )
     if ticket.key in seen:  # 同场次同名的重复行会让去抖计数混乱，只留第一条
         return
     seen.add(ticket.key)
@@ -387,13 +454,19 @@ def parse_search(payload: object) -> list[Project]:
     return projects
 
 
-def search_projects(
+def search_projects_page(
     session: requests.Session,
     keyword: str,
     timeout: float,
     page_size: int = 10,
     page: int = 1,
-) -> list[Project]:
+) -> tuple[list[Project], int, bool]:
+    """搜索一页，返回 (项目列表, total 累计值, 是否末页)。
+
+    搜索接口的 total 是「累计已返回条数」，不是总条数；末页只能看 isLastBrush
+    或本页条数是否小于 page_size。
+    """
+    _warm_session(session)
     url = Config.SEARCH_API_URL.format(
         keyword=quote(keyword, safe=""), page=max(1, page), pagesize=max(1, page_size)
     )
@@ -403,7 +476,25 @@ def search_projects(
         payload = response.json()
     except ValueError as exc:
         raise ApiError(f"搜索响应不是合法 JSON（HTTP {response.status_code}）") from exc
-    return parse_search(payload)
+    projects = parse_search(payload)
+    data = payload.get("data") if isinstance(payload, dict) else {}
+    data = data if isinstance(data, dict) else {}
+    try:
+        total = int(data.get("total") or 0)
+    except (TypeError, ValueError):
+        total = 0
+    last = bool(data.get("isLastBrush")) or len(projects) < max(1, page_size)
+    return projects, total, last
+
+
+def search_projects(
+    session: requests.Session,
+    keyword: str,
+    timeout: float,
+    page_size: int = 10,
+    page: int = 1,
+) -> list[Project]:
+    return search_projects_page(session, keyword, timeout, page_size, page)[0]
 
 
 def project_columns() -> int:

@@ -714,6 +714,179 @@
     },
   };
 
+
+  const EXTRA_I18N = {
+    'zh-CN': {
+      'settings.notifyTitle': '提醒弹窗', 'settings.notifyNew': '新活动提醒', 'settings.notifySale': '开票提醒',
+      'settings.notifyHint': '关注城市出现新活动，或监控的票种开始可购时，在窗口角落弹出提醒；位置和停留时间对两种提醒都生效。',
+      'settings.notifyCity': '关注城市', 'settings.notifyPos': '弹窗位置', 'settings.notifyDuration': '停留时间',
+      'settings.notifyPreview': '预览弹窗', 'settings.notifyTestSent': '已发送预览提醒',
+      'settings.motion': '动画效果', 'settings.motionFull': '完整', 'settings.motionSoft': '柔和',
+      'settings.motionLite': '精简', 'settings.motionOff': '关闭',
+      'settings.motionHint': '控制启动动画、卡片流光、页面切换与弹窗动效的强度；关闭后界面保留颜色与状态，不再播放动画。',
+      'task.colPrice': '价格', 'task.buy': '购票',
+      'new.pageJump': '跳转页码', 'new.pageFirst': '首页', 'new.pageLast': '末页', 'new.pageGo': '前往',
+      'new.pageUnknown': '接口未返回总页数，已跳到第 {n} 页', 'new.pageProbing': '正在探测最后一页…',
+      'new.pageTotalHint': '共 {n} 页', 'new.pageLimitHint': '已加载 {n} 页',
+      'notify.newTitle': '{city} 有新活动', 'notify.saleTitle': '{name} 开票了',
+      'notify.newTag': '新活动', 'notify.saleTag': '开票', 'notify.detail': '查看详情', 'notify.watch': '监控',
+      'notify.close': '关闭提醒', 'notify.more': '还有 {n} 条提醒', 'notify.price': '票价',
+      'toast.notifyPreviewFailed': '预览发送失败',
+    },
+    'zh-TW': {
+      'settings.notifyTitle': '提醒彈窗', 'settings.notifyNew': '新活動提醒', 'settings.notifySale': '開票提醒',
+      'settings.notifyHint': '關注城市出現新活動，或監控的票種開始可購時，在視窗角落彈出提醒；位置和停留時間對兩種提醒都生效。',
+      'settings.notifyCity': '關注城市', 'settings.notifyPos': '彈窗位置', 'settings.notifyDuration': '停留時間',
+      'settings.notifyPreview': '預覽彈窗', 'settings.notifyTestSent': '已發送預覽提醒',
+      'settings.motion': '動畫效果', 'settings.motionFull': '完整', 'settings.motionSoft': '柔和',
+      'settings.motionLite': '精簡', 'settings.motionOff': '關閉',
+      'settings.motionHint': '控制啟動動畫、卡片流光、頁面切換與彈窗動效的強度；關閉後介面保留顏色與狀態，不再播放動畫。',
+      'task.colPrice': '價格', 'task.buy': '購票',
+      'new.pageJump': '跳轉頁碼', 'new.pageFirst': '首頁', 'new.pageLast': '末頁', 'new.pageGo': '前往',
+      'new.pageUnknown': '介面未回傳總頁數，已跳到第 {n} 頁', 'new.pageProbing': '正在探測最後一頁…',
+      'new.pageTotalHint': '共 {n} 頁', 'new.pageLimitHint': '已載入 {n} 頁',
+      'notify.newTitle': '{city} 有新活動', 'notify.saleTitle': '{name} 開票了',
+      'notify.newTag': '新活動', 'notify.saleTag': '開票', 'notify.detail': '查看詳情', 'notify.watch': '監控',
+      'notify.close': '關閉提醒', 'notify.more': '還有 {n} 條提醒', 'notify.price': '票價',
+      'toast.notifyPreviewFailed': '預覽發送失敗',
+    },
+    en: {
+      'settings.notifyTitle': 'Notifications', 'settings.notifyNew': 'New events', 'settings.notifySale': 'Ticket sale alerts',
+      'settings.notifyHint': 'Show a popup when a new event appears in your city, or a watched ticket becomes available. Position and duration apply to both.',
+      'settings.notifyCity': 'City', 'settings.notifyPos': 'Position', 'settings.notifyDuration': 'Duration',
+      'settings.notifyPreview': 'Preview', 'settings.notifyTestSent': 'Preview notification sent',
+      'settings.motion': 'Motion', 'settings.motionFull': 'Full', 'settings.motionSoft': 'Soft',
+      'settings.motionLite': 'Lite', 'settings.motionOff': 'Off',
+      'settings.motionHint': 'Controls launch animation, card light edges, page transitions and popups. Off keeps colors and states without animation.',
+      'task.colPrice': 'Price', 'task.buy': 'Buy',
+      'new.pageJump': 'Jump to page', 'new.pageFirst': 'First', 'new.pageLast': 'Last', 'new.pageGo': 'Go',
+      'new.pageUnknown': 'The API returned no page count; jumped to page {n}', 'new.pageProbing': 'Finding last page…',
+      'new.pageTotalHint': '{n} pages', 'new.pageLimitHint': '{n} pages loaded',
+      'notify.newTitle': 'New event in {city}', 'notify.saleTitle': '{name} is on sale',
+      'notify.newTag': 'New', 'notify.saleTag': 'On sale', 'notify.detail': 'Details', 'notify.watch': 'Watch',
+      'notify.close': 'Dismiss', 'notify.more': '{n} more notifications', 'notify.price': 'Price',
+      'toast.notifyPreviewFailed': 'Could not send preview',
+    },
+    ja: {
+      'settings.notifyTitle': '通知ポップアップ', 'settings.notifyNew': '新着イベント', 'settings.notifySale': '販売開始',
+      'settings.notifyHint': '注目都市に新しいイベントが出たとき、または監視チケットが購入可能になったときにポップアップします。位置と表示時間は両方に適用されます。',
+      'settings.notifyCity': '注目都市', 'settings.notifyPos': '表示位置', 'settings.notifyDuration': '表示時間',
+      'settings.notifyPreview': 'プレビュー', 'settings.notifyTestSent': 'プレビューを送信しました',
+      'settings.motion': 'アニメーション', 'settings.motionFull': 'フル', 'settings.motionSoft': 'ソフト',
+      'settings.motionLite': '軽量', 'settings.motionOff': 'オフ',
+      'settings.motionHint': '起動アニメーション、カードの光、ページ切替、ポップアップの強さを調整します。オフでも色と状態は保持されます。',
+      'task.colPrice': '価格', 'task.buy': '購入',
+      'new.pageJump': 'ページ移動', 'new.pageFirst': '最初', 'new.pageLast': '最後', 'new.pageGo': '移動',
+      'new.pageUnknown': 'API が総ページ数を返さないため、{n} ページへ移動しました', 'new.pageProbing': '最終ページを検索中…',
+      'new.pageTotalHint': '全 {n} ページ', 'new.pageLimitHint': '{n} ページ読み込み済み',
+      'notify.newTitle': '{city} に新着イベント', 'notify.saleTitle': '{name} が販売開始',
+      'notify.newTag': '新着', 'notify.saleTag': '販売中', 'notify.detail': '詳細', 'notify.watch': '監視',
+      'notify.close': '閉じる', 'notify.more': '他 {n} 件', 'notify.price': '価格',
+      'toast.notifyPreviewFailed': 'プレビューを送信できませんでした',
+    },
+    ko: {
+      'settings.notifyTitle': '알림 팝업', 'settings.notifyNew': '새 행사 알림', 'settings.notifySale': '판매 시작 알림',
+      'settings.notifyHint': '관심 도시에 새 행사가 생기거나 감시 중인 티켓이 구매 가능해지면 팝업으로 알려 줍니다. 위치와 표시 시간은 두 알림에 모두 적용됩니다.',
+      'settings.notifyCity': '관심 도시', 'settings.notifyPos': '팝업 위치', 'settings.notifyDuration': '표시 시간',
+      'settings.notifyPreview': '미리보기', 'settings.notifyTestSent': '미리보기 알림을 보냈습니다',
+      'settings.motion': '애니메이션', 'settings.motionFull': '전체', 'settings.motionSoft': '부드럽게',
+      'settings.motionLite': '간단히', 'settings.motionOff': '끄기',
+      'settings.motionHint': '시작 애니메이션, 카드 빛, 페이지 전환, 팝업 효과의 강도를 조절합니다. 끄면 색과 상태만 유지됩니다.',
+      'task.colPrice': '가격', 'task.buy': '구매',
+      'new.pageJump': '페이지 이동', 'new.pageFirst': '처음', 'new.pageLast': '마지막', 'new.pageGo': '이동',
+      'new.pageUnknown': 'API가 전체 페이지 수를 주지 않아 {n} 페이지로 이동했습니다', 'new.pageProbing': '마지막 페이지 확인 중…',
+      'new.pageTotalHint': '총 {n} 페이지', 'new.pageLimitHint': '{n} 페이지 로드됨',
+      'notify.newTitle': '{city} 새 행사', 'notify.saleTitle': '{name} 판매 시작',
+      'notify.newTag': '새 행사', 'notify.saleTag': '판매 중', 'notify.detail': '상세', 'notify.watch': '감시',
+      'notify.close': '닫기', 'notify.more': '{n}개 더 있음', 'notify.price': '가격',
+      'toast.notifyPreviewFailed': '미리보기를 보내지 못했습니다',
+    },
+    ru: {
+      'settings.notifyTitle': 'Уведомления', 'settings.notifyNew': 'Новые события', 'settings.notifySale': 'Старт продаж',
+      'settings.notifyHint': 'Показывать всплывающее уведомление о новом событии в выбранном городе или о поступлении билетов. Позиция и длительность действуют для обоих типов.',
+      'settings.notifyCity': 'Город', 'settings.notifyPos': 'Позиция', 'settings.notifyDuration': 'Длительность',
+      'settings.notifyPreview': 'Просмотр', 'settings.notifyTestSent': 'Пробное уведомление отправлено',
+      'settings.motion': 'Анимация', 'settings.motionFull': 'Полная', 'settings.motionSoft': 'Мягкая',
+      'settings.motionLite': 'Минимальная', 'settings.motionOff': 'Выкл.',
+      'settings.motionHint': 'Управляет анимацией запуска, свечением карточек, переходами страниц и всплывающими окнами. При выключении цвета и состояния сохраняются.',
+      'task.colPrice': 'Цена', 'task.buy': 'Купить',
+      'new.pageJump': 'Перейти на страницу', 'new.pageFirst': 'Первая', 'new.pageLast': 'Последняя', 'new.pageGo': 'Перейти',
+      'new.pageUnknown': 'API не вернул число страниц; выполнен переход на страницу {n}', 'new.pageProbing': 'Поиск последней страницы…',
+      'new.pageTotalHint': 'Всего {n} стр.', 'new.pageLimitHint': 'Загружено {n} стр.',
+      'notify.newTitle': 'Новое событие в {city}', 'notify.saleTitle': '{name}: продажи открыты',
+      'notify.newTag': 'Новое', 'notify.saleTag': 'В продаже', 'notify.detail': 'Подробнее', 'notify.watch': 'Следить',
+      'notify.close': 'Закрыть', 'notify.more': 'Ещё {n}', 'notify.price': 'Цена',
+      'toast.notifyPreviewFailed': 'Не удалось отправить просмотр',
+    },
+    de: {
+      'settings.notifyTitle': 'Benachrichtigungen', 'settings.notifyNew': 'Neue Events', 'settings.notifySale': 'Vorverkauf',
+      'settings.notifyHint': 'Zeigt ein Popup, wenn in der Stadt ein neues Event erscheint oder ein beobachtetes Ticket verfügbar wird. Position und Dauer gelten für beide.',
+      'settings.notifyCity': 'Stadt', 'settings.notifyPos': 'Position', 'settings.notifyDuration': 'Dauer',
+      'settings.notifyPreview': 'Vorschau', 'settings.notifyTestSent': 'Vorschau gesendet',
+      'settings.motion': 'Animation', 'settings.motionFull': 'Voll', 'settings.motionSoft': 'Sanft',
+      'settings.motionLite': 'Reduziert', 'settings.motionOff': 'Aus',
+      'settings.motionHint': 'Steuert Startanimation, Kartenlicht, Seitenwechsel und Popups. Bei „Aus“ bleiben Farben und Zustände erhalten.',
+      'task.colPrice': 'Preis', 'task.buy': 'Kaufen',
+      'new.pageJump': 'Seite wählen', 'new.pageFirst': 'Erste', 'new.pageLast': 'Letzte', 'new.pageGo': 'Los',
+      'new.pageUnknown': 'Die API lieferte keine Seitenzahl; zu Seite {n} gesprungen', 'new.pageProbing': 'Letzte Seite wird gesucht…',
+      'new.pageTotalHint': '{n} Seiten', 'new.pageLimitHint': '{n} Seiten geladen',
+      'notify.newTitle': 'Neues Event in {city}', 'notify.saleTitle': '{name} ist im Verkauf',
+      'notify.newTag': 'Neu', 'notify.saleTag': 'Im Verkauf', 'notify.detail': 'Details', 'notify.watch': 'Beobachten',
+      'notify.close': 'Schließen', 'notify.more': 'Noch {n}', 'notify.price': 'Preis',
+      'toast.notifyPreviewFailed': 'Vorschau konnte nicht gesendet werden',
+    },
+    fr: {
+      'settings.notifyTitle': 'Notifications', 'settings.notifyNew': 'Nouveaux événements', 'settings.notifySale': 'Ouverture des ventes',
+      'settings.notifyHint': 'Affiche une notification quand un nouvel événement apparaît dans la ville ou qu’un billet surveillé devient disponible. Position et durée s’appliquent aux deux.',
+      'settings.notifyCity': 'Ville', 'settings.notifyPos': 'Position', 'settings.notifyDuration': 'Durée',
+      'settings.notifyPreview': 'Aperçu', 'settings.notifyTestSent': 'Aperçu envoyé',
+      'settings.motion': 'Animation', 'settings.motionFull': 'Complète', 'settings.motionSoft': 'Douce',
+      'settings.motionLite': 'Réduite', 'settings.motionOff': 'Désactivée',
+      'settings.motionHint': 'Contrôle l’animation de démarrage, le halo des cartes, les transitions et les popups. Désactivée, les couleurs et états restent visibles.',
+      'task.colPrice': 'Prix', 'task.buy': 'Acheter',
+      'new.pageJump': 'Aller à la page', 'new.pageFirst': 'Première', 'new.pageLast': 'Dernière', 'new.pageGo': 'Aller',
+      'new.pageUnknown': 'L’API ne renvoie pas le nombre de pages ; page {n} affichée', 'new.pageProbing': 'Recherche de la dernière page…',
+      'new.pageTotalHint': '{n} pages', 'new.pageLimitHint': '{n} pages chargées',
+      'notify.newTitle': 'Nouvel événement à {city}', 'notify.saleTitle': '{name} est en vente',
+      'notify.newTag': 'Nouveau', 'notify.saleTag': 'En vente', 'notify.detail': 'Détails', 'notify.watch': 'Surveiller',
+      'notify.close': 'Fermer', 'notify.more': 'Encore {n}', 'notify.price': 'Prix',
+      'toast.notifyPreviewFailed': 'Impossible d’envoyer l’aperçu',
+    },
+  };
+  for (const [lang, dict] of Object.entries(EXTRA_I18N)) {
+    I18N[lang] = Object.assign(I18N[lang] || {}, dict);
+  }
+
+
+  const EXTRA_I18N_POS = {
+    'zh-CN': { 'pos.tl': '左上角', 'pos.tr': '右上角', 'pos.bl': '左下角', 'pos.br': '右下角', 'pos.island': '灵动岛' },
+    'zh-TW': { 'pos.tl': '左上角', 'pos.tr': '右上角', 'pos.bl': '左下角', 'pos.br': '右下角', 'pos.island': '靈動島' },
+    en: { 'pos.tl': 'Top left', 'pos.tr': 'Top right', 'pos.bl': 'Bottom left', 'pos.br': 'Bottom right', 'pos.island': 'Dynamic island' },
+    ja: { 'pos.tl': '左上', 'pos.tr': '右上', 'pos.bl': '左下', 'pos.br': '右下', 'pos.island': 'ダイナミックアイランド' },
+    ko: { 'pos.tl': '왼쪽 위', 'pos.tr': '오른쪽 위', 'pos.bl': '왼쪽 아래', 'pos.br': '오른쪽 아래', 'pos.island': '다이내믹 아일랜드' },
+    ru: { 'pos.tl': 'Слева сверху', 'pos.tr': 'Справа сверху', 'pos.bl': 'Слева снизу', 'pos.br': 'Справа снизу', 'pos.island': 'Dynamic Island' },
+    de: { 'pos.tl': 'Oben links', 'pos.tr': 'Oben rechts', 'pos.bl': 'Unten links', 'pos.br': 'Unten rechts', 'pos.island': 'Dynamic Island' },
+    fr: { 'pos.tl': 'En haut à gauche', 'pos.tr': 'En haut à droite', 'pos.bl': 'En bas à gauche', 'pos.br': 'En bas à droite', 'pos.island': 'Dynamic Island' },
+  };
+  for (const [lang, dict] of Object.entries(EXTRA_I18N_POS)) {
+    I18N[lang] = Object.assign(I18N[lang] || {}, dict);
+  }
+
+
+  const EXTRA_I18N_DUR = {
+    'zh-CN': { 'settings.notifyDurationValue': '{n} 秒' },
+    'zh-TW': { 'settings.notifyDurationValue': '{n} 秒' },
+    en: { 'settings.notifyDurationValue': '{n}s' },
+    ja: { 'settings.notifyDurationValue': '{n} 秒' },
+    ko: { 'settings.notifyDurationValue': '{n}초' },
+    ru: { 'settings.notifyDurationValue': '{n} с' },
+    de: { 'settings.notifyDurationValue': '{n} s' },
+    fr: { 'settings.notifyDurationValue': '{n} s' },
+  };
+  for (const [lang, dict] of Object.entries(EXTRA_I18N_DUR)) {
+    I18N[lang] = Object.assign(I18N[lang] || {}, dict);
+  }
+
   const LANGS = ['zh-CN', 'zh-TW', 'en', 'ja', 'ko', 'ru', 'de', 'fr'];
 
   // 接口返回的中文状态 → 各语言显示
@@ -785,6 +958,12 @@
       desktopCloseToTray: false,
       desktopHideTaskbar: false,
       desktopHideFullscreen: false,
+      notifyNew: true,
+      notifySale: true,
+      notifyCity: 0,
+      notifyPos: 'br',
+      notifyDuration: 6000,
+      motion: 'full',
     },
     fpsMax: 0,
     fpsState: 'idle',
@@ -803,12 +982,14 @@
     dateCache: new Map(),
     dateToken: 0,
     datePicker: { open: false, anchor: '', month: '' },
+    pagePicker: { open: false },
+    notifications: { cursor: 0, ready: false, active: 0, pending: [] },
     fonts: [],
     meta: null,
     online: true,
   };
 
-  const PAGE_SIZE = 20;
+  const PAGE_SIZE = 16;
   const MOTION_QUERY = window.matchMedia('(prefers-reduced-motion: reduce)');
   const THEMES = ['light', 'system', 'dark'];
   const COMMON_REFRESH_RATES = [30, 48, 50, 60, 72, 75, 90, 100, 120, 144, 165, 180, 240, 360, 480, 500, 540, 600];
@@ -826,7 +1007,11 @@
   let bootDismissed = false;
   let fpsDetectPromise = null;
 
-  const motionOK = () => !MOTION_QUERY.matches;
+  const MOTION_RANK = { off: 0, lite: 1, soft: 2, full: 3 };
+  const motionLevel = () => (state.settings && state.settings.motion) || 'full';
+  const motionRank = () => MOTION_RANK[motionLevel()] ?? 3;
+  const motionAtLeast = (level) => !MOTION_QUERY.matches && motionRank() >= (MOTION_RANK[level] ?? 3);
+  const motionOK = () => motionAtLeast('soft');
   const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
   // 脚本动画的帧调度器：CSS 合成动画由浏览器控制，这里限制 JS 驱动的光效/数字/滚动反馈。
@@ -1630,13 +1815,14 @@ ${vars(dark)}
       guideSub: '了解 Infinite query X 的基本操作与运行逻辑',
       updatesHeading: '版本更新',
       guideHeading: '操作演示',
-      updatesMeta: '8 个版本',
+      updatesMeta: '9 个版本',
       newTag: 'NEW',
       pause: '暂停',
       play: '播放',
       stepLabel: '步骤 {n} / {m}',
       updates: [
-        { version: 'v1.0.0', date: '2026-10-21', latest: true, desc: '正式版：自定义日期选择器（弹性动画、月历、今天 / 选中态）、日期查询小窗、界面字体导入与卡片流光，正式开源。', tags: ['1.0', '正式版', '开源'] },
+        { version: 'v1.1.0', date: '2026-10-22', latest: true, desc: '新增票种价格与购票链接、新活动 / 开票提醒弹窗（四角与灵动岛、可调位置与停留时间）、页码选择器、全国扫描动画与动画效果等级。', tags: ['提醒', '灵动岛', '页码', '动效'] },
+        { version: 'v1.0.0', date: '2026-10-21', desc: '正式版：自定义日期选择器（弹性动画、月历、今天 / 选中态）、日期查询小窗、界面字体导入与卡片流光，正式开源。', tags: ['1.0', '正式版', '开源'] },
         { version: 'v0.9.2beta', date: '2026-10-21', desc: '新建页新增日期查询小窗：按系统时间定位今天，逐日查看展览 / 演出 / 赛事 / 同人展 / 其他；设置新增界面字体（字体、字号、字重），并支持导入 TTF / OTF / WOFF 字体。', tags: ['日期查询', '字体', '小窗'] },
         { version: 'v0.9.1beta', date: '2026-10-21', desc: '新建页新增一键刷新；卡片加入可调色的缓慢旋转彩虹柔光流边；启动时播放柔光唤醒动画。', tags: ['刷新', '彩虹流边', '可调色'] },
         { version: 'v0.9.0beta', date: '2026-10-21', desc: '新增帮助中心：版本更新记录与带自动轮播的操作演示。', tags: ['帮助', '操作演示', '动画'] },
@@ -1652,6 +1838,7 @@ ${vars(dark)}
         { title: '查看余票', desc: '任务卡片会实时刷新；绿色「预售中」表示当前可购，还可以查看今日回流、最近可购和累计可购。', icon: 'ticket' },
         { title: '个性化外观', desc: '在「设置」调整界面帧率、Monet 动态取色、卡片流光颜色、界面字体（字体 / 字号 / 字重 / 导入字体）与主题。', icon: 'palette' },
         { title: '桌面窗口', desc: '在「桌面」开启最小化到托盘、关闭驻留托盘、隐藏任务栏图标或隐藏全屏按钮。', icon: 'desktop' },
+        { title: '提醒与动效', desc: '在「设置 → 提醒弹窗」选择新活动 / 开票提醒、关注城市、四角或灵动岛位置与停留时间；「动画效果」可选完整 / 柔和 / 精简 / 关闭。', icon: 'bell' },
         { title: '托盘与退出', desc: '关闭到托盘后点击托盘图标恢复界面；托盘菜单中的「退出」可以彻底结束程序。', icon: 'tray' },
       ],
     },
@@ -1664,13 +1851,14 @@ ${vars(dark)}
       guideSub: 'Learn the basics and how Infinite query X works',
       updatesHeading: 'Version updates',
       guideHeading: 'Guided tour',
-      updatesMeta: '8 releases',
+      updatesMeta: '9 releases',
       newTag: 'NEW',
       pause: 'Pause',
       play: 'Play',
       stepLabel: 'Step {n} / {m}',
       updates: [
-        { version: 'v1.0.0', date: '2026-10-21', latest: true, desc: 'Official release: custom animated date picker, date lookup window, interface font import and card light edges. Open source.', tags: ['1.0', 'Stable', 'Open source'] },
+        { version: 'v1.1.0', date: '2026-10-22', latest: true, desc: 'Ticket prices and purchase links, new-event and on-sale notification popups (corners or dynamic island, adjustable position and duration), page picker, nationwide scan animation and motion levels.', tags: ['Notifications', 'Dynamic island', 'Pagination', 'Motion'] },
+        { version: 'v1.0.0', date: '2026-10-21', desc: 'Official release: custom animated date picker, date lookup window, interface font import and card light edges. Open source.', tags: ['1.0', 'Stable', 'Open source'] },
         { version: 'v0.9.2beta', date: '2026-10-21', desc: 'Date lookup window on New (today from system time; browse exhibitions, shows, matches and doujin events by day), plus interface font settings with TTF / OTF / WOFF import.', tags: ['Date lookup', 'Font', 'Window'] },
         { version: 'v0.9.1beta', date: '2026-10-21', desc: 'One-tap refresh on New, adjustable slowly rotating rainbow light edges on cards, and a launch wake-up animation.', tags: ['Refresh', 'Rainbow edge', 'Custom color'] },
         { version: 'v0.9.0beta', date: '2026-10-21', desc: 'New help center with release notes and an auto-playing guided tour.', tags: ['Help', 'Guided tour', 'Motion'] },
@@ -1686,6 +1874,7 @@ ${vars(dark)}
         { title: 'Watch availability', desc: 'Task cards refresh live. A green “On sale” pill means tickets are currently available; review restocks and on-sale time.', icon: 'ticket' },
         { title: 'Make it yours', desc: 'In Settings, adjust the UI frame rate, Monet dynamic color, card light color, interface font (family / size / weight / import) and theme.', icon: 'palette' },
         { title: 'Desktop behavior', desc: 'In Desktop, enable minimize to tray, keep running in tray on close, hide the taskbar icon, or hide the fullscreen button.', icon: 'desktop' },
+        { title: 'Alerts & motion', desc: 'In Settings → Notifications pick new-event / on-sale alerts, the city, a corner or the dynamic island, and the duration. Motion offers Full / Soft / Lite / Off.', icon: 'bell' },
         { title: 'Tray & quit', desc: 'After closing to the tray, click the tray icon to reopen the window. Use Quit in the tray menu to exit completely.', icon: 'tray' },
       ],
     },
@@ -1699,6 +1888,7 @@ ${vars(dark)}
     palette: '<svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18h1.5a2.5 2.5 0 0 0 0-5H12a2 2 0 0 1 0-4h4.5A4.5 4.5 0 0 0 21 7.5 4.5 4.5 0 0 0 16.5 3z"/><circle cx="7.5" cy="10" r="1"/><circle cx="10" cy="6.5" r="1"/><circle cx="15" cy="6.5" r="1"/></svg>',
     desktop: '<svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>',
     tray: '<svg viewBox="0 0 24 24"><path d="M4 15h16M6 19h12"/><path d="M12 3v10m0 0l-3-3m3 3l3-3"/></svg>',
+    bell: '<svg viewBox="0 0 24 24"><path d="M18 9a6 6 0 1 0-12 0c0 5-2 6-2 6h16s-2-1-2-6"/><path d="M10.3 20a2 2 0 0 0 3.4 0"/></svg>',
   };
 
   const helpState = { tab: 'updates', index: 0, playing: true, timer: 0 };
@@ -2022,6 +2212,13 @@ ${vars(dark)}
 
   function dismissBoot() {
     if (bootDismissed) return;
+    if (motionRank() <= 1) {
+      bootDismissed = true;
+      clearTimeout(bootTimer);
+      const skipBoot = $('boot-veil');
+      if (skipBoot) skipBoot.remove();
+      return;
+    }
     const elapsed = performance.now() - bootStartedAt;
     if (elapsed < BOOT_MIN_MS) {
       clearTimeout(bootTimer);
@@ -2107,6 +2304,14 @@ ${vars(dark)}
     return h ? `${h}:${p(m)}:${p(s % 60)}` : `${m}:${p(s % 60)}`;
   };
 
+  const fmtPrice = (cents, free) => {
+    if (free) return '免费';
+    const value = Number(cents) || 0;
+    if (!value) return '—';
+    const yuan = value / 100;
+    return Number.isInteger(yuan) ? `￥${yuan}` : `￥${yuan.toFixed(2).replace(/0$/, '')}`;
+  };
+
   const pillClass = (status) => {
     const map = { 预售中: 'green', 暂时售罄: 'amber', 已售罄: 'red', 已停售: 'red', 未开售: 'red', 不可售: 'red' };
     return map[status] || '';
@@ -2155,6 +2360,178 @@ ${vars(dark)}
     });
   }
 
+  // ---------- 提醒弹窗 ----------
+  const NOTIFY_ICONS = {
+    new: '<svg viewBox="0 0 24 24"><path d="M12 3l1.9 4.6L18.5 9.5 13.9 11.4 12 16l-1.9-4.6L5.5 9.5l4.6-1.9z"/><path d="M18 16l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg>',
+    sale: '<svg viewBox="0 0 24 24"><path d="M4 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2a3 3 0 0 0 0 6v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2a3 3 0 0 0 0-6z"/><path d="M14 5v14"/></svg>',
+  };
+  const notifySeen = new Set();
+  let notifyPumpTimer = 0;
+
+  function notificationDuration() {
+    return Math.max(3000, Math.min(15000, Number(state.settings.notifyDuration) || 6000));
+  }
+
+  function updateNotifyLift() {
+    const host = $('notify-host');
+    if (!host) return;
+    const bottom = host.dataset.pos === 'br' || host.dataset.pos === 'bl';
+    const lift = bottom && host.children.length ? host.offsetHeight + 10 : 0;
+    document.body.style.setProperty('--toast-lift', `${lift}px`);
+  }
+
+  function queueNotification(item) {
+    if (!item || notifySeen.has(item.id)) return;
+    notifySeen.add(item.id);
+    state.notifications.pending.push(item);
+    pumpNotifications();
+  }
+
+  function pumpNotifications() {
+    clearTimeout(notifyPumpTimer);
+    while (state.notifications.active < 2 && state.notifications.pending.length) {
+      showNotification(state.notifications.pending.shift());
+    }
+    updateNotifyLift();
+  }
+
+  function showNotification(item) {
+    const host = $('notify-host');
+    if (!host) return;
+    const island = host.dataset.pos === 'island';
+    const isSale = item.kind === 'sale';
+    const el = document.createElement('article');
+    el.className = `notify${isSale ? ' is-sale' : ''}${island ? ' island' : ''}`;
+    el.dataset.kind = item.kind;
+    el.innerHTML = `
+      <div class="notify-row">
+        <span class="notify-icon">${NOTIFY_ICONS[isSale ? 'sale' : 'new']}</span>
+        <div class="notify-main">
+          <div class="notify-top"><span class="notify-tag"></span></div>
+          <p class="notify-title"></p>
+          <div class="notify-meta"></div>
+        </div>
+        <button type="button" class="notify-close" aria-label="${t('notify.close')}">×</button>
+      </div>
+      <div class="notify-extra">
+        <div class="notify-actions"></div>
+      </div>
+      ${island ? '<i class="notify-shine" aria-hidden="true"></i>' : ''}
+      <i class="notify-bar" style="--dur:${notificationDuration()}ms"></i>`;
+
+    el.querySelector('.notify-tag').textContent = t(isSale ? 'notify.saleTag' : 'notify.newTag');
+    const titleText = isSale
+      ? t('notify.saleTitle', { name: item.title || '' })
+      : item.title || t('notify.newTitle', { city: item.city || '' });
+    el.querySelector('.notify-title').textContent = item.ticket ? `${titleText} · ${item.ticket}` : titleText;
+    if (item.title) el.querySelector('.notify-title').title = item.title;
+    const meta = [];
+    if (item.city) meta.push(item.city);
+    if (item.date) meta.push(item.date);
+    if (item.price) meta.push(`${t('notify.price')} ${item.price}`);
+    el.querySelector('.notify-meta').textContent = meta.join(' · ');
+
+    const actions = el.querySelector('.notify-actions');
+    if (item.url) {
+      const link = document.createElement('a');
+      link.className = 'btn tiny';
+      link.href = item.url;
+      link.target = '_blank';
+      link.rel = 'noreferrer';
+      link.textContent = t('notify.detail');
+      actions.appendChild(link);
+    }
+    if (!isSale && item.projectId) {
+      const watch = document.createElement('button');
+      watch.type = 'button';
+      watch.className = 'btn tiny ghost';
+      watch.textContent = t('notify.watch');
+      watch.addEventListener('click', async () => {
+        setBusy(watch, true);
+        const res = await api('/api/tasks', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id: item.projectId, name: item.title || '', city: item.city || '' }),
+        });
+        if (res?.ok) {
+          toast(t('toast.added', { name: item.title || item.projectId }));
+          dismiss();
+          switchView('tasks');
+          refresh();
+        } else {
+          setBusy(watch, false);
+          toast(res?.error || t('toast.addFailed'), 'err');
+        }
+      });
+      actions.appendChild(watch);
+    }
+
+    host.appendChild(el);
+    state.notifications.active += 1;
+    updateNotifyLift();
+
+    if (island) {
+      requestAnimationFrame(() => {
+        setTimeout(() => el.classList.add('is-expanded'), 130);
+      });
+    }
+
+    const bar = el.querySelector('.notify-bar');
+    const duration = notificationDuration();
+    let remaining = duration;
+    let startedAt = Date.now();
+    let timer = 0;
+    let closed = false;
+
+    const dismiss = () => {
+      if (closed) return;
+      closed = true;
+      clearTimeout(timer);
+      el.classList.add('is-out');
+      setTimeout(() => {
+        el.remove();
+        state.notifications.active = Math.max(0, state.notifications.active - 1);
+        updateNotifyLift();
+        pumpNotifications();
+      }, 280);
+    };
+
+    const schedule = (ms) => {
+      clearTimeout(timer);
+      remaining = ms;
+      startedAt = Date.now();
+      timer = setTimeout(dismiss, ms);
+    };
+
+    el.querySelector('.notify-close').addEventListener('click', dismiss);
+    el.addEventListener('mouseenter', () => {
+      clearTimeout(timer);
+      remaining = Math.max(600, remaining - (Date.now() - startedAt));
+      if (bar) bar.style.animationPlayState = 'paused';
+    });
+    el.addEventListener('mouseleave', () => {
+      if (bar) bar.style.animationPlayState = 'running';
+      schedule(remaining);
+    });
+    schedule(duration);
+  }
+
+  async function pollNotifications() {
+    if (!state.notifications.ready) {
+      const res = await api('/api/notifications?peek=1');
+      if (res?.ok) {
+        state.notifications.cursor = Number(res.latest) || 0;
+        state.notifications.ready = true;
+      }
+      return;
+    }
+    if (!state.settings.notifyNew && !state.settings.notifySale) return;
+    const res = await api(`/api/notifications?after=${state.notifications.cursor}`);
+    if (!res?.ok) return;
+    state.notifications.cursor = Math.max(state.notifications.cursor, Number(res.latest) || 0);
+    (res.items || []).forEach(queueNotification);
+  }
+
   async function api(path, options) {
     try {
       const res = await fetch(path, options);
@@ -2189,6 +2566,8 @@ ${vars(dark)}
     $('set-lang').value = state.lang;
     const citySelect = $('city');
     if (citySelect && citySelect.options.length) citySelect.options[0].textContent = t('cat.nationwide');
+    const notifyCity = $('set-notify-city');
+    if (notifyCity && notifyCity.options.length) notifyCity.options[0].textContent = t('cat.nationwide');
     applyViewText();
     updateFpsUI(false);
     if ($('monet-field')) fillMonetUI();
@@ -2211,8 +2590,9 @@ ${vars(dark)}
       moveNavGlide();
       moveThemeThumb();
     });
+      if (typeof applyNotifyUI === 'function') applyNotifyUI();
+    if (state.pagePicker.open) renderPagePicker();
   }
-
   function setLanguage(lang, persist) {
     if (!LANGS.includes(lang)) lang = 'zh-CN';
     state.lang = lang;
@@ -2485,15 +2865,21 @@ ${vars(dark)}
         const rows = task.tickets
           .map((x, index) => {
             const rowKey = encodeURIComponent(`${task.id}|${x.screen}|${x.desc}`);
+            const buyUrl = x.ticketId
+              ? `${DETAIL_URL(task.id)}&ticket_id=${encodeURIComponent(x.ticketId)}`
+              : DETAIL_URL(task.id);
             return `<tr data-rkey="${rowKey}" style="--ri:${index}">
-              <td>${esc((x.screen ? x.screen + ' ' : '') + x.desc)}</td>
+              <td class="ticket-name">${esc((x.screen ? x.screen + ' ' : '') + x.desc)}<a class="ticket-buy" href="${esc(
+                buyUrl
+              )}" target="_blank" rel="noreferrer" title="${t('task.buy')}">${t('task.buy')} ↗</a></td>
+              <td class="num price">${esc(fmtPrice(x.price, x.free))}</td>
               <td class="num restocks">${x.restocks ? x.restocks : '—'}</td>
               <td class="num live-last" data-ts="${x.last || 0}" data-status="${esc(x.status)}">${
                 x.last ? hhmmss(x.last) : '—'
               }</td>
-              <td class="num live-secs" data-base="${x.secs || 0}" data-status="${esc(x.status)}" data-updated="${
-                task.updated || 0
-              }">${fmtSecs(x.secs || 0)}</td>
+              <td class="num live-secs col-total" data-base="${x.secs || 0}" data-status="${esc(
+                x.status
+              )}" data-updated="${task.updated || 0}">${fmtSecs(x.secs || 0)}</td>
               <td class="status"><span class="pill ${pillClass(x.status)}">${esc(statusLabel(x.status))}</span></td>
             </tr>`;
           })
@@ -2545,9 +2931,10 @@ ${vars(dark)}
                 ? `<div class="tickets-wrap"><table class="tickets">
                      <thead><tr>
                        <th>${t('task.count', { n: task.tickets.length })}</th>
+                       <th class="num">${t('task.colPrice')}</th>
                        <th class="num"><span class="live-dot"></span>${t('task.colRestock')}</th>
                        <th class="num">${t('task.colLast')}</th>
-                       <th class="num">${t('task.colTotal')}</th>
+                       <th class="num col-total">${t('task.colTotal')}</th>
                        <th class="status"></th>
                      </tr></thead>
                      <tbody>${rows}</tbody>
@@ -2605,7 +2992,9 @@ ${vars(dark)}
           </a>
         </div>
       </div>
-      <button class="btn tiny" data-watch="${esc(item.id)}" data-name="${esc(item.name)}">${t('new.watch')}</button>
+      <button class="btn tiny" data-watch="${esc(item.id)}" data-name="${esc(item.name)}" data-city="${esc(
+        item.city || ''
+      )}">${t('new.watch')}</button>
     </div>`;
   }
 
@@ -2625,7 +3014,11 @@ ${vars(dark)}
         const res = await api('/api/tasks', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ id: btn.dataset.watch, name: btn.dataset.name }),
+          body: JSON.stringify({
+            id: btn.dataset.watch,
+            name: btn.dataset.name,
+            city: btn.dataset.city || '',
+          }),
         });
         if (res?.ok) {
           toast(t('toast.added', { name: btn.dataset.name }));
@@ -2662,20 +3055,28 @@ ${vars(dark)}
       $('pager').classList.add('is-hidden');
       return;
     }
-    paintRows(box, items);
+    const pages = Math.max(1, Math.ceil(items.length / PAGE_SIZE));
+    const current = Math.min(Math.max(1, page || 1), pages);
+    state.search.page = current;
+    const start = (current - 1) * PAGE_SIZE;
+    paintRows(box, items.slice(start, start + PAGE_SIZE));
     $('pager').classList.remove('is-hidden');
-    $('page-label').textContent = t('new.page', { n: page }) + ' · ' + t('new.total', { n: items.length });
+    $('page-label').textContent =
+      t('new.pageOf', { n: current, m: pages }) + ' · ' + t('new.total', { n: items.length });
+    $('page-total-hint').textContent = state.search.partial
+      ? t('new.pageLimitHint', { n: pages })
+      : t('new.pageTotalHint', { n: pages });
   }
 
   function renderAll() {
     const { items, page, loading, running } = state.all;
     const box = $('results');
-    if (loading || running) {
-      const extra = items.length ? ` (${t('new.total', { n: items.length })})` : '';
+    if ((loading || running) && !items.length) {
       box.classList.remove('is-stagger');
       box.innerHTML = `<div class="loading-line"><span class="spin"></span> ${t('new.loadingAll', {
-        extra,
+        extra: '',
       })}</div>${skeletonList(6)}`;
+      $('pager').classList.add('is-hidden');
       return;
     }
     if (!items.length) {
@@ -2685,13 +3086,15 @@ ${vars(dark)}
       $('pager').classList.add('is-hidden');
       return;
     }
-    const start = (page - 1) * PAGE_SIZE;
-    const slice = items.slice(start, start + PAGE_SIZE);
-    paintRows(box, slice);
-    $('pager').classList.remove('is-hidden');
     const pages = Math.max(1, Math.ceil(items.length / PAGE_SIZE));
+    const current = Math.min(Math.max(1, page || 1), pages);
+    state.all.page = current;
+    const start = (current - 1) * PAGE_SIZE;
+    paintRows(box, items.slice(start, start + PAGE_SIZE));
+    $('pager').classList.remove('is-hidden');
     $('page-label').textContent =
-      t('new.pageOf', { n: page, m: pages }) + ' · ' + t('new.total', { n: items.length });
+      t('new.pageOf', { n: current, m: pages }) + ' · ' + t('new.total', { n: items.length });
+    $('page-total-hint').textContent = t('new.pageTotalHint', { n: pages });
   }
 
   async function doSearch(page = 1, keywordOverride = null, options = {}) {
@@ -2702,10 +3105,10 @@ ${vars(dark)}
     if ($('kw').value.trim() !== keyword) $('kw').value = keyword;
     state.mode = 'search';
     state.all.items = [];
-    state.search = { keyword, page, items: [], loading: true };
+    state.search = { keyword, page: 1, items: [], loading: true, pages: 1, partial: false };
     renderSearch();
     try {
-      const res = await api(`/api/search?q=${encodeURIComponent(keyword)}&page=${page}`);
+      const res = await api(`/api/search?q=${encodeURIComponent(keyword)}`);
       state.search.loading = false;
       if (!res || !res.ok) {
         state.search.items = [];
@@ -2713,8 +3116,12 @@ ${vars(dark)}
         if (!options.fromRefresh) toast(res?.error || t('toast.searchFailed'), 'err');
         return false;
       }
-      state.search.items = res.items;
+      state.search.items = res.items || [];
+      state.search.pages = res.pages || 1;
+      state.search.partial = !!res.partial;
+      state.search.page = Math.min(Math.max(1, page), state.search.pages);
       renderSearch();
+      if (options.fromRefresh) closePagePicker();
       return true;
     } finally {
       if (!options.fromRefresh) setBusy(searchBtn, false);
@@ -2757,11 +3164,9 @@ ${vars(dark)}
   async function loadList(pType, area, page = 1, options = {}) {
     state.mode = 'list';
     state.search.keyword = '';
-    state.list = { type: pType, area, page, items: [], loading: true };
+    state.list = { type: pType, area, page: 1, items: [], loading: true, pages: 1, partial: false };
     renderList();
-    const res = await api(
-      `/api/list?type=${encodeURIComponent(pType)}&area=${area}&page=${page}`
-    );
+    const res = await api(`/api/list?type=${encodeURIComponent(pType)}&area=${area}`);
     state.list.loading = false;
     if (!res || !res.ok) {
       state.list.items = [];
@@ -2769,7 +3174,10 @@ ${vars(dark)}
       if (!options.fromRefresh) toast(res?.error || t('toast.searchFailed'), 'err');
       return false;
     }
-    state.list.items = res.items;
+    state.list.items = res.items || [];
+    state.list.pages = res.pages || 1;
+    state.list.partial = !!res.partial;
+    state.list.page = Math.min(Math.max(1, page), state.list.pages);
     renderList();
     return true;
   }
@@ -2790,9 +3198,17 @@ ${vars(dark)}
       $('pager').classList.add('is-hidden');
       return;
     }
-    paintRows(box, items);
+    const pages = Math.max(1, Math.ceil(items.length / PAGE_SIZE));
+    const current = Math.min(Math.max(1, page || 1), pages);
+    state.list.page = current;
+    const start = (current - 1) * PAGE_SIZE;
+    paintRows(box, items.slice(start, start + PAGE_SIZE));
     $('pager').classList.remove('is-hidden');
-    $('page-label').textContent = t('new.page', { n: page }) + ' · ' + t('new.total', { n: items.length });
+    $('page-label').textContent =
+      t('new.pageOf', { n: current, m: pages }) + ' · ' + t('new.total', { n: items.length });
+    $('page-total-hint').textContent = state.list.partial
+      ? t('new.pageLimitHint', { n: pages })
+      : t('new.pageTotalHint', { n: pages });
   }
 
   // ---------- 新建页刷新 ----------
@@ -2853,57 +3269,223 @@ ${vars(dark)}
     }
   }
 
+  function setAllScan(on, progress) {
+    const strip = $('all-scan');
+    if (!strip) return;
+    strip.classList.toggle('is-on', !!on);
+    const fill = $('all-scan-fill');
+    const count = $('all-scan-count');
+    const spin = $('all-scan-spin');
+    if (!on) {
+      strip.classList.remove('is-indeterminate');
+      if (spin) spin.style.display = 'none';
+      return;
+    }
+    if (spin) spin.style.display = '';
+    const done = Number(progress?.done || 0);
+    const total = Number(progress?.total || 0);
+    const indeterminate = !total || done <= 0;
+    strip.classList.toggle('is-indeterminate', indeterminate);
+    if (fill && !indeterminate) fill.style.width = `${Math.min(100, Math.round((done / total) * 100))}%`;
+    if (count) {
+      count.textContent = state.all.items.length
+        ? t('new.total', { n: state.all.items.length })
+        : t('new.loadingAll', { extra: '' });
+    }
+  }
+
+  function finishAllScan(ok) {
+    const allBtn = $('btn-all');
+    if (state.mode !== 'all') {
+      state.all.running = false;
+      state.all.loading = false;
+      setAllScan(false);
+      setBusy(allBtn, false);
+      return;
+    }
+    state.all.running = false;
+    state.all.loading = false;
+    setAllScan(false);
+    setBusy(allBtn, false);
+    renderAll();
+    if (ok && state.all.items.length) {
+      toast(t('toast.allLoaded', { n: state.all.items.length }));
+      if (motionOK() && state.mode === 'all') {
+        $('results')?.scrollIntoView({ block: 'start', behavior: 'smooth' });
+      }
+    } else {
+      toast(t('toast.allFailed'), 'err');
+    }
+  }
+
   async function doAll() {
+    if (state.all.running) return;
     const allBtn = $('btn-all');
     setBusy(allBtn, true);
     state.mode = 'all';
     state.search.keyword = '';
-    state.all.loading = true;
+    const firstLoad = !state.all.items.length;
+    state.all.loading = firstLoad;
     state.all.running = true;
     state.all.page = 1;
-    renderAll();
+    if (firstLoad) renderAll();
+    setAllScan(true, null);
     const res = await api('/api/all');
     if (!res) {
-      state.all.loading = false;
-      state.all.running = false;
-      renderAll();
-      setBusy(allBtn, false);
-      toast(t('toast.allFailed'), 'err');
+      finishAllScan(false);
       return;
     }
     state.all.items = res.items || [];
     if (!res.running) {
-      state.all.loading = false;
-      state.all.running = false;
-      renderAll();
-      setBusy(allBtn, false);
-      if (state.all.items.length) toast(t('toast.allLoaded', { n: state.all.items.length }));
+      finishAllScan(true);
       return;
     }
+    setAllScan(true, res.progress);
     const tick = async () => {
-      const cur = await api('/api/state');
+      const cur = await api('/api/all');
       if (!cur) {
-        state.all.loading = false;
-        state.all.running = false;
-        renderAll();
-        setBusy(allBtn, false);
+        finishAllScan(false);
         return;
       }
-      if (cur.all?.running) {
-        renderAll();
-        setTimeout(tick, 1200);
+      state.all.items = cur.items || state.all.items;
+      if (cur.running) {
+        setAllScan(true, cur.progress);
+        setTimeout(tick, 1400);
         return;
       }
-      const fresh = await api('/api/all');
-      state.all.items = fresh?.items || state.all.items;
-      state.all.running = false;
-      state.all.loading = false;
-      renderAll();
-      setBusy(allBtn, false);
-      if (state.all.items.length) toast(t('toast.allLoaded', { n: state.all.items.length }));
-      else toast(t('toast.allFailed'), 'err');
+      finishAllScan(true);
     };
-    setTimeout(tick, 1000);
+    setTimeout(tick, 1200);
+  }
+
+  // ---------- 页码选择器 ----------
+  function pagerState() {
+    if (state.mode === 'search') {
+      return {
+        page: state.search.page || 1,
+        pages: Math.max(1, Math.ceil((state.search.items.length || 0) / PAGE_SIZE)),
+        total: state.search.items.length || 0,
+      };
+    }
+    if (state.mode === 'list') {
+      return {
+        page: state.list.page || 1,
+        pages: Math.max(1, Math.ceil((state.list.items.length || 0) / PAGE_SIZE)),
+        total: state.list.items.length || 0,
+      };
+    }
+    if (state.mode === 'all') {
+      return {
+        page: state.all.page || 1,
+        pages: Math.max(1, Math.ceil((state.all.items.length || 0) / PAGE_SIZE)),
+        total: state.all.items.length || 0,
+      };
+    }
+    return { page: 1, pages: 1, total: 0 };
+  }
+
+  function setPage(n, options = {}) {
+    const info = pagerState();
+    if (!info.total) return;
+    const page = Math.max(1, Math.min(info.pages, Math.round(Number(n) || 1)));
+    if (state.mode === 'search') state.search.page = page;
+    else if (state.mode === 'list') state.list.page = page;
+    else state.all.page = page;
+    if (state.mode === 'search') renderSearch();
+    else if (state.mode === 'list') renderList();
+    else renderAll();
+    closePagePicker();
+    if (!options.silent && motionOK()) {
+      $('results')?.scrollIntoView({ block: 'start', behavior: 'smooth' });
+    }
+  }
+
+  function pageWindow(current, pages) {
+    if (pages <= 12) return Array.from({ length: pages }, (_, i) => i + 1);
+    const set = new Set([1, 2, pages - 1, pages, current]);
+    for (let d = 1; d <= 2; d += 1) {
+      if (current - d > 2) set.add(current - d);
+      if (current + d < pages - 1) set.add(current + d);
+    }
+    const nums = [...set].filter((n) => n >= 1 && n <= pages).sort((a, b) => a - b);
+    const out = [];
+    nums.forEach((n, index) => {
+      if (index && n - nums[index - 1] > 1) out.push('…');
+      out.push(n);
+    });
+    return out;
+  }
+
+  function renderPagePicker() {
+    const info = pagerState();
+    const grid = $('page-grid');
+    const hint = $('page-total-hint');
+    if (!grid) return;
+    grid.innerHTML = pageWindow(info.page, info.pages)
+      .map((n, index) =>
+        n === '…'
+          ? `<span class="page-cell is-gap">…</span>`
+          : `<button type="button" class="page-cell${n === info.page ? ' is-current' : ''}" data-page-cell="${n}" style="--i:${index}">${n}</button>`
+      )
+      .join('');
+    if (hint) {
+      hint.textContent =
+        state.mode === 'search'
+          ? state.search.partial
+            ? t('new.pageLimitHint', { n: info.pages })
+            : t('new.pageTotalHint', { n: info.pages })
+          : state.mode === 'list'
+            ? state.list.partial
+              ? t('new.pageLimitHint', { n: info.pages })
+              : t('new.pageTotalHint', { n: info.pages })
+            : t('new.pageTotalHint', { n: info.pages });
+    }
+    const input = $('page-input');
+    if (input) {
+      input.max = String(info.pages);
+      input.value = String(info.page);
+    }
+    $('page-last').disabled = info.page >= info.pages;
+    $('page-first').disabled = info.page <= 1;
+  }
+
+  function positionPagePicker(anchor) {
+    const pop = $('page-popover');
+    if (!pop || !anchor) return;
+    const rect = anchor.getBoundingClientRect();
+    const width = pop.offsetWidth || 306;
+    const height = pop.offsetHeight || 220;
+    let left = rect.left + rect.width / 2 - width / 2;
+    left = Math.max(12, Math.min(window.innerWidth - width - 12, left));
+    let top = rect.bottom + 8;
+    let above = false;
+    if (top + height > window.innerHeight - 12) {
+      top = rect.top - height - 8;
+      above = true;
+    }
+    pop.style.left = `${Math.round(left)}px`;
+    pop.style.top = `${Math.max(12, Math.round(top))}px`;
+    pop.classList.toggle('is-above', above);
+  }
+
+  function openPagePicker() {
+    const info = pagerState();
+    if (!info.total) return;
+    state.pagePicker.open = true;
+    state.pagePicker.openedAt = performance.now();
+    $('page-btn').setAttribute('aria-expanded', 'true');
+    $('page-popover').classList.add('is-open');
+    $('page-popover').setAttribute('aria-hidden', 'false');
+    renderPagePicker();
+    positionPagePicker($('page-btn'));
+  }
+
+  function closePagePicker() {
+    if (!state.pagePicker.open) return;
+    state.pagePicker.open = false;
+    $('page-btn').setAttribute('aria-expanded', 'false');
+    $('page-popover').classList.remove('is-open');
+    $('page-popover').setAttribute('aria-hidden', 'true');
   }
 
   // ---------- 设置 ----------
@@ -2997,6 +3579,121 @@ ${vars(dark)}
     applyEdgeTheme();
     applyFontSettings();
     fillDesktopSettings();
+    fillNotifySettings();
+    applyMotionLevel(state.settings.motion || 'full');
+    loadNotifyCities();
+  }
+
+  function fillNotifySettings() {
+    if (!$('set-notify-new')) return;
+    $('set-notify-new').checked = !!state.settings.notifyNew;
+    $('set-notify-sale').checked = !!state.settings.notifySale;
+    $('set-notify-city').value = String(state.settings.notifyCity || 0);
+    $('set-notify-duration').value = String(Math.round((state.settings.notifyDuration || 6000) / 1000));
+    applyNotifyUI();
+  }
+
+  function applyNotifyUI() {
+    const pos = state.settings.notifyPos || 'br';
+    const host = $('notify-host');
+    if (host) host.dataset.pos = pos;
+    document.querySelectorAll('#notify-pos-picker button').forEach((button) => {
+      button.classList.toggle('is-active', button.dataset.notifyPos === pos);
+    });
+    const secs = Math.round((state.settings.notifyDuration || 6000) / 1000);
+    const value = $('notify-duration-value');
+    if (value) value.textContent = t('settings.notifyDurationValue', { n: secs }) || `${secs} 秒`;
+    const readout = $('notify-readout');
+    if (readout) {
+      const key = pos === 'island' ? 'pos.island' : `pos.${pos}`;
+      readout.textContent = `${t(key)} · ${t('settings.notifyDurationValue', { n: secs })}`;
+    }
+  }
+
+  let notifyCitiesLoaded = false;
+  async function loadNotifyCities() {
+    if (notifyCitiesLoaded) return;
+    const select = $('set-notify-city');
+    if (!select) return;
+    const res = await api('/api/cities');
+    if (!res || !res.ok || !res.items?.length) return;
+    notifyCitiesLoaded = true;
+    const current = select.value || '0';
+    const groups = new Map();
+    for (const city of res.items) {
+      const letter = city.letter || '#';
+      if (!groups.has(letter)) groups.set(letter, []);
+      groups.get(letter).push(city);
+    }
+    const frag = document.createDocumentFragment();
+    const all = document.createElement('option');
+    all.value = '0';
+    all.textContent = t('cat.nationwide');
+    frag.appendChild(all);
+    for (const [letter, cities] of [...groups.entries()].sort((a, b) => a[0].localeCompare(b[0]))) {
+      const group = document.createElement('optgroup');
+      group.label = letter;
+      for (const city of cities) {
+        const option = document.createElement('option');
+        option.value = String(city.id);
+        option.textContent = city.name;
+        group.appendChild(option);
+      }
+      frag.appendChild(group);
+    }
+    select.innerHTML = '';
+    select.appendChild(frag);
+    select.value = String(state.settings.notifyCity || current || 0);
+  }
+
+  let notifyPersistTimer = 0;
+  function queueNotifyPersist() {
+    clearTimeout(notifyPersistTimer);
+    notifyPersistTimer = setTimeout(async () => {
+      const res = await api('/api/settings', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          notifyNew: state.settings.notifyNew,
+          notifySale: state.settings.notifySale,
+          notifyCity: state.settings.notifyCity,
+          notifyPos: state.settings.notifyPos,
+          notifyDuration: state.settings.notifyDuration,
+        }),
+      });
+      if (res?.ok) state.settings = { ...state.settings, ...res.settings };
+    }, 320);
+  }
+
+  let motionPersistTimer = 0;
+  function queueMotionPersist() {
+    clearTimeout(motionPersistTimer);
+    motionPersistTimer = setTimeout(async () => {
+      const res = await api('/api/settings', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ motion: state.settings.motion }),
+      });
+      if (res?.ok) state.settings = { ...state.settings, ...res.settings };
+    }, 260);
+  }
+
+  function applyMotionLevel(level) {
+    const allowed = ['full', 'soft', 'lite', 'off'];
+    const value = allowed.includes(level) ? level : 'full';
+    state.settings.motion = value;
+    document.documentElement.dataset.motion = value;
+    document.documentElement.classList.toggle('motion-skip-boot', value === 'lite' || value === 'off');
+    try {
+      localStorage.setItem('iqx.motion', value);
+    } catch (err) {}
+    document.querySelectorAll('#motion-picker button').forEach((button) => {
+      button.classList.toggle('is-active', button.dataset.motion === value);
+    });
+    const label = $('motion-readout');
+    const names = { full: 'settings.motionFull', soft: 'settings.motionSoft', lite: 'settings.motionLite', off: 'settings.motionOff' };
+    if (label) label.textContent = t(names[value]);
+    if (value === 'lite' || value === 'off') dismissBoot();
   }
 
   let fpsPersistTimer = 0;
@@ -3042,6 +3739,12 @@ ${vars(dark)}
       fontFamily: state.settings.fontFamily,
       fontSize: state.settings.fontSize,
       fontWeight: state.settings.fontWeight,
+      notifyNew: state.settings.notifyNew,
+      notifySale: state.settings.notifySale,
+      notifyCity: state.settings.notifyCity,
+      notifyPos: state.settings.notifyPos,
+      notifyDuration: state.settings.notifyDuration,
+      motion: state.settings.motion,
     };
     setBusy(saveBtn, true);
     try {
@@ -3061,6 +3764,8 @@ ${vars(dark)}
         applyMonetTheme();
         applyEdgeTheme();
         applyFontSettings();
+        fillNotifySettings();
+        applyMotionLevel(state.settings.motion || 'full');
         $('save-hint').textContent = t('settings.saved');
         setTimeout(() => ($('save-hint').textContent = ''), 2500);
       } else {
@@ -3596,6 +4301,9 @@ ${vars(dark)}
   }
 
   function init() {
+    const storedMotion = localStorage.getItem('iqx.motion');
+    applyMotionLevel(storedMotion || state.settings.motion || 'full');
+
     document.querySelectorAll('.nav-item').forEach((btn) => {
       btn.addEventListener('click', () => switchView(btn.dataset.view));
     });
@@ -3614,36 +4322,35 @@ ${vars(dark)}
     $('btn-all').addEventListener('click', doAll);
     $('btn-refresh').addEventListener('click', refreshResults);
 
-    $('prev-page').addEventListener('click', () => {
-      if (state.mode === 'search') {
-        if (state.search.page > 1) doSearch(state.search.page - 1);
-        return;
-      }
-      if (state.mode === 'list') {
-        if (state.list.page > 1) loadList(state.list.type, state.list.area, state.list.page - 1);
-        return;
-      }
-      if (state.all.page > 1) {
-        state.all.page -= 1;
-        renderAll();
-      }
+    $('prev-page').addEventListener('click', () => setPage(pagerState().page - 1));
+    $('next-page').addEventListener('click', () => setPage(pagerState().page + 1));
+    $('page-btn').addEventListener('click', () => {
+      if (state.pagePicker.open) closePagePicker();
+      else openPagePicker();
     });
-
-    $('next-page').addEventListener('click', () => {
-      if (state.mode === 'search') {
-        doSearch(state.search.page + 1);
-        return;
-      }
-      if (state.mode === 'list') {
-        loadList(state.list.type, state.list.area, state.list.page + 1);
-        return;
-      }
-      const pages = Math.max(1, Math.ceil(state.all.items.length / PAGE_SIZE));
-      if (state.all.page < pages) {
-        state.all.page += 1;
-        renderAll();
-      }
+    $('page-grid').addEventListener('click', (event) => {
+      const cell = event.target.closest('[data-page-cell]');
+      if (cell) setPage(Number(cell.dataset.pageCell));
     });
+    $('page-first').addEventListener('click', () => setPage(1));
+    $('page-last').addEventListener('click', () => setPage(pagerState().pages));
+    $('page-go').addEventListener('click', () => setPage(Number($('page-input').value) || 1));
+    $('page-input').addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') setPage(Number($('page-input').value) || 1);
+    });
+    document.addEventListener('pointerdown', (event) => {
+      if (!state.pagePicker.open) return;
+      if (event.target.closest('#page-popover, #page-btn')) return;
+      closePagePicker();
+    });
+    window.addEventListener('resize', () => {
+      if (!state.pagePicker.open) return;
+      positionPagePicker($('page-btn'));
+    });
+    window.addEventListener('scroll', () => {
+      if (performance.now() - (state.pagePicker.openedAt || 0) < 400) return;
+      closePagePicker();
+    }, true);
 
     document.querySelectorAll('#type-chips .chip').forEach((chip) => {
       chip.addEventListener('click', () => {
@@ -3658,6 +4365,56 @@ ${vars(dark)}
     });
 
     $('btn-save').addEventListener('click', saveSettings);
+
+    $('set-notify-new').addEventListener('change', (event) => {
+      state.settings.notifyNew = !!event.target.checked;
+      applyNotifyUI();
+      queueNotifyPersist();
+    });
+    $('set-notify-sale').addEventListener('change', (event) => {
+      state.settings.notifySale = !!event.target.checked;
+      applyNotifyUI();
+      queueNotifyPersist();
+    });
+    $('set-notify-city').addEventListener('change', (event) => {
+      state.settings.notifyCity = Number(event.target.value) || 0;
+      queueNotifyPersist();
+    });
+    $('notify-pos-picker').addEventListener('click', (event) => {
+      const button = event.target.closest('[data-notify-pos]');
+      if (!button) return;
+      state.settings.notifyPos = button.dataset.notifyPos;
+      applyNotifyUI();
+      queueNotifyPersist();
+    });
+    $('set-notify-duration').addEventListener('input', (event) => {
+      const secs = Math.max(3, Math.min(15, Number(event.target.value) || 6));
+      state.settings.notifyDuration = secs * 1000;
+      applyNotifyUI();
+    });
+    $('set-notify-duration').addEventListener('change', () => queueNotifyPersist());
+    $('btn-notify-test').addEventListener('click', async () => {
+      const button = $('btn-notify-test');
+      setBusy(button, true);
+      const res = await api('/api/notifications/test', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ kind: 'new' }),
+      });
+      setBusy(button, false);
+      if (res?.ok) {
+        $('notify-test-hint').textContent = t('settings.notifyTestSent');
+        setTimeout(() => ($('notify-test-hint').textContent = ''), 2600);
+      } else {
+        toast(t('toast.notifyPreviewFailed'), 'err');
+      }
+    });
+    $('motion-picker').addEventListener('click', (event) => {
+      const button = event.target.closest('[data-motion]');
+      if (!button) return;
+      applyMotionLevel(button.dataset.motion);
+      queueMotionPersist();
+    });
 
     $('set-fps').addEventListener('input', (event) => {
       state.settings.fps = clampFps(event.target.value, state.fpsMax || state.settings.fpsMax || 60);
@@ -3787,6 +4544,7 @@ ${vars(dark)}
         return;
       }
       if ($('date-window').classList.contains('is-open')) closeDateWindow();
+      if (state.pagePicker.open) closePagePicker();
     });
 
     document.querySelectorAll('[data-desktop-key]').forEach((input) => {
@@ -3865,6 +4623,8 @@ ${vars(dark)}
     setTimeout(dismissBoot, BOOT_MAX_MS);
     setInterval(refresh, 2000);
     setInterval(tickLive, 1000);
+    pollNotifications();
+    setInterval(pollNotifications, 1800);
     setInterval(() => {
       $('status-time').textContent = hhmmss(Date.now() / 1000);
     }, 1000);

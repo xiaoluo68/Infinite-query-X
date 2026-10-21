@@ -1,7 +1,7 @@
 VSVersionInfo(
   ffi=FixedFileInfo(
-    filevers=(1, 0, 0, 0),
-    prodvers=(1, 0, 0, 0),
+    filevers=(1, 1, 0, 0),
+    prodvers=(1, 1, 0, 0),
     mask=0x3f,
     flags=0x0,
     OS=0x40004,
@@ -17,12 +17,12 @@ VSVersionInfo(
           [
             StringStruct('CompanyName', '小羅同学'),
             StringStruct('FileDescription', 'Infinite query X'),
-            StringStruct('FileVersion', '1.0.0.0'),
+            StringStruct('FileVersion', '1.1.0.0'),
             StringStruct('InternalName', 'Infinite query X'),
             StringStruct('LegalCopyright', '© 2026 小羅同学  ·  https://t.me/InfinitequeryX'),
             StringStruct('OriginalFilename', 'Infinite query X.exe'),
             StringStruct('ProductName', 'Infinite query X'),
-            StringStruct('ProductVersion', '1.0.0'),
+            StringStruct('ProductVersion', '1.1.0'),
             StringStruct(
               'Comments',
               '基于 TaiMiao 的 Bili_Ticket_Monitor 项目开发，实时监测 Bilibili 会员购漫展演出赛事的余票状态（无抢票功能），只做余票监测，不提供抢票 / 下单功能。界面动效参考 Xiaomi HyperOS 4 的柔光玻璃与弹性反馈。原项目：https://github.com/TaiMiao/Bili_Ticket_Monitor'

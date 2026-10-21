@@ -8,6 +8,17 @@
 <link rel="icon" href="/static/logo.svg" type="image/svg+xml" />
 <link rel="stylesheet" href="/static/app.css" />
 <style id="monet-theme"></style>
+<script>
+  try {
+    var level = localStorage.getItem('iqx.motion');
+    if (level === 'soft' || level === 'lite' || level === 'off') {
+      document.documentElement.dataset.motion = level;
+    }
+    if (level === 'lite' || level === 'off') {
+      document.documentElement.classList.add('motion-skip-boot');
+    }
+  } catch (e) {}
+</script>
 </head>
 <body>
 <div class="ambient" aria-hidden="true"><span class="ambient-a"></span><span class="ambient-b"></span><span class="ambient-c"></span></div>
@@ -121,6 +132,11 @@
           <span class="refresh-halo" aria-hidden="true"></span>
         </button>
       </div>
+      <div class="all-scan" id="all-scan" aria-live="polite">
+        <span class="scan-spin" id="all-scan-spin" aria-hidden="true"></span>
+        <div class="track"><i id="all-scan-fill"></i></div>
+        <span class="count" id="all-scan-count"></span>
+      </div>
       <div class="date-query" id="date-query">
         <div class="date-query-main">
           <span class="date-query-icon" aria-hidden="true">
@@ -160,9 +176,13 @@
       <div class="results" id="results"></div>
       <div class="pager is-hidden" id="pager">
         <button class="btn tiny ghost" id="prev-page" data-i18n="new.prev">上一页</button>
-        <span id="page-label"></span>
+        <button class="page-btn" id="page-btn" type="button" aria-haspopup="dialog" aria-expanded="false">
+          <span id="page-label"></span>
+          <svg class="page-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
         <button class="btn tiny ghost" id="next-page" data-i18n="new.next">下一页</button>
       </div>
+
     </section>
 
     <section class="content is-hidden" id="view-settings">
@@ -302,6 +322,61 @@
           </div>
           <div class="font-custom-list" id="font-custom-list"></div>
           <em data-i18n="settings.fontHint">调整字体族、字号和字重，立即应用到整个界面并记住。</em>
+        </div>
+        <div class="field notify-field" id="notify-field">
+          <div class="notify-head">
+            <span data-i18n="settings.notifyTitle">提醒弹窗</span>
+            <b class="notify-readout" id="notify-readout">右下角 · 6 秒</b>
+          </div>
+          <div class="notify-toggles">
+            <label class="notify-toggle">
+              <input id="set-notify-new" type="checkbox" class="switch" />
+              <span data-i18n="settings.notifyNew">新活动提醒</span>
+            </label>
+            <label class="notify-toggle">
+              <input id="set-notify-sale" type="checkbox" class="switch" />
+              <span data-i18n="settings.notifySale">开票提醒</span>
+            </label>
+          </div>
+          <em data-i18n="settings.notifyHint">关注城市出现新活动，或监控的票种开始可购时，在窗口角落弹出提醒；位置和停留时间对两种提醒都生效。</em>
+          <label class="notify-city">
+            <span data-i18n="settings.notifyCity">关注城市</span>
+            <select id="set-notify-city" class="select small">
+              <option value="0" data-i18n="cat.nationwide">全国</option>
+            </select>
+          </label>
+          <div class="notify-pos">
+            <span data-i18n="settings.notifyPos">弹窗位置</span>
+            <div class="notify-pos-picker" id="notify-pos-picker" role="radiogroup" aria-label="Notification position">
+              <button type="button" data-notify-pos="tl" data-i18n-title="pos.tl" data-i18n-aria="pos.tl"><i class="pos-dot"></i></button>
+              <button type="button" data-notify-pos="tr" data-i18n-title="pos.tr" data-i18n-aria="pos.tr"><i class="pos-dot"></i></button>
+              <button type="button" data-notify-pos="bl" data-i18n-title="pos.bl" data-i18n-aria="pos.bl"><i class="pos-dot"></i></button>
+              <button type="button" data-notify-pos="br" data-i18n-title="pos.br" data-i18n-aria="pos.br"><i class="pos-dot"></i></button>
+              <button type="button" data-notify-pos="island" class="is-island" data-i18n-title="pos.island" data-i18n-aria="pos.island"><i class="pos-pill"></i></button>
+            </div>
+          </div>
+          <label class="notify-duration">
+            <span data-i18n="settings.notifyDuration">停留时间</span>
+            <input id="set-notify-duration" type="range" min="3" max="15" step="1" value="6" />
+            <b id="notify-duration-value">6 秒</b>
+          </label>
+          <div class="notify-actions">
+            <button class="btn tiny ghost" id="btn-notify-test" type="button" data-i18n="settings.notifyPreview">预览弹窗</button>
+            <span class="muted" id="notify-test-hint"></span>
+          </div>
+        </div>
+        <div class="field motion-field" id="motion-field">
+          <div class="motion-head">
+            <span data-i18n="settings.motion">动画效果</span>
+            <b class="motion-readout" id="motion-readout">完整</b>
+          </div>
+          <div class="motion-picker" id="motion-picker" role="radiogroup" aria-label="Motion level">
+            <button type="button" class="is-active" data-motion="full" data-i18n="settings.motionFull">完整</button>
+            <button type="button" data-motion="soft" data-i18n="settings.motionSoft">柔和</button>
+            <button type="button" data-motion="lite" data-i18n="settings.motionLite">精简</button>
+            <button type="button" data-motion="off" data-i18n="settings.motionOff">关闭</button>
+          </div>
+          <em data-i18n="settings.motionHint">控制启动动画、卡片流光、页面切换与弹窗动效的强度；关闭后界面保留颜色与状态，不再播放动画。</em>
         </div>
         <label class="field row">
           <span data-i18n="settings.log">写日志</span>
@@ -560,7 +635,23 @@
   </div>
 </div>
 
+<div class="page-popover" id="page-popover" role="dialog" aria-hidden="true" aria-label="Page picker">
+        <div class="page-popover-head">
+          <b data-i18n="new.pageJump">跳转页码</b>
+          <span id="page-total-hint"></span>
+        </div>
+        <div class="page-grid" id="page-grid"></div>
+        <div class="page-popover-foot">
+          <button class="btn tiny ghost" id="page-first" data-i18n="new.pageFirst">首页</button>
+          <button class="btn tiny ghost" id="page-last" data-i18n="new.pageLast">末页</button>
+          <label class="page-jump">
+            <input id="page-input" type="number" min="1" max="999" inputmode="numeric" aria-label="Page number" />
+            <button class="btn tiny" id="page-go" data-i18n="new.pageGo">前往</button>
+          </label>
+        </div>
+      </div>
 <div class="toast-wrap" id="toasts"></div>
+<div class="notify-host" id="notify-host" data-pos="br" aria-live="polite"></div>
 <script src="/static/vendor/material-color-utilities.min.js"></script>
 <script src="/static/app.js"></script>
 </body>
