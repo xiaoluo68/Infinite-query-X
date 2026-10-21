@@ -1834,13 +1834,14 @@ ${vars(dark)}
       guideSub: '了解 Infinite query X 的基本操作与运行逻辑',
       updatesHeading: '版本更新',
       guideHeading: '操作演示',
-      updatesMeta: '10 个版本',
+      updatesMeta: '11 个版本',
       newTag: 'NEW',
       pause: '暂停',
       play: '播放',
       stepLabel: '步骤 {n} / {m}',
       updates: [
-        { version: 'v1.1.1', date: '2026-10-22', latest: true, desc: '新建页的城市选择换成与日期选择器同款的自绘弹层：分组城市网格、搜索过滤、逐组错峰浮现与弹性展开，选择后立即刷新结果。', tags: ['城市', '弹层', '动画'] },
+        { version: 'v1.1.2', date: '2026-10-22', latest: true, desc: '修复城市选择器：在城市列表里用滚轮上下滑动时弹层不再被误关闭，滚动位置只作用于城市列表，重新打开会自动定位到当前城市。', tags: ['城市', '滚轮', '修复'] },
+        { version: 'v1.1.1', date: '2026-10-22', desc: '新建页的城市选择换成与日期选择器同款的自绘弹层：分组城市网格、搜索过滤、逐组错峰浮现与弹性展开，选择后立即刷新结果。', tags: ['城市', '弹层', '动画'] },
         { version: 'v1.1.0', date: '2026-10-22', desc: '新增票种价格与购票链接、新活动 / 开票提醒弹窗（四角与灵动岛、可调位置与停留时间）、页码选择器、全国扫描动画与动画效果等级。', tags: ['提醒', '灵动岛', '页码', '动效'] },
         { version: 'v1.0.0', date: '2026-10-21', desc: '正式版：自定义日期选择器（弹性动画、月历、今天 / 选中态）、日期查询小窗、界面字体导入与卡片流光，正式开源。', tags: ['1.0', '正式版', '开源'] },
         { version: 'v0.9.2beta', date: '2026-10-21', desc: '新建页新增日期查询小窗：按系统时间定位今天，逐日查看展览 / 演出 / 赛事 / 同人展 / 其他；设置新增界面字体（字体、字号、字重），并支持导入 TTF / OTF / WOFF 字体。', tags: ['日期查询', '字体', '小窗'] },
@@ -1871,13 +1872,14 @@ ${vars(dark)}
       guideSub: 'Learn the basics and how Infinite query X works',
       updatesHeading: 'Version updates',
       guideHeading: 'Guided tour',
-      updatesMeta: '10 releases',
+      updatesMeta: '11 releases',
       newTag: 'NEW',
       pause: 'Pause',
       play: 'Play',
       stepLabel: 'Step {n} / {m}',
       updates: [
-        { version: 'v1.1.1', date: '2026-10-22', latest: true, desc: 'The New page city selector is now a custom animated popover: grouped city grid, search filter, staggered reveal and spring open.', tags: ['City', 'Popover', 'Motion'] },
+        { version: 'v1.1.2', date: '2026-10-22', latest: true, desc: 'City picker fix: scrolling the city list with the wheel no longer closes the popover; the scroll stays inside the list and reopening centers the current city.', tags: ['City', 'Wheel', 'Fix'] },
+        { version: 'v1.1.1', date: '2026-10-22', desc: 'The New page city selector is now a custom animated popover: grouped city grid, search filter, staggered reveal and spring open.', tags: ['City', 'Popover', 'Motion'] },
         { version: 'v1.1.0', date: '2026-10-22', desc: 'Ticket prices and purchase links, new-event and on-sale notification popups (corners or dynamic island, adjustable position and duration), page picker, nationwide scan animation and motion levels.', tags: ['Notifications', 'Dynamic island', 'Pagination', 'Motion'] },
         { version: 'v1.0.0', date: '2026-10-21', desc: 'Official release: custom animated date picker, date lookup window, interface font import and card light edges. Open source.', tags: ['1.0', 'Stable', 'Open source'] },
         { version: 'v0.9.2beta', date: '2026-10-21', desc: 'Date lookup window on New (today from system time; browse exhibitions, shows, matches and doujin events by day), plus interface font settings with TTF / OTF / WOFF import.', tags: ['Date lookup', 'Font', 'Window'] },
@@ -3236,6 +3238,19 @@ ${vars(dark)}
     if (count) count.textContent = t('city.count', { n: shown });
   }
 
+  function centerCitySelection() {
+    const scroller = $('city-scroll');
+    if (!scroller || !state.cityPicker.open) return;
+    scroller.scrollTop = 0;
+    const active = scroller.querySelector('.city-chip.is-active');
+    if (!active) return;
+    requestAnimationFrame(() => {
+      if (!state.cityPicker.open) return;
+      const delta = active.getBoundingClientRect().top - scroller.getBoundingClientRect().top;
+      scroller.scrollTop = Math.max(0, scroller.scrollTop + delta - scroller.clientHeight / 2 + active.offsetHeight / 2);
+    });
+  }
+
   function openCityPicker() {
     const pop = $('city-popover');
     const trigger = $('city-trigger');
@@ -3250,7 +3265,10 @@ ${vars(dark)}
     pop.classList.add('is-open');
     pop.setAttribute('aria-hidden', 'false');
     positionCityPicker(trigger);
-    requestAnimationFrame(() => positionCityPicker(trigger));
+    requestAnimationFrame(() => {
+      positionCityPicker(trigger);
+      centerCitySelection();
+    });
     if (!state.cities.length) loadCities();
   }
 
@@ -4460,8 +4478,10 @@ ${vars(dark)}
       if (!state.pagePicker.open) return;
       positionPagePicker($('page-btn'));
     });
-    window.addEventListener('scroll', () => {
+    window.addEventListener('scroll', (event) => {
       if (performance.now() - (state.pagePicker.openedAt || 0) < 400) return;
+      const target = event.target;
+      if (target instanceof Element && target.closest('#page-popover, #page-btn')) return;
       closePagePicker();
     }, true);
 
@@ -4480,7 +4500,11 @@ ${vars(dark)}
     $('city-search').addEventListener('input', (event) => {
       state.cityPicker.filter = event.target.value || '';
       clearTimeout(cityFilterTimer);
-      cityFilterTimer = setTimeout(renderCityList, 60);
+      cityFilterTimer = setTimeout(() => {
+        renderCityList();
+        const scroller = $('city-scroll');
+        if (scroller) scroller.scrollTop = 0;
+      }, 60);
     });
     const pickCity = (event) => {
       const button = event.target.closest('[data-city-id]');
@@ -4496,8 +4520,10 @@ ${vars(dark)}
     window.addEventListener('resize', () => {
       if (state.cityPicker.open) positionCityPicker($('city-trigger'));
     });
-    window.addEventListener('scroll', () => {
+    window.addEventListener('scroll', (event) => {
       if (!state.cityPicker.open) return;
+      const target = event.target;
+      if (target instanceof Element && target.closest('#city-popover, #city-trigger')) return;
       if (performance.now() - (state.cityPicker.openedAt || 0) < 400) return;
       closeCityPicker();
     }, true);

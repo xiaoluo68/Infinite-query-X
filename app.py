@@ -62,8 +62,8 @@ import bili_ticket_monitor_search as core  # noqa: E402
 from notify_hub import NotifyHub  # noqa: E402
 
 APP_NAME = "Infinite query X"
-APP_VERSION = "1.1.1"
-APP_BUILD = "20261022.2"  # 每次打包递增；用来识别残留的旧实例
+APP_VERSION = "1.1.2"
+APP_BUILD = "20261022.3"  # 每次打包递增；用来识别残留的旧实例
 APP_AUTHOR = "小羅同学"
 APP_CONTACT = "https://t.me/InfinitequeryX"
 APP_REPO = "https://github.com/TaiMiao/Bili_Ticket_Monitor"
