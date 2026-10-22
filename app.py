@@ -62,8 +62,8 @@ import bili_ticket_monitor_search as core  # noqa: E402
 from notify_hub import NotifyHub  # noqa: E402
 
 APP_NAME = "Infinite query X"
-APP_VERSION = "1.1.2"
-APP_BUILD = "20261022.3"  # 每次打包递增；用来识别残留的旧实例
+APP_VERSION = "1.1.3"
+APP_BUILD = "20261022.4"  # 每次打包递增；用来识别残留的旧实例
 APP_AUTHOR = "小羅同学"
 APP_CONTACT = "https://t.me/InfinitequeryX"
 APP_REPO = "https://github.com/TaiMiao/Bili_Ticket_Monitor"
@@ -1402,10 +1402,60 @@ def find_edge() -> str | None:
     return None
 
 
-def open_window(url: str) -> None:
+_CREATE_NO_WINDOW = 0x08000000 if sys.platform == "win32" else 0
+
+
+def _profile_edge_pids(profile: Path) -> list[int]:
+    """找出正在使用本程序 edge-profile 的 Edge 进程（不碰用户自己的 Edge）。"""
+    if sys.platform != "win32":
+        return []
+    needle = str(profile).replace("'", "''")
+    script = (
+        "$p = '" + needle + "'; "
+        "Get-CimInstance Win32_Process -Filter \"Name='msedge.exe'\" | "
+        "Where-Object { $_.CommandLine -and $_.CommandLine.Contains($p) } | "
+        "Select-Object -ExpandProperty ProcessId"
+    )
+    try:
+        result = subprocess.run(
+            ["powershell", "-NoProfile", "-NonInteractive", "-Command", script],
+            capture_output=True,
+            text=True,
+            timeout=8,
+            creationflags=_CREATE_NO_WINDOW,
+        )
+        out = result.stdout or ""
+    except Exception:  # noqa: BLE001 查询失败就不清理，交给 Edge 自己处理
+        return []
+    pids = []
+    for token in out.split():
+        token = token.strip()
+        if token.isdigit():
+            pids.append(int(token))
+    return pids
+
+
+def _close_stale_edge(profile: Path) -> None:
+    """关掉指向旧端口的 Edge 应用窗口，否则再次打开时 Edge 会复用旧实例、不显示新窗口。"""
+    for pid in _profile_edge_pids(profile):
+        try:
+            subprocess.run(
+                ["taskkill", "/PID", str(pid), "/T", "/F"],
+                capture_output=True,
+                timeout=5,
+                creationflags=_CREATE_NO_WINDOW,
+            )
+        except Exception:  # noqa: BLE001
+            pass
+
+
+def open_window(url: str, fresh: bool = False) -> None:
     edge = find_edge()
     if edge:
         profile = STATE_DIR / "edge-profile"
+        if fresh:
+            _close_stale_edge(profile)
+            time.sleep(0.35)
         subprocess.Popen(
             [
                 edge,
@@ -1436,6 +1486,7 @@ def _start_desktop(url: str) -> None:
 
         def _quit_from_tray() -> None:
             MANAGER.stop_all()
+            _close_stale_edge(STATE_DIR / "edge-profile")
             try:
                 PORT_FILE.unlink()
             except OSError:
@@ -1459,7 +1510,7 @@ def _start_desktop(url: str) -> None:
 
 def _launch_window(url: str) -> None:
     time.sleep(0.6)
-    open_window(url)
+    open_window(url, fresh=True)
     _start_desktop(url)
 
 
@@ -1495,7 +1546,7 @@ def main() -> int:
         and existing[3] == ASSET_ID
     ):
         # 构建号、版本号、界面内容都一致才复用，避免看到旧界面
-        open_window(f"http://127.0.0.1:{existing[0]}/")
+        open_window(f"http://127.0.0.1:{existing[0]}/", fresh=True)
         return 0
 
     port = pick_port()
@@ -1521,6 +1572,7 @@ def main() -> int:
         if DESKTOP is not None:
             DESKTOP.stop()
         MANAGER.stop_all()
+        _close_stale_edge(STATE_DIR / "edge-profile")
         try:
             PORT_FILE.unlink()
         except OSError:
@@ -1536,6 +1588,7 @@ def _watchdog() -> None:
             if DESKTOP is not None and DESKTOP.keep_alive():
                 continue
             MANAGER.stop_all()
+            _close_stale_edge(STATE_DIR / "edge-profile")
             os._exit(0)
 
 
