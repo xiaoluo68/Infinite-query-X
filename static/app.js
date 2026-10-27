@@ -25,15 +25,15 @@
       'time.now': '刚刚', 'time.sec': '{n} 秒前', 'time.min': '{n} 分钟前', 'time.hour': '{n} 小时前',
       'toast.restock': '{name} 开始可购',
       'empty.title': '还没有监控任务', 'empty.sub': '去「新建」搜一个展会，点「监控」就会出现在这里', 'empty.cta': '去新建',
-      'row.id': 'ID', 'row.city': '城市', 'row.date': '开展', 'row.sale': '开售', 'row.price': '票价', 'row.link': '详情',
-      'new.ph': '搜索展会 / 演出 / 比赛，例如 BW2026、BML、CP31',
+      'row.id': 'ID', 'row.city': '城市', 'row.date': '开展', 'row.sale': '开售', 'row.price': '票价', 'row.link': '详情', 'row.venue': '场馆', 'row.score': '评分',
+      'new.ph': '搜索展会 / 演出 / 比赛，例如 BW2026、BML、CP31', 'platform.all': '全部平台', 'platform.bili': 'B站', 'platform.maoyan': '猫眼',
       'new.search': '搜索', 'new.all': '全国展会',
   'new.refresh': '刷新当前结果', 'new.refreshing': '正在刷新…',
-      'new.hint': '按类型浏览，或输入关键词搜索；点「全国展会」可一次拉取全国所有演出、漫展、赛事和本地生活。',
+      'new.hint': '进入 B站 工作区会自动加载全国活动；可按类型浏览，或输入关键词搜索。', 'new.hintAll': '平台总览：进入 B站 或 猫眼 后，分别加载各自的活动与城市。', 'new.hintMaoyan': '进入猫眼工作区会自动加载热门城市聚合；可切换城市、按类型或关键词筛选。',
       'cat.all': '全部', 'cat.exhibition': '展览', 'cat.show': '演出', 'cat.match': '赛事',
-      'cat.local': '本地生活', 'cat.only': 'ONLY同人展', 'cat.nationwide': '全国',
+      'cat.local': '本地生活', 'cat.only': 'ONLY同人展', 'cat.nationwide': '全国', 'city.hot': '热门城市',
       'new.notFound': '没搜到相关展会', 'new.tryAll': '换个关键词，或者点「全国展会」看看全部',
-      'new.watch': '监控', 'new.adding': '添加中',
+      'new.watch': '监控', 'new.adding': '添加中', 'new.openMaoyan': '去猫眼',
       'new.page': '第 {n} 页', 'new.pageOf': '第 {n} / {m} 页', 'new.total': '共 {n} 条',
       'new.loading': '正在搜索「{q}」…', 'new.loadingAll': '正在拉取全国展会列表{extra}…',
       'new.allEmpty': '还没拉到数据', 'new.allEmptyHint': '点上面的「全国展会」再试一次',
@@ -91,7 +91,7 @@
       'status.ready': '就绪', 'status.monitoring': '监控中', 'status.offline': '与后台断开，正在重试…',
       'status.tasks': '{n} 个任务',
       'toast.stopped': '已停止监控', 'toast.stopFailed': '停止失败，请稍后再试', 'toast.added': '已开始监控：{name}', 'toast.addFailed': '添加失败',
-      'toast.searchFailed': '搜索失败，稍后再试', 'toast.allLoaded': '全国展会已加载：{n} 条',
+      'toast.searchFailed': '搜索失败，稍后再试', 'toast.allLoaded': '全国展会已加载：{n} 条', 'toast.platformPartial': '{platform}暂时不可用，已显示另一平台的结果',
       'toast.allFailed': '拉取失败，稍后再试', 'toast.copied': '链接已打开',
   'toast.refreshed': '已刷新', 'toast.refreshFailed': '刷新失败，稍后再试',
     },
@@ -113,15 +113,15 @@
       'time.now': '剛剛', 'time.sec': '{n} 秒前', 'time.min': '{n} 分鐘前', 'time.hour': '{n} 小時前',
       'toast.restock': '{name} 開始可購',
       'empty.title': '還沒有監控任務', 'empty.sub': '去「新建」搜一個展會，點「監控」就會出現在這裡', 'empty.cta': '去新建',
-      'row.id': 'ID', 'row.city': '城市', 'row.date': '開展', 'row.sale': '開售', 'row.price': '票價', 'row.link': '詳情',
-      'new.ph': '搜尋展會 / 演出 / 比賽，例如 BW2026、BML、CP31',
+      'row.id': 'ID', 'row.city': '城市', 'row.date': '開展', 'row.sale': '開售', 'row.price': '票價', 'row.link': '詳情', 'row.venue': '場館', 'row.score': '評分',
+      'new.ph': '搜尋展會 / 演出 / 比賽，例如 BW2026、BML、CP31', 'platform.all': '全部平台', 'platform.bili': 'B站', 'platform.maoyan': '貓眼',
       'new.search': '搜尋', 'new.all': '全國展會',
   'new.refresh': '重新整理目前結果', 'new.refreshing': '正在重新整理…',
-      'new.hint': '按類型瀏覽，或輸入關鍵字搜尋；點「全國展會」可一次拉取全國所有演出、漫展、賽事和本地生活。',
+      'new.hint': '按類型瀏覽，或輸入關鍵字搜尋；點「全國展會」可一次拉取全國所有演出、漫展、賽事和本地生活。', 'new.hintAll': '同時瀏覽 B站與貓眼；貓眼覆蓋全國城市，結果按平台標識顯示。', 'new.hintMaoyan': '瀏覽貓眼全國演出與展覽；可切換城市，資料來自公開網頁介面。',
       'cat.all': '全部', 'cat.exhibition': '展覽', 'cat.show': '演出', 'cat.match': '賽事',
-      'cat.local': '本地生活', 'cat.only': 'ONLY同人展', 'cat.nationwide': '全國',
+      'cat.local': '本地生活', 'cat.only': 'ONLY同人展', 'cat.nationwide': '全國', 'city.hot': '熱門城市',
       'new.notFound': '沒搜到相關展會', 'new.tryAll': '換個關鍵字，或者點「全國展會」看看全部',
-      'new.watch': '監控', 'new.adding': '新增中',
+      'new.watch': '監控', 'new.adding': '新增中', 'new.openMaoyan': '去貓眼',
       'new.page': '第 {n} 頁', 'new.pageOf': '第 {n} / {m} 頁', 'new.total': '共 {n} 筆',
       'new.loading': '正在搜尋「{q}」…', 'new.loadingAll': '正在拉取全國展會列表{extra}…',
       'new.allEmpty': '還沒拉到資料', 'new.allEmptyHint': '點上面的「全國展會」再試一次',
@@ -179,7 +179,7 @@
       'status.ready': '就緒', 'status.monitoring': '監控中', 'status.offline': '與後台斷線，正在重試…',
       'status.tasks': '{n} 個任務',
       'toast.stopped': '已停止監控', 'toast.stopFailed': '停止失敗，請稍後再試', 'toast.added': '已開始監控：{name}', 'toast.addFailed': '新增失敗',
-      'toast.searchFailed': '搜尋失敗，稍後再試', 'toast.allLoaded': '全國展會已載入：{n} 筆',
+      'toast.searchFailed': '搜尋失敗，稍後再試', 'toast.allLoaded': '全國展會已載入：{n} 筆', 'toast.platformPartial': '{platform}暫時無法使用，已顯示另一平台的結果',
       'toast.allFailed': '拉取失敗，稍後再試', 'toast.copied': '已開啟連結',
   'toast.refreshed': '已重新整理', 'toast.refreshFailed': '重新整理失敗，稍後再試',
     },
@@ -201,15 +201,15 @@
       'time.now': 'just now', 'time.sec': '{n}s ago', 'time.min': '{n}m ago', 'time.hour': '{n}h ago',
       'toast.restock': '{name} is on sale',
       'empty.title': 'No tasks yet', 'empty.sub': 'Open “New”, search an event and click “Watch”', 'empty.cta': 'New task',
-      'row.id': 'ID', 'row.city': 'City', 'row.date': 'Date', 'row.sale': 'Sale', 'row.price': 'Price', 'row.link': 'Details',
-      'new.ph': 'Search events, e.g. BW2026, BML, CP31',
+      'row.id': 'ID', 'row.city': 'City', 'row.date': 'Date', 'row.sale': 'Sale', 'row.price': 'Price', 'row.link': 'Details', 'row.venue': '場館', 'row.score': '評分',
+      'new.ph': 'Search events, e.g. BW2026, BML, CP31', 'platform.all': '全部平台', 'platform.bili': 'B站', 'platform.maoyan': '貓眼',
       'new.search': 'Search', 'new.all': 'All events',
   'new.refresh': 'Refresh results', 'new.refreshing': 'Refreshing…',
-      'new.hint': 'Browse by type, or type a keyword. “All events” pulls every event nationwide at once.',
+      'new.hint': 'Browse by type, or type a keyword. “All events” pulls every event nationwide at once.', 'new.hintAll': '同時瀏覽 B站與貓眼；貓眼覆蓋全國城市，結果按平台標識顯示。', 'new.hintMaoyan': '瀏覽貓眼全國演出與展覽；可切換城市，資料來自公開網頁介面。',
       'cat.all': 'All', 'cat.exhibition': 'Exhibition', 'cat.show': 'Performance', 'cat.match': 'Competition',
-      'cat.local': 'Local life', 'cat.only': 'Doujin ONLY', 'cat.nationwide': 'All cities',
+      'cat.local': 'Local life', 'cat.only': 'Doujin ONLY', 'cat.nationwide': 'All cities', 'city.hot': '熱門城市',
       'new.notFound': 'No matching events', 'new.tryAll': 'Try another keyword, or browse all events',
-      'new.watch': 'Watch', 'new.adding': 'Adding',
+      'new.watch': 'Watch', 'new.adding': 'Adding', 'new.openMaoyan': '去貓眼',
       'new.page': 'Page {n}', 'new.pageOf': 'Page {n} / {m}', 'new.total': '{n} items',
       'new.loading': 'Searching “{q}”…', 'new.loadingAll': 'Loading all events{extra}…',
       'new.allEmpty': 'Nothing loaded yet', 'new.allEmptyHint': 'Click “All events” above to try again',
@@ -268,7 +268,7 @@
       'status.ready': 'Ready', 'status.monitoring': 'Monitoring', 'status.offline': 'Disconnected, retrying…',
       'status.tasks': '{n} tasks',
       'toast.stopped': 'Monitoring stopped', 'toast.stopFailed': 'Could not stop monitoring, try again', 'toast.added': 'Now watching: {name}', 'toast.addFailed': 'Failed to add',
-      'toast.searchFailed': 'Search failed, try again later', 'toast.allLoaded': 'Loaded {n} events',
+      'toast.searchFailed': 'Search failed, try again later', 'toast.allLoaded': 'Loaded {n} events', 'toast.platformPartial': '{platform}暫時無法使用，已顯示另一平台的結果',
       'toast.allFailed': 'Failed to load, try again later', 'toast.copied': 'Link opened',
   'toast.refreshed': 'Refreshed', 'toast.refreshFailed': 'Refresh failed, try again later',
     },
@@ -290,15 +290,15 @@
       'time.now': 'たった今', 'time.sec': '{n} 秒前', 'time.min': '{n} 分前', 'time.hour': '{n} 時間前',
       'toast.restock': '{name} が販売開始',
       'empty.title': 'タスクがありません', 'empty.sub': '「新規」でイベントを検索し、「監視」を押してください', 'empty.cta': '新規作成',
-      'row.id': 'ID', 'row.city': '都市', 'row.date': '開催', 'row.sale': '販売', 'row.price': '料金', 'row.link': '詳細',
-      'new.ph': 'イベントを検索（例：BW2026、BML、CP31）',
+      'row.id': 'ID', 'row.city': '都市', 'row.date': '開催', 'row.sale': '販売', 'row.price': '料金', 'row.link': '詳細', 'row.venue': '場館', 'row.score': '評分',
+      'new.ph': 'イベントを検索（例：BW2026、BML、CP31）', 'platform.all': '全部平台', 'platform.bili': 'B站', 'platform.maoyan': '貓眼',
       'new.search': '検索', 'new.all': '全国のイベント',
   'new.refresh': '検索結果を更新', 'new.refreshing': '更新中…',
-      'new.hint': '種類で絞り込むか、キーワードで検索。「全国のイベント」で全国分をまとめて取得します。',
+      'new.hint': '種類で絞り込むか、キーワードで検索。「全国のイベント」で全国分をまとめて取得します。', 'new.hintAll': '同時瀏覽 B站與貓眼；貓眼覆蓋全國城市，結果按平台標識顯示。', 'new.hintMaoyan': '瀏覽貓眼全國演出與展覽；可切換城市，資料來自公開網頁介面。',
       'cat.all': 'すべて', 'cat.exhibition': '展示', 'cat.show': '公演', 'cat.match': '大会',
-      'cat.local': 'ローカル', 'cat.only': '同人オンリー', 'cat.nationwide': '全国',
+      'cat.local': 'ローカル', 'cat.only': '同人オンリー', 'cat.nationwide': '全国', 'city.hot': '熱門城市',
       'new.notFound': '該当するイベントがありません', 'new.tryAll': '別のキーワードか、全国一覧をお試しください',
-      'new.watch': '監視', 'new.adding': '追加中',
+      'new.watch': '監視', 'new.adding': '追加中', 'new.openMaoyan': '去貓眼',
       'new.page': '{n} ページ', 'new.pageOf': '{n} / {m} ページ', 'new.total': '全 {n} 件',
       'new.loading': '「{q}」を検索中…', 'new.loadingAll': '全国のイベントを取得中{extra}…',
       'new.allEmpty': 'まだ取得できていません', 'new.allEmptyHint': '上の「全国のイベント」をもう一度押してください',
@@ -356,7 +356,7 @@
       'status.ready': '待機中', 'status.monitoring': '監視中', 'status.offline': '接続が切れました。再試行中…',
       'status.tasks': '{n} 件のタスク',
       'toast.stopped': '監視を停止しました', 'toast.stopFailed': '監視を停止できませんでした', 'toast.added': '監視を開始：{name}', 'toast.addFailed': '追加に失敗しました',
-      'toast.searchFailed': '検索に失敗しました', 'toast.allLoaded': '{n} 件のイベントを読み込みました',
+      'toast.searchFailed': '検索に失敗しました', 'toast.allLoaded': '{n} 件のイベントを読み込みました', 'toast.platformPartial': '{platform}暫時無法使用，已顯示另一平台的結果',
       'toast.allFailed': '取得に失敗しました', 'toast.copied': 'リンクを開きました',
   'toast.refreshed': '更新しました', 'toast.refreshFailed': '更新に失敗しました',
     },
@@ -378,15 +378,15 @@
       'time.now': '방금', 'time.sec': '{n}초 전', 'time.min': '{n}분 전', 'time.hour': '{n}시간 전',
       'toast.restock': '{name} 판매 시작',
       'empty.title': '작업이 없습니다', 'empty.sub': '「새로 만들기」에서 행사를 검색하고 「모니터링」을 누르세요', 'empty.cta': '새로 만들기',
-      'row.id': 'ID', 'row.city': '도시', 'row.date': '개최', 'row.sale': '판매', 'row.price': '가격', 'row.link': '상세',
-      'new.ph': '행사 검색 (예: BW2026, BML, CP31)',
+      'row.id': 'ID', 'row.city': '도시', 'row.date': '개최', 'row.sale': '판매', 'row.price': '가격', 'row.link': '상세', 'row.venue': '場館', 'row.score': '評分',
+      'new.ph': '행사 검색 (예: BW2026, BML, CP31)', 'platform.all': '全部平台', 'platform.bili': 'B站', 'platform.maoyan': '貓眼',
       'new.search': '검색', 'new.all': '전국 행사',
   'new.refresh': '결과 새로고침', 'new.refreshing': '새로고침 중…',
-      'new.hint': '유형으로 찾아보거나 키워드로 검색하세요. 「전국 행사」는 전국 목록을 한 번에 가져옵니다.',
+      'new.hint': '유형으로 찾아보거나 키워드로 검색하세요. 「전국 행사」는 전국 목록을 한 번에 가져옵니다.', 'new.hintAll': '同時瀏覽 B站與貓眼；貓眼覆蓋全國城市，結果按平台標識顯示。', 'new.hintMaoyan': '瀏覽貓眼全國演出與展覽；可切換城市，資料來自公開網頁介面。',
       'cat.all': '전체', 'cat.exhibition': '전시', 'cat.show': '공연', 'cat.match': '대회',
-      'cat.local': '로컬', 'cat.only': '동인 ONLY', 'cat.nationwide': '전국',
+      'cat.local': '로컬', 'cat.only': '동인 ONLY', 'cat.nationwide': '전국', 'city.hot': '熱門城市',
       'new.notFound': '검색 결과가 없습니다', 'new.tryAll': '다른 키워드나 전국 목록을 시도해 보세요',
-      'new.watch': '모니터링', 'new.adding': '추가 중',
+      'new.watch': '모니터링', 'new.adding': '추가 중', 'new.openMaoyan': '去貓眼',
       'new.page': '{n} 페이지', 'new.pageOf': '{n} / {m} 페이지', 'new.total': '총 {n}개',
       'new.loading': '「{q}」 검색 중…', 'new.loadingAll': '전국 행사를 불러오는 중{extra}…',
       'new.allEmpty': '아직 불러오지 못했습니다', 'new.allEmptyHint': '위의 「전국 행사」를 다시 눌러 주세요',
@@ -444,7 +444,7 @@
       'status.ready': '대기', 'status.monitoring': '모니터링 중', 'status.offline': '연결 끊김, 재시도 중…',
       'status.tasks': '{n}개 작업',
       'toast.stopped': '모니터링을 중지했습니다', 'toast.stopFailed': '모니터링을 중지하지 못했습니다', 'toast.added': '모니터링 시작: {name}', 'toast.addFailed': '추가 실패',
-      'toast.searchFailed': '검색 실패', 'toast.allLoaded': '행사 {n}개를 불러왔습니다',
+      'toast.searchFailed': '검색 실패', 'toast.allLoaded': '행사 {n}개를 불러왔습니다', 'toast.platformPartial': '{platform}暫時無法使用，已顯示另一平台的結果',
       'toast.allFailed': '불러오기 실패', 'toast.copied': '링크를 열었습니다',
   'toast.refreshed': '새로고침 완료', 'toast.refreshFailed': '새로고침 실패',
     },
@@ -466,15 +466,15 @@
       'time.now': 'только что', 'time.sec': '{n} с назад', 'time.min': '{n} мин назад', 'time.hour': '{n} ч назад',
       'toast.restock': '{name} в продаже',
       'empty.title': 'Задач пока нет', 'empty.sub': 'Откройте «Новая», найдите событие и нажмите «Следить»', 'empty.cta': 'Новая задача',
-      'row.id': 'ID', 'row.city': 'Город', 'row.date': 'Дата', 'row.sale': 'Продажа', 'row.price': 'Цена', 'row.link': 'Детали',
-      'new.ph': 'Поиск событий, напр. BW2026, BML, CP31',
+      'row.id': 'ID', 'row.city': 'Город', 'row.date': 'Дата', 'row.sale': 'Продажа', 'row.price': 'Цена', 'row.link': 'Детали', 'row.venue': '場館', 'row.score': '評分',
+      'new.ph': 'Поиск событий, напр. BW2026, BML, CP31', 'platform.all': '全部平台', 'platform.bili': 'B站', 'platform.maoyan': '貓眼',
       'new.search': 'Поиск', 'new.all': 'Все события',
   'new.refresh': 'Обновить результаты', 'new.refreshing': 'Обновление…',
-      'new.hint': 'Просматривайте по типу или ищите по слову. «Все события» загружает всё сразу.',
+      'new.hint': 'Просматривайте по типу или ищите по слову. «Все события» загружает всё сразу.', 'new.hintAll': '同時瀏覽 B站與貓眼；貓眼覆蓋全國城市，結果按平台標識顯示。', 'new.hintMaoyan': '瀏覽貓眼全國演出與展覽；可切換城市，資料來自公開網頁介面。',
       'cat.all': 'Все', 'cat.exhibition': 'Выставки', 'cat.show': 'Концерты', 'cat.match': 'Соревнования',
-      'cat.local': 'Локальные', 'cat.only': 'Додзин-ONLY', 'cat.nationwide': 'Вся страна',
+      'cat.local': 'Локальные', 'cat.only': 'Додзин-ONLY', 'cat.nationwide': 'Вся страна', 'city.hot': '熱門城市',
       'new.notFound': 'Ничего не найдено', 'new.tryAll': 'Попробуйте другое слово или все события',
-      'new.watch': 'Следить', 'new.adding': 'Добавление',
+      'new.watch': 'Следить', 'new.adding': 'Добавление', 'new.openMaoyan': '去貓眼',
       'new.page': 'Стр. {n}', 'new.pageOf': 'Стр. {n} / {m}', 'new.total': 'всего {n}',
       'new.loading': 'Поиск «{q}»…', 'new.loadingAll': 'Загрузка всех событий{extra}…',
       'new.allEmpty': 'Пока ничего не загружено', 'new.allEmptyHint': 'Нажмите «Все события» ещё раз',
@@ -532,7 +532,7 @@
       'status.ready': 'Готово', 'status.monitoring': 'Мониторинг', 'status.offline': 'Нет связи, повтор…',
       'status.tasks': 'задач: {n}',
       'toast.stopped': 'Мониторинг остановлен', 'toast.stopFailed': 'Не удалось остановить мониторинг', 'toast.added': 'Отслеживается: {name}', 'toast.addFailed': 'Не удалось добавить',
-      'toast.searchFailed': 'Ошибка поиска', 'toast.allLoaded': 'Загружено событий: {n}',
+      'toast.searchFailed': 'Ошибка поиска', 'toast.allLoaded': 'Загружено событий: {n}', 'toast.platformPartial': '{platform}暫時無法使用，已顯示另一平台的結果',
       'toast.allFailed': 'Ошибка загрузки', 'toast.copied': 'Ссылка открыта',
   'toast.refreshed': 'Обновлено', 'toast.refreshFailed': 'Не удалось обновить',
     },
@@ -554,15 +554,15 @@
       'time.now': 'gerade eben', 'time.sec': 'vor {n}s', 'time.min': 'vor {n} Min.', 'time.hour': 'vor {n} Std.',
       'toast.restock': '{name} ist verfügbar',
       'empty.title': 'Noch keine Aufgaben', 'empty.sub': 'Unter „Neu“ ein Event suchen und „Überwachen“ klicken', 'empty.cta': 'Neu',
-      'row.id': 'ID', 'row.city': 'Stadt', 'row.date': 'Datum', 'row.sale': 'Verkauf', 'row.price': 'Preis', 'row.link': 'Details',
-      'new.ph': 'Events suchen, z. B. BW2026, BML, CP31',
+      'row.id': 'ID', 'row.city': 'Stadt', 'row.date': 'Datum', 'row.sale': 'Verkauf', 'row.price': 'Preis', 'row.link': 'Details', 'row.venue': '場館', 'row.score': '評分',
+      'new.ph': 'Events suchen, z. B. BW2026, BML, CP31', 'platform.all': '全部平台', 'platform.bili': 'B站', 'platform.maoyan': '貓眼',
       'new.search': 'Suchen', 'new.all': 'Alle Events',
   'new.refresh': 'Ergebnisse aktualisieren', 'new.refreshing': 'Wird aktualisiert…',
-      'new.hint': 'Nach Typ stöbern oder Stichwort suchen. „Alle Events“ lädt alles auf einmal.',
+      'new.hint': 'Nach Typ stöbern oder Stichwort suchen. „Alle Events“ lädt alles auf einmal.', 'new.hintAll': '同時瀏覽 B站與貓眼；貓眼覆蓋全國城市，結果按平台標識顯示。', 'new.hintMaoyan': '瀏覽貓眼全國演出與展覽；可切換城市，資料來自公開網頁介面。',
       'cat.all': 'Alle', 'cat.exhibition': 'Ausstellung', 'cat.show': 'Aufführung', 'cat.match': 'Wettbewerb',
-      'cat.local': 'Lokal', 'cat.only': 'Doujin-ONLY', 'cat.nationwide': 'Landesweit',
+      'cat.local': 'Lokal', 'cat.only': 'Doujin-ONLY', 'cat.nationwide': 'Landesweit', 'city.hot': '熱門城市',
       'new.notFound': 'Keine Events gefunden', 'new.tryAll': 'Anderes Stichwort oder alle Events probieren',
-      'new.watch': 'Überwachen', 'new.adding': 'Wird hinzugefügt',
+      'new.watch': 'Überwachen', 'new.adding': 'Wird hinzugefügt', 'new.openMaoyan': '去貓眼',
       'new.page': 'Seite {n}', 'new.pageOf': 'Seite {n} / {m}', 'new.total': '{n} Einträge',
       'new.loading': 'Suche „{q}“…', 'new.loadingAll': 'Alle Events werden geladen{extra}…',
       'new.allEmpty': 'Noch nichts geladen', 'new.allEmptyHint': 'Oben erneut „Alle Events“ klicken',
@@ -620,7 +620,7 @@
       'status.ready': 'Bereit', 'status.monitoring': 'Überwacht', 'status.offline': 'Getrennt, neuer Versuch…',
       'status.tasks': '{n} Aufgaben',
       'toast.stopped': 'Überwachung beendet', 'toast.stopFailed': 'Überwachung konnte nicht beendet werden', 'toast.added': 'Wird überwacht: {name}', 'toast.addFailed': 'Hinzufügen fehlgeschlagen',
-      'toast.searchFailed': 'Suche fehlgeschlagen', 'toast.allLoaded': '{n} Events geladen',
+      'toast.searchFailed': 'Suche fehlgeschlagen', 'toast.allLoaded': '{n} Events geladen', 'toast.platformPartial': '{platform}暫時無法使用，已顯示另一平台的結果',
       'toast.allFailed': 'Laden fehlgeschlagen', 'toast.copied': 'Link geöffnet',
   'toast.refreshed': 'Aktualisiert', 'toast.refreshFailed': 'Aktualisierung fehlgeschlagen',
     },
@@ -642,15 +642,15 @@
       'time.now': 'à l’instant', 'time.sec': 'il y a {n}s', 'time.min': 'il y a {n} min', 'time.hour': 'il y a {n} h',
       'toast.restock': '{name} est en vente',
       'empty.title': 'Aucune tâche', 'empty.sub': 'Ouvrez « Nouveau », cherchez un événement et cliquez sur « Surveiller »', 'empty.cta': 'Nouvelle tâche',
-      'row.id': 'ID', 'row.city': 'Ville', 'row.date': 'Date', 'row.sale': 'Vente', 'row.price': 'Prix', 'row.link': 'Détails',
-      'new.ph': 'Rechercher un événement, ex. BW2026, BML, CP31',
+      'row.id': 'ID', 'row.city': 'Ville', 'row.date': 'Date', 'row.sale': 'Vente', 'row.price': 'Prix', 'row.link': 'Détails', 'row.venue': '場館', 'row.score': '評分',
+      'new.ph': 'Rechercher un événement, ex. BW2026, BML, CP31', 'platform.all': '全部平台', 'platform.bili': 'B站', 'platform.maoyan': '貓眼',
       'new.search': 'Rechercher', 'new.all': 'Tous les événements',
   'new.refresh': 'Actualiser les résultats', 'new.refreshing': 'Actualisation…',
-      'new.hint': 'Parcourez par type ou cherchez un mot-clé. « Tous les événements » charge tout d’un coup.',
+      'new.hint': 'Parcourez par type ou cherchez un mot-clé. « Tous les événements » charge tout d’un coup.', 'new.hintAll': '同時瀏覽 B站與貓眼；貓眼覆蓋全國城市，結果按平台標識顯示。', 'new.hintMaoyan': '瀏覽貓眼全國演出與展覽；可切換城市，資料來自公開網頁介面。',
       'cat.all': 'Tous', 'cat.exhibition': 'Exposition', 'cat.show': 'Spectacle', 'cat.match': 'Compétition',
-      'cat.local': 'Local', 'cat.only': 'Doujin ONLY', 'cat.nationwide': 'Tout le pays',
+      'cat.local': 'Local', 'cat.only': 'Doujin ONLY', 'cat.nationwide': 'Tout le pays', 'city.hot': '熱門城市',
       'new.notFound': 'Aucun événement trouvé', 'new.tryAll': 'Essayez un autre mot-clé ou tous les événements',
-      'new.watch': 'Surveiller', 'new.adding': 'Ajout',
+      'new.watch': 'Surveiller', 'new.adding': 'Ajout', 'new.openMaoyan': '去貓眼',
       'new.page': 'Page {n}', 'new.pageOf': 'Page {n} / {m}', 'new.total': '{n} éléments',
       'new.loading': 'Recherche de « {q} »…', 'new.loadingAll': 'Chargement de tous les événements{extra}…',
       'new.allEmpty': 'Rien de chargé', 'new.allEmptyHint': 'Cliquez de nouveau sur « Tous les événements »',
@@ -708,7 +708,7 @@
       'status.ready': 'Prêt', 'status.monitoring': 'Surveillance', 'status.offline': 'Déconnecté, nouvelle tentative…',
       'status.tasks': '{n} tâches',
       'toast.stopped': 'Surveillance arrêtée', 'toast.stopFailed': 'Impossible d’arrêter la surveillance', 'toast.added': 'Surveillance : {name}', 'toast.addFailed': 'Ajout impossible',
-      'toast.searchFailed': 'Recherche échouée', 'toast.allLoaded': '{n} événements chargés',
+      'toast.searchFailed': 'Recherche échouée', 'toast.allLoaded': '{n} événements chargés', 'toast.platformPartial': '{platform}暫時無法使用，已顯示另一平台的結果',
       'toast.allFailed': 'Chargement échoué', 'toast.copied': 'Lien ouvert',
   'toast.refreshed': 'Actualisé', 'toast.refreshFailed': 'Échec de l’actualisation',
     },
@@ -902,6 +902,167 @@
     I18N[lang] = Object.assign(I18N[lang] || {}, dict);
   }
 
+  const EXTRA_I18N_OVERVIEW = {
+    'zh-CN': {
+      'overview.kicker': '平台总览', 'overview.title': '选择一个平台开始', 'overview.sub': '两个平台的城市、全国范围和活动数量完全独立。',
+      'overview.unit': '场', 'overview.biliScope': '全国', 'overview.maoyanScope': '热门城市聚合',
+      'overview.enterBili': '进入 B站', 'overview.enterMaoyan': '进入猫眼', 'overview.refresh': '更新平台数量',
+      'overview.never': '尚未更新', 'overview.updated': '更新于 {time}', 'overview.partial': '仅展示已加载部分',
+      'overview.failed': '更新失败，可稍后重试', 'overview.updating': '正在更新…', 'overview.refreshed': '平台数量已更新',
+      'overview.refreshFailed': '更新失败，请稍后重试', 'new.phMaoyan': '搜索猫眼演出 / 展览 / 赛事',
+      'city.maoyanAggregate': '热门城市聚合', 'new.hintMaoyan': '浏览猫眼演出与展览；城市与范围独立于 B站。',
+      'new.hintAll': '选择一个平台进入。B站与猫眼的城市、范围和数据互相独立。',
+    },
+    'zh-TW': {
+      'overview.kicker': '平台總覽', 'overview.title': '選擇一個平台開始', 'overview.sub': '兩個平台的城市、全國範圍和活動數量完全獨立。',
+      'overview.unit': '場', 'overview.biliScope': '全國', 'overview.maoyanScope': '熱門城市聚合',
+      'overview.enterBili': '進入 B站', 'overview.enterMaoyan': '進入貓眼', 'overview.refresh': '更新平台數量',
+      'overview.never': '尚未更新', 'overview.updated': '更新於 {time}', 'overview.partial': '僅顯示已載入部分',
+      'overview.failed': '更新失敗，可稍後重試', 'overview.updating': '正在更新…', 'overview.refreshed': '平台數量已更新',
+      'overview.refreshFailed': '更新失敗，請稍後重試', 'new.phMaoyan': '搜尋貓眼演出 / 展覽 / 賽事',
+      'city.maoyanAggregate': '熱門城市聚合', 'new.hintMaoyan': '瀏覽貓眼演出與展覽；城市與範圍獨立於 B站。',
+      'new.hintAll': '選擇一個平台進入。B站與貓眼的城市、範圍和資料互相獨立。',
+    },
+    en: {
+      'overview.kicker': 'PLATFORM OVERVIEW', 'overview.title': 'Pick a platform to begin', 'overview.sub': 'Cities, scope and event counts are fully independent for each platform.',
+      'overview.unit': 'events', 'overview.biliScope': 'Nationwide', 'overview.maoyanScope': 'Popular cities',
+      'overview.enterBili': 'Enter Bilibili', 'overview.enterMaoyan': 'Enter Maoyan', 'overview.refresh': 'Refresh counts',
+      'overview.never': 'Not updated yet', 'overview.updated': 'Updated {time}', 'overview.partial': 'partial data',
+      'overview.failed': 'Update failed. Try again later.', 'overview.updating': 'Updating…', 'overview.refreshed': 'Platform counts updated',
+      'overview.refreshFailed': 'Could not update. Try again later.', 'new.phMaoyan': 'Search Maoyan shows, exhibitions or sports',
+      'city.maoyanAggregate': 'Popular cities', 'new.hintMaoyan': 'Browse Maoyan shows and exhibitions. Cities and scope are independent from Bilibili.',
+      'new.hintAll': 'Pick a platform. Bilibili and Maoyan keep separate cities, scopes and data.',
+      'platform.all': 'All platforms', 'platform.bili': 'Bilibili', 'platform.maoyan': 'Maoyan',
+    },
+    ja: {
+      'overview.kicker': 'プラットフォーム概要', 'overview.title': 'プラットフォームを選択', 'overview.sub': '都市・対象範囲・件数は各プラットフォームで完全に独立しています。',
+      'overview.unit': '件', 'overview.biliScope': '全国', 'overview.maoyanScope': '主要都市の集計',
+      'overview.enterBili': 'Bilibili へ', 'overview.enterMaoyan': '猫眼へ', 'overview.refresh': '件数を更新',
+      'overview.never': '未更新', 'overview.updated': '{time} に更新', 'overview.partial': '一部のみ表示',
+      'overview.failed': '更新に失敗しました。後でもう一度お試しください。', 'overview.updating': '更新中…', 'overview.refreshed': '件数を更新しました',
+      'overview.refreshFailed': '更新できませんでした。後でもう一度お試しください。', 'new.phMaoyan': '猫眼の公演・展示・スポーツを検索',
+      'city.maoyanAggregate': '主要都市の集計', 'new.hintMaoyan': '猫眼の公演と展示を閲覧。都市と範囲は Bilibili と独立しています。',
+      'new.hintAll': 'プラットフォームを選択してください。Bilibili と猫眼は都市・範囲・データが独立しています。',
+      'platform.all': 'すべて', 'platform.bili': 'Bilibili', 'platform.maoyan': '猫眼',
+    },
+    ko: {
+      'overview.kicker': '플랫폼 개요', 'overview.title': '플랫폼을 선택하세요', 'overview.sub': '도시, 범위, 행사 수는 플랫폼마다 완전히 독립적입니다.',
+      'overview.unit': '개', 'overview.biliScope': '전국', 'overview.maoyanScope': '주요 도시 집계',
+      'overview.enterBili': 'Bilibili 들어가기', 'overview.enterMaoyan': '마오옌 들어가기', 'overview.refresh': '개수 새로 고침',
+      'overview.never': '아직 업데이트 안 됨', 'overview.updated': '{time} 업데이트', 'overview.partial': '일부만 표시',
+      'overview.failed': '업데이트 실패. 나중에 다시 시도하세요.', 'overview.updating': '업데이트 중…', 'overview.refreshed': '플랫폼 개수를 업데이트했습니다',
+      'overview.refreshFailed': '업데이트하지 못했습니다. 나중에 다시 시도하세요.', 'new.phMaoyan': '마오옌 공연 / 전시 / 스포츠 검색',
+      'city.maoyanAggregate': '주요 도시 집계', 'new.hintMaoyan': '마오옌 공연과 전시를 둘러보세요. 도시와 범위는 Bilibili와 독립적입니다.',
+      'new.hintAll': '플랫폼을 선택하세요. Bilibili와 마오옌은 도시, 범위, 데이터가 서로 독립적입니다.',
+      'platform.all': '전체 플랫폼', 'platform.bili': 'Bilibili', 'platform.maoyan': '마오옌',
+    },
+    ru: {
+      'overview.kicker': 'ОБЗОР ПЛАТФОРМ', 'overview.title': 'Выберите платформу', 'overview.sub': 'Города, охват и количество событий у каждой платформы полностью независимы.',
+      'overview.unit': 'событий', 'overview.biliScope': 'Вся страна', 'overview.maoyanScope': 'Крупные города',
+      'overview.enterBili': 'Открыть Bilibili', 'overview.enterMaoyan': 'Открыть Maoyan', 'overview.refresh': 'Обновить счётчики',
+      'overview.never': 'Ещё не обновлялось', 'overview.updated': 'Обновлено {time}', 'overview.partial': 'частичные данные',
+      'overview.failed': 'Не удалось обновить. Попробуйте позже.', 'overview.updating': 'Обновление…', 'overview.refreshed': 'Счётчики обновлены',
+      'overview.refreshFailed': 'Не удалось обновить. Попробуйте позже.', 'new.phMaoyan': 'Поиск шоу, выставок и спорта на Maoyan',
+      'city.maoyanAggregate': 'Крупные города', 'new.hintMaoyan': 'Шоу и выставки Maoyan. Города и охват не зависят от Bilibili.',
+      'new.hintAll': 'Выберите платформу. У Bilibili и Maoyan отдельные города, охват и данные.',
+      'platform.all': 'Все платформы', 'platform.bili': 'Bilibili', 'platform.maoyan': 'Maoyan',
+    },
+    de: {
+      'overview.kicker': 'PLATTFORMÜBERSICHT', 'overview.title': 'Plattform auswählen', 'overview.sub': 'Städte, Umfang und Eventanzahl sind für jede Plattform völlig unabhängig.',
+      'overview.unit': 'Events', 'overview.biliScope': 'Landesweit', 'overview.maoyanScope': 'Große Städte',
+      'overview.enterBili': 'Bilibili öffnen', 'overview.enterMaoyan': 'Maoyan öffnen', 'overview.refresh': 'Anzahlen aktualisieren',
+      'overview.never': 'Noch nicht aktualisiert', 'overview.updated': 'Aktualisiert {time}', 'overview.partial': 'Teildaten',
+      'overview.failed': 'Aktualisierung fehlgeschlagen. Später erneut versuchen.', 'overview.updating': 'Wird aktualisiert…', 'overview.refreshed': 'Plattformanzahlen aktualisiert',
+      'overview.refreshFailed': 'Aktualisierung nicht möglich. Später erneut versuchen.', 'new.phMaoyan': 'Maoyan-Shows, Ausstellungen oder Sport suchen',
+      'city.maoyanAggregate': 'Große Städte', 'new.hintMaoyan': 'Maoyan-Shows und Ausstellungen. Städte und Umfang sind unabhängig von Bilibili.',
+      'new.hintAll': 'Plattform wählen. Bilibili und Maoyan haben getrennte Städte, Umfänge und Daten.',
+      'platform.all': 'Alle Plattformen', 'platform.bili': 'Bilibili', 'platform.maoyan': 'Maoyan',
+    },
+    fr: {
+      'overview.kicker': 'VUE DES PLATEFORMES', 'overview.title': 'Choisissez une plateforme', 'overview.sub': 'Villes, périmètre et nombre d’événements sont totalement indépendants pour chaque plateforme.',
+      'overview.unit': 'événements', 'overview.biliScope': 'Tout le pays', 'overview.maoyanScope': 'Grandes villes',
+      'overview.enterBili': 'Ouvrir Bilibili', 'overview.enterMaoyan': 'Ouvrir Maoyan', 'overview.refresh': 'Actualiser les compteurs',
+      'overview.never': 'Pas encore actualisé', 'overview.updated': 'Actualisé {time}', 'overview.partial': 'données partielles',
+      'overview.failed': 'Échec de l’actualisation. Réessayez plus tard.', 'overview.updating': 'Actualisation…', 'overview.refreshed': 'Compteurs mis à jour',
+      'overview.refreshFailed': 'Impossible d’actualiser. Réessayez plus tard.', 'new.phMaoyan': 'Rechercher spectacles, expos ou sport sur Maoyan',
+      'city.maoyanAggregate': 'Grandes villes', 'new.hintMaoyan': 'Parcourez les spectacles et expos Maoyan. Villes et périmètre sont indépendants de Bilibili.',
+      'new.hintAll': 'Choisissez une plateforme. Bilibili et Maoyan ont des villes, périmètres et données séparés.',
+      'platform.all': 'Toutes les plateformes', 'platform.bili': 'Bilibili', 'platform.maoyan': 'Maoyan',
+    },
+  };
+  for (const [lang, dict] of Object.entries(EXTRA_I18N_OVERVIEW)) {
+    I18N[lang] = Object.assign(I18N[lang] || {}, dict);
+  }
+
+  // 2.0 平台总览与自动加载文案（覆盖旧版「全部平台 / 全国展会」措辞）
+  const PLATFORM_UI_I18N = {
+    'zh-CN': {
+      'platform.all': '平台总览',
+      'new.hint': '进入 B站 工作区会自动加载全国活动；可按类型浏览，或输入关键词搜索。',
+      'new.hintAll': '平台总览：进入 B站 或 猫眼 后，分别加载各自的活动与城市。',
+      'new.hintMaoyan': '进入猫眼工作区会自动加载热门城市聚合；可切换城市、按类型或关键词筛选。',
+    },
+    'zh-TW': {
+      'platform.all': '平台總覽',
+      'new.hint': '進入 B站 工作區會自動載入全國活動；可依類型瀏覽，或輸入關鍵字搜尋。',
+      'new.hintAll': '平台總覽：進入 B站 或 貓眼 後，分別載入各自的活動與城市。',
+      'new.hintMaoyan': '進入貓眼工作區會自動載入熱門城市聚合；可切換城市、依類型或關鍵字篩選。',
+    },
+    en: {
+      'platform.all': 'Overview',
+      'new.hint': 'The Bilibili workspace loads nationwide events automatically. Browse by type or search by keyword.',
+      'new.hintAll': 'Platform overview: enter Bilibili or Maoyan to load each platform own events and cities.',
+      'new.hintMaoyan': 'The Maoyan workspace auto-loads a popular-city aggregate. Switch city, filter by type, or search.',
+    },
+    ja: {
+      'platform.all': '概要',
+      'new.hint': 'Bilibili ワークスペースは全国のイベントを自動で読み込みます。種類で絞り込むか、キーワードで検索できます。',
+      'new.hintAll': 'プラットフォーム概要：Bilibili または猫眼に入ると、それぞれのイベントと都市を読み込みます。',
+      'new.hintMaoyan': '猫眼ワークスペースは主要都市の集計を自動で読み込みます。都市・種類・キーワードで絞り込めます。',
+    },
+    ko: {
+      'platform.all': '개요',
+      'new.hint': 'Bilibili 작업 공간은 전국 행사를 자동으로 불러옵니다. 유형별로 보거나 키워드로 검색하세요.',
+      'new.hintAll': '플랫폼 개요: Bilibili 또는 마오옌에 들어가면 각 플랫폼의 행사와 도시를 불러옵니다.',
+      'new.hintMaoyan': '마오옌 작업 공간은 주요 도시 집계를 자동으로 불러옵니다. 도시·유형·키워드로 필터링하세요.',
+    },
+    ru: {
+      'platform.all': 'Обзор',
+      'new.hint': 'Рабочая область Bilibili автоматически загружает события по всей стране. Смотрите по типу или ищите по ключевому слову.',
+      'new.hintAll': 'Обзор платформ: войдите в Bilibili или Maoyan, чтобы загрузить события и города каждой платформы.',
+      'new.hintMaoyan': 'Рабочая область Maoyan автоматически загружает агрегат популярных городов. Переключайте город, фильтруйте по типу или ищите.',
+    },
+    de: {
+      'platform.all': 'Übersicht',
+      'new.hint': 'Der Bilibili-Bereich lädt landesweite Events automatisch. Nach Typ stöbern oder Stichwort suchen.',
+      'new.hintAll': 'Plattformübersicht: Bilibili oder Maoyan öffnen, um Events und Städte der jeweiligen Plattform zu laden.',
+      'new.hintMaoyan': 'Der Maoyan-Bereich lädt automatisch eine Sammlung beliebter Städte. Stadt wechseln, nach Typ filtern oder suchen.',
+    },
+    fr: {
+      'platform.all': 'Aperçu',
+      'new.hint': 'L’espace Bilibili charge automatiquement les événements du pays. Parcourez par type ou recherchez par mot-clé.',
+      'new.hintAll': 'Vue des plateformes : ouvrez Bilibili ou Maoyan pour charger les événements et villes de chaque plateforme.',
+      'new.hintMaoyan': 'L’espace Maoyan charge automatiquement un agrégat de villes populaires. Changez de ville, filtrez par type ou recherchez.',
+    },
+  };
+  for (const [lang, dict] of Object.entries(PLATFORM_UI_I18N)) {
+    I18N[lang] = Object.assign(I18N[lang] || {}, dict);
+  }
+
+  const ROW_UI_I18N = {
+    'zh-CN': { 'row.time': '时间', 'row.venue': '场馆', 'row.score': '评分', 'row.sale': '开售' },
+    'zh-TW': { 'row.time': '時間', 'row.venue': '場館', 'row.score': '評分', 'row.sale': '開售' },
+    en: { 'row.time': 'Time', 'row.venue': 'Venue', 'row.score': 'Rating', 'row.sale': 'On sale' },
+    ja: { 'row.time': '日時', 'row.venue': '会場', 'row.score': '評価', 'row.sale': '販売開始' },
+    ko: { 'row.time': '시간', 'row.venue': '장소', 'row.score': '평점', 'row.sale': '판매 시작' },
+    ru: { 'row.time': 'Время', 'row.venue': 'Место', 'row.score': 'Рейтинг', 'row.sale': 'Старт продажи' },
+    de: { 'row.time': 'Zeit', 'row.venue': 'Ort', 'row.score': 'Bewertung', 'row.sale': 'Vorverkauf' },
+    fr: { 'row.time': 'Heure', 'row.venue': 'Lieu', 'row.score': 'Note', 'row.sale': 'Mise en vente' },
+  };
+  for (const [lang, dict] of Object.entries(ROW_UI_I18N)) {
+    I18N[lang] = Object.assign(I18N[lang] || {}, dict);
+  }
+
   const LANGS = ['zh-CN', 'zh-TW', 'en', 'ja', 'ko', 'ru', 'de', 'fr'];
 
   // 接口返回的中文状态 → 各语言显示
@@ -998,8 +1159,21 @@
     dateToken: 0,
     datePicker: { open: false, anchor: '', month: '' },
     pagePicker: { open: false },
+    platform: 'all', // all | bili | maoyan
+    platformStats: {
+      bili: { count: 0, updatedAt: 0, partial: true, error: '' },
+      maoyan: { count: 0, updatedAt: 0, partial: true, error: '' },
+    },
+    statsRefreshing: false,
+    statsLoaded: false,
+    statsTimer: 0,
+    statsManual: false,
     cities: [],
+    citiesBili: [],
+    citiesMaoyan: [],
     cityArea: 0,
+    biliArea: 0,
+    maoyanArea: 0,
     cityName: '',
     cityPicker: { open: false, filter: '', openedAt: 0 },
     notifications: { cursor: 0, ready: false, active: 0, pending: [] },
@@ -1834,13 +2008,14 @@ ${vars(dark)}
       guideSub: '了解 Infinite query X 的基本操作与运行逻辑',
       updatesHeading: '版本更新',
       guideHeading: '操作演示',
-      updatesMeta: '12 个版本',
+      updatesMeta: '13 个版本',
       newTag: 'NEW',
       pause: '暂停',
       play: '播放',
       stepLabel: '步骤 {n} / {m}',
       updates: [
-        { version: 'v1.1.3', date: '2026-10-22', latest: true, desc: '修复二次打开软件时窗口不出现：启动时会先关闭指向旧端口的 Edge 应用窗口，再打开新窗口；退出时也会清理，避免残留窗口挡住下次启动。', tags: ['启动', '窗口', '修复'] },
+        { version: 'v2.0.0', date: '2026-10-27', latest: true, desc: '新增猫眼平台：平台总览分别进入 B站 / 猫眼，各自拥有独立城市、类型与列表；猫眼支持城市切换、搜索、演出与展览浏览和购票跳转。平台数量缓存并在启动时后台更新，顶部只保留一个全局刷新。', tags: ['猫眼', '多平台', '平台总览'] },
+        { version: 'v1.1.3', date: '2026-10-22', desc: '修复二次打开软件时窗口不出现：启动时会先关闭指向旧端口的 Edge 应用窗口，再打开新窗口；退出时也会清理，避免残留窗口挡住下次启动。', tags: ['启动', '窗口', '修复'] },
         { version: 'v1.1.2', date: '2026-10-22', desc: '修复城市选择器：在城市列表里用滚轮上下滑动时弹层不再被误关闭，滚动位置只作用于城市列表，重新打开会自动定位到当前城市。', tags: ['城市', '滚轮', '修复'] },
         { version: 'v1.1.1', date: '2026-10-22', desc: '新建页的城市选择换成与日期选择器同款的自绘弹层：分组城市网格、搜索过滤、逐组错峰浮现与弹性展开，选择后立即刷新结果。', tags: ['城市', '弹层', '动画'] },
         { version: 'v1.1.0', date: '2026-10-22', desc: '新增票种价格与购票链接、新活动 / 开票提醒弹窗（四角与灵动岛、可调位置与停留时间）、页码选择器、全国扫描动画与动画效果等级。', tags: ['提醒', '灵动岛', '页码', '动效'] },
@@ -1854,8 +2029,9 @@ ${vars(dark)}
         { version: 'v0.6.0beta', date: '2026-10-20', desc: 'HyperOS 4 风格动效：柔光玻璃、页面切换、导航滑轨、数字滚动与主题扩散。', tags: ['HyperOS 4', '柔光玻璃', '动效'] },
       ],
       steps: [
-        { title: '新建监控', desc: '打开左侧「新建」，搜索展会或按类型浏览，点「监控」即可加入任务列表。', icon: 'plus' },
-        { title: '日期查询', desc: '在「新建」点日期胶囊打开自定义日历，默认今天，可翻月或点任意日期；选中后打开当天活动小窗。', icon: 'calendar' },
+        { title: '新建监控', desc: '打开左侧「新建」进入平台总览，搜索展会或按类型浏览，点「监控」即可加入任务列表。', icon: 'plus' },
+        { title: '平台总览', desc: '「新建」默认显示平台总览，卡片展示场数、更新时间与范围；点 B站 或 猫眼 进入各自工作区。城市和列表互相独立，顶部圆钮只刷新总览数量。', icon: 'platform' },
+        { title: '日期查询', desc: '在 B站 工作区点日期胶囊打开自定义日历，默认今天，可翻月或点任意日期；选中后打开当天活动小窗。', icon: 'calendar' },
         { title: '一键刷新', desc: '在「新建」搜索或浏览后，点右侧圆形刷新按钮即可重新拉取当前列表，关键词、类型和页码都会保留。', icon: 'refresh' },
         { title: '查看余票', desc: '任务卡片会实时刷新；绿色「预售中」表示当前可购，还可以查看今日回流、最近可购和累计可购。', icon: 'ticket' },
         { title: '个性化外观', desc: '在「设置」调整界面帧率、Monet 动态取色、卡片流光颜色、界面字体（字体 / 字号 / 字重 / 导入字体）与主题。', icon: 'palette' },
@@ -1873,13 +2049,14 @@ ${vars(dark)}
       guideSub: 'Learn the basics and how Infinite query X works',
       updatesHeading: 'Version updates',
       guideHeading: 'Guided tour',
-      updatesMeta: '12 releases',
+      updatesMeta: '13 releases',
       newTag: 'NEW',
       pause: 'Pause',
       play: 'Play',
       stepLabel: 'Step {n} / {m}',
       updates: [
-        { version: 'v1.1.3', date: '2026-10-22', latest: true, desc: 'Fix the window not appearing on a second launch: stale Edge app windows pointing at the old port are closed before opening a new one, and cleaned up on exit.', tags: ['Launch', 'Window', 'Fix'] },
+        { version: 'v2.0.0', date: '2026-10-27', latest: true, desc: 'Maoyan joins the app: the platform overview opens separate Bilibili and Maoyan workspaces with independent cities, types and lists. Maoyan supports city switching, search, show/exhibition browsing and ticket links. Counts are cached and refreshed in the background on launch; one global refresh stays at the top.', tags: ['Maoyan', 'Multi-platform', 'Overview'] },
+        { version: 'v1.1.3', date: '2026-10-22', desc: 'Fix the window not appearing on a second launch: stale Edge app windows pointing at the old port are closed before opening a new one, and cleaned up on exit.', tags: ['Launch', 'Window', 'Fix'] },
         { version: 'v1.1.2', date: '2026-10-22', desc: 'City picker fix: scrolling the city list with the wheel no longer closes the popover; the scroll stays inside the list and reopening centers the current city.', tags: ['City', 'Wheel', 'Fix'] },
         { version: 'v1.1.1', date: '2026-10-22', desc: 'The New page city selector is now a custom animated popover: grouped city grid, search filter, staggered reveal and spring open.', tags: ['City', 'Popover', 'Motion'] },
         { version: 'v1.1.0', date: '2026-10-22', desc: 'Ticket prices and purchase links, new-event and on-sale notification popups (corners or dynamic island, adjustable position and duration), page picker, nationwide scan animation and motion levels.', tags: ['Notifications', 'Dynamic island', 'Pagination', 'Motion'] },
@@ -1893,8 +2070,9 @@ ${vars(dark)}
         { version: 'v0.6.0beta', date: '2026-10-20', desc: 'HyperOS 4-inspired motion: soft glass, page transitions, navigation glide, rolling numbers and theme bloom.', tags: ['HyperOS 4', 'Soft glass', 'Motion'] },
       ],
       steps: [
-        { title: 'Create a task', desc: 'Open New, search for an event or browse by category, then click Watch to add it to your task list.', icon: 'plus' },
-        { title: 'Date lookup', desc: 'In New, tap the date pill to open the custom calendar. It starts on today; pick any day to open the date window.', icon: 'calendar' },
+        { title: 'Create a task', desc: 'Open New to see the platform overview, search for an event or browse by category, then click Watch to add it to your task list.', icon: 'plus' },
+        { title: 'Platform overview', desc: 'New opens on the overview: each card shows the event count, update time and scope. Pick Bilibili or Maoyan to enter its own workspace. Cities and lists stay independent; the round button refreshes only the overview counts.', icon: 'platform' },
+        { title: 'Date lookup', desc: 'In the Bilibili workspace, tap the date pill to open the custom calendar. It starts on today; pick any day to open the date window.', icon: 'calendar' },
         { title: 'Refresh results', desc: 'After searching or browsing in New, tap the round refresh button to reload the current list while keeping the keyword, type and page.', icon: 'refresh' },
         { title: 'Watch availability', desc: 'Task cards refresh live. A green “On sale” pill means tickets are currently available; review restocks and on-sale time.', icon: 'ticket' },
         { title: 'Make it yours', desc: 'In Settings, adjust the UI frame rate, Monet dynamic color, card light color, interface font (family / size / weight / import) and theme.', icon: 'palette' },
@@ -1906,6 +2084,7 @@ ${vars(dark)}
   };
 
   const HELP_ICONS = {
+    platform: '<svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 10h18M12 10v10"/><path d="M8 7h.01M11 7h.01"/></svg>',
     calendar: '<svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 17h.01M12 17h.01"/></svg>',
     refresh: '<svg viewBox="0 0 24 24"><path d="M20.4 11.2a8.4 8.4 0 1 0-2.2 6.1"/><path d="M20.6 4.6v5h-5"/></svg>',
     plus: '<svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M12 8v8M8 12h8"/></svg>',
@@ -2589,6 +2768,7 @@ ${vars(dark)}
     });
     $('lang').value = state.lang;
     $('set-lang').value = state.lang;
+    syncPlatformUI();
     renderCityTrigger();
     if (state.cityPicker.open) renderCityList();
     const notifyCity = $('set-notify-city');
@@ -2625,7 +2805,8 @@ ${vars(dark)}
     applyI18n();
     if (state.view === 'tasks') renderTasks();
     if (state.view === 'new') {
-      if (state.mode === 'search' && state.search.keyword) renderSearch();
+      if (state.platform === 'all') renderOverview();
+      else if (state.mode === 'search' && state.search.keyword) renderSearch();
       else if (state.mode === 'list') renderList();
       else renderAll();
     }
@@ -2807,6 +2988,7 @@ ${vars(dark)}
     cleanupPageLeaving();
     if (animate && !options.force) leavePage(oldSection);
     applySwitchView(view);
+    if (view === 'new') applyPlatformShell();
     if (animate) enterPage($(`view-${view}`));
   }
 
@@ -3000,29 +3182,329 @@ ${vars(dark)}
     tickLive();
   }
 
+  // ---------- 平台 ----------
+  const CITY_SUFFIX = /(特别行政区|自治州|地区|盟|市)$/;
+  const PLATFORM_KEYS = ['bili', 'maoyan'];
+  const platformOf = (item) => (item && item.platform === 'maoyan' ? 'maoyan' : state.platform === 'maoyan' ? 'maoyan' : 'bili');
+  const platformLabel = (platform) => t(platform === 'maoyan' ? 'platform.maoyan' : 'platform.bili');
+  const normalizeCityName = (name) => String(name || '').replace(/\s+/g, '').replace(CITY_SUFFIX, '');
+
+  function findCityByName(list, name) {
+    const raw = String(name || '').trim();
+    if (!raw || raw === t('cat.nationwide')) return null;
+    const exact = list.find((city) => String(city.name || '') === raw);
+    if (exact) return exact;
+    const norm = normalizeCityName(raw);
+    return list.find((city) => normalizeCityName(city.name) === norm) || null;
+  }
+
+  function syncCitySource() {
+    state.cities = state.platform === 'maoyan' ? state.citiesMaoyan : state.citiesBili;
+  }
+
+  function movePlatformGlider() {
+    const wrap = $('platform-switch');
+    const active = wrap?.querySelector('.platform-btn.is-active');
+    const glider = wrap?.querySelector('.platform-glider');
+    if (!wrap || !active || !glider) return;
+    if (!active.offsetWidth) return;
+    wrap.classList.add('is-ready');
+    glider.style.width = `${active.offsetWidth}px`;
+    glider.style.transform = `translate3d(${active.offsetLeft}px, 0, 0)`;
+  }
+
+  function emptyPlatformStats() {
+    return {
+      bili: { count: 0, updatedAt: 0, partial: true, error: '' },
+      maoyan: { count: 0, updatedAt: 0, partial: true, error: '' },
+    };
+  }
+
+  function statOf(key) {
+    return (state.platformStats && state.platformStats[key]) || emptyPlatformStats()[key];
+  }
+
+  function formatStatCount(n) {
+    const value = Math.max(0, Number(n) || 0);
+    try {
+      return value.toLocaleString(state.lang || 'zh-CN');
+    } catch (err) {
+      return String(value);
+    }
+  }
+
+  function formatStatTime(ts) {
+    if (!ts) return '';
+    try {
+      return new Intl.DateTimeFormat(state.lang || 'zh-CN', {
+        month: 'numeric',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+      }).format(new Date(Number(ts) * 1000));
+    } catch (err) {
+      return '';
+    }
+  }
+
+  function updatePlatformCounts() {
+    document.querySelectorAll('#platform-switch .platform-count').forEach((el) => {
+      const key = el.dataset.count;
+      if (!PLATFORM_KEYS.includes(key)) {
+        el.textContent = '';
+        el.classList.remove('has-value');
+        return;
+      }
+      const n = Math.max(0, Number(statOf(key).count) || 0);
+      const suffix = statOf(key).partial && n > 0 ? '+' : '';
+      el.textContent = (n > 9999 ? `${Math.round(n / 1000)}k` : n > 999 ? `${(n / 1000).toFixed(1)}k` : String(n)) + suffix;
+      el.classList.toggle('has-value', n > 0);
+    });
+  }
+
+  function renderOverview() {
+    const refreshing = !!state.statsRefreshing;
+    $('platform-overview')?.classList.toggle('is-loading', refreshing);
+    PLATFORM_KEYS.forEach((key) => {
+      const st = statOf(key);
+      const card = document.querySelector(`.platform-card[data-enter="${key}"]`);
+      const countEl = document.querySelector(`[data-stat-count="${key}"]`);
+      const metaEl = document.querySelector(`[data-stat-meta="${key}"]`);
+      card?.classList.toggle('is-refreshing', refreshing);
+      if (countEl) {
+        if (st.count > 0) countEl.textContent = `${formatStatCount(st.count)}${st.partial ? '+' : ''}`;
+        else countEl.textContent = refreshing ? '…' : '—';
+      }
+      if (metaEl) {
+        let text = '';
+        if (refreshing) text = t('overview.updating');
+        else if (st.error && !st.count) text = t('overview.failed');
+        else if (st.updatedAt) text = t('overview.updated', { time: formatStatTime(st.updatedAt) });
+        else text = t('overview.never');
+        if (st.count > 0 && st.partial) text += ` · ${t('overview.partial')}`;
+        metaEl.textContent = text;
+      }
+    });
+    updatePlatformCounts();
+    const btn = $('btn-refresh');
+    if (btn) {
+      const key = state.platform === 'all' ? 'overview.refresh' : 'new.refresh';
+      btn.title = t(key);
+      btn.dataset.i18nTitle = key;
+      btn.classList.toggle('is-busy', refreshing);
+      btn.disabled = refreshing;
+    }
+  }
+
+  function syncPlatformHint() {
+    const hint = $('new-hint');
+    if (!hint) return;
+    const key = state.platform === 'maoyan' ? 'new.hintMaoyan' : state.platform === 'bili' ? 'new.hint' : 'new.hintAll';
+    hint.dataset.i18n = key;
+    hint.textContent = t(key);
+  }
+
+  function syncPlatformUI() {
+    document.querySelectorAll('#platform-switch .platform-btn').forEach((btn) => {
+      const on = btn.dataset.platform === state.platform;
+      btn.classList.toggle('is-active', on);
+      btn.setAttribute('aria-selected', on ? 'true' : 'false');
+      btn.tabIndex = on ? 0 : -1;
+    });
+    const kw = $('kw');
+    if (kw) {
+      const phKey = state.platform === 'maoyan' ? 'new.phMaoyan' : 'new.ph';
+      kw.dataset.i18nPh = phKey;
+      kw.placeholder = t(phKey);
+    }
+    syncPlatformHint();
+    renderOverview();
+    requestAnimationFrame(() => {
+      movePlatformGlider();
+      requestAnimationFrame(movePlatformGlider);
+    });
+  }
+
+  function applyPlatformShell() {
+    const view = $('view-new');
+    if (!view) return;
+    view.classList.toggle('is-overview', state.platform === 'all');
+    view.classList.toggle('is-bili', state.platform === 'bili');
+    view.classList.toggle('is-maoyan', state.platform === 'maoyan');
+    syncPlatformUI();
+  }
+
+  function normalizeStats(raw) {
+    const out = emptyPlatformStats();
+    PLATFORM_KEYS.forEach((key) => {
+      const item = raw && raw[key];
+      if (!item) return;
+      out[key].count = Math.max(0, Number(item.count) || 0);
+      out[key].updatedAt = Math.max(0, Number(item.updatedAt) || 0);
+      out[key].partial = item.partial !== false;
+      out[key].error = String(item.error || '');
+    });
+    return out;
+  }
+
+  function scheduleStatsPoll() {
+    clearTimeout(state.statsTimer);
+    state.statsTimer = setTimeout(pollPlatformStats, 1100);
+  }
+
+  async function pollPlatformStats() {
+    try {
+      const res = await api('/api/platform-stats');
+      if (res && res.ok) {
+        state.platformStats = normalizeStats(res.stats);
+        state.statsRefreshing = !!res.refreshing;
+        renderOverview();
+        updatePlatformCounts();
+      }
+    } catch (err) {
+      // 网络暂不可用时保持当前数字，下次轮询再试
+    }
+    if (state.statsRefreshing) {
+      scheduleStatsPoll();
+      return;
+    }
+    setRefreshBusy(false);
+    if (state.statsManual) {
+      state.statsManual = false;
+      toast(t('overview.refreshed'));
+    }
+    renderOverview();
+  }
+
+  async function loadPlatformStats() {
+    try {
+      const res = await api('/api/platform-stats');
+      if (res && res.ok) {
+        state.platformStats = normalizeStats(res.stats);
+        state.statsRefreshing = !!res.refreshing;
+        state.statsLoaded = true;
+        renderOverview();
+        updatePlatformCounts();
+        if (state.statsRefreshing) scheduleStatsPoll();
+      }
+    } catch (err) {
+      state.statsLoaded = true;
+      renderOverview();
+    }
+  }
+
+  async function refreshPlatformStats(manual = true) {
+    if (state.statsRefreshing) {
+      if (manual) setRefreshBusy(true);
+      scheduleStatsPoll();
+      return;
+    }
+    state.statsManual = !!manual;
+    if (manual) setRefreshBusy(true);
+    try {
+      const res = await api('/api/platform-stats/refresh', { method: 'POST' });
+      if (res && res.ok) {
+        state.statsRefreshing = true;
+        renderOverview();
+        scheduleStatsPoll();
+      } else {
+        state.statsManual = false;
+        setRefreshBusy(false);
+        toast(t('overview.refreshFailed'));
+      }
+    } catch (err) {
+      state.statsManual = false;
+      setRefreshBusy(false);
+      toast(t('overview.refreshFailed'));
+    }
+  }
+
+  function resetWorkspace(platform) {
+    state.mode = 'none';
+    state.search = { keyword: '', page: 1, items: [], loading: false };
+    state.list = { type: '', area: 0, page: 1, items: [], loading: false };
+    state.all = { items: [], page: 1, loading: false, running: false };
+    if (platform === 'bili') state.biliArea = 0;
+    if (platform === 'maoyan') state.maoyanArea = 0;
+    state.cityArea = 0;
+    state.cityName = '';
+    const kw = $('kw');
+    if (kw) kw.value = '';
+    document.querySelectorAll('#type-chips .chip').forEach((chip, i) => chip.classList.toggle('is-active', i === 0));
+    const results = $('results');
+    if (results) results.innerHTML = '';
+    const pager = $('pager');
+    if (pager) pager.classList.add('is-hidden');
+  }
+
+  function setPlatform(platform) {
+    if (!['all', 'bili', 'maoyan'].includes(platform) || platform === state.platform) return;
+    closeDatePicker();
+    closePagePicker();
+    closeCityPicker();
+    state.platform = platform;
+    resetWorkspace(platform);
+    syncCitySource();
+    renderCityTrigger();
+    applyPlatformShell();
+    const wrap = $('platform-switch');
+    wrap?.classList.add('is-switching');
+    setTimeout(() => wrap?.classList.remove('is-switching'), 460);
+    if (state.view !== 'new') return;
+    if (platform === 'all') return;
+    loadList('', 0, 1);
+  }
+
+  function filterMaoyanByType(items, type) {
+    if (!type) return items;
+    if (type === 'only同人展') return [];
+    return items.filter((item) => (item.bucket || '演出') === type);
+  }
+
+  function addRefreshFlag(url, force) {
+    return force ? `${url}${url.includes('?') ? '&' : '?'}refresh=1` : url;
+  }
+
   // ---------- 搜索结果 ----------
   function resultRow(item, index = 0) {
-    return `<div class="row-card" style="--i:${index}">
+    const platform = platformOf(item);
+    const isMaoyan = platform === 'maoyan';
+    const url = item.url || (isMaoyan ? 'https://show.maoyan.com/' : DETAIL_URL(item.id));
+    const poster = item.poster
+      ? `<img src="${esc(item.poster)}" alt="" loading="lazy" decoding="async" />`
+      : `<span class="row-poster-fallback">${isMaoyan ? '猫' : 'B'}</span>`;
+    const meta = isMaoyan
+      ? `<span>${t('row.city')} <b>${esc(item.city || '-')}</b></span>
+         <span>${t('row.time')} <b>${esc(item.date || '-')}</b></span>
+         ${item.venue ? `<span>${t('row.venue')} <b>${esc(item.venue)}</b></span>` : ''}
+         <span>${t('row.price')} <b>${esc(item.price || '-')}</b></span>
+         ${item.score && Number(item.score) > 0 ? `<span>${t('row.score')} <b>${esc(item.score)}</b></span>` : ''}`
+      : `<span>${t('row.id')} <b>${esc(item.id)}</b></span>
+         <span>${t('row.city')} <b>${esc(item.city || '-')}</b></span>
+         <span>${t('row.date')} <b>${esc(item.date || '-')}</b></span>
+         <span>${t('row.sale')} <b>${esc(item.saleAt || '-')}</b></span>
+         <span>${t('row.price')} <b>${esc(item.price || '-')}</b></span>`;
+    const action = isMaoyan
+      ? `<a class="btn tiny ghost row-open" href="${esc(url)}" target="_blank" rel="noreferrer" title="${t('new.openMaoyan')}">${t('new.openMaoyan')}</a>`
+      : `<button class="btn tiny" data-watch="${esc(item.id)}" data-name="${esc(item.name)}" data-city="${esc(
+          item.city || ''
+        )}">${t('new.watch')}</button>`;
+    return `<div class="row-card is-${platform}" style="--i:${index}">
+      <div class="row-poster ${isMaoyan ? 'is-maoyan' : 'is-bili'}${item.poster ? '' : ' is-empty'}">${poster}</div>
       <div class="row-main">
         <div class="row-title">
+          <span class="row-platform is-${platform}">${platformLabel(platform)}</span>
           <span class="name" title="${esc(item.name)}">${esc(item.name)}</span>
           <span class="pill ${pillClass(item.status)}">${esc(statusLabel(item.status) || '-')}</span>
         </div>
-        <div class="row-meta">
-          <span>${t('row.id')} <b>${esc(item.id)}</b></span>
-          <span>${t('row.city')} <b>${esc(item.city || '-')}</b></span>
-          <span>${t('row.date')} <b>${esc(item.date || '-')}</b></span>
-          <span>${t('row.sale')} <b>${esc(item.saleAt || '-')}</b></span>
-          <span>${t('row.price')} <b>${esc(item.price || '-')}</b></span>
-          <a class="link" href="${esc(item.url || DETAIL_URL(item.id))}" target="_blank" rel="noreferrer">
+        <div class="row-meta">${meta}
+          <a class="link" href="${esc(url)}" target="_blank" rel="noreferrer">
             <svg viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-8 8"/><path d="M19 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h5"/></svg>
             ${t('row.link')}
           </a>
         </div>
       </div>
-      <button class="btn tiny" data-watch="${esc(item.id)}" data-name="${esc(item.name)}" data-city="${esc(
-        item.city || ''
-      )}">${t('new.watch')}</button>
+      <div class="row-action">${action}</div>
     </div>`;
   }
 
@@ -3096,8 +3578,14 @@ ${vars(dark)}
       : t('new.pageTotalHint', { n: pages });
   }
 
+  function allForPlatform() {
+    if (state.platform === 'all') return state.all.items;
+    return state.all.items.filter((item) => platformOf(item) === state.platform);
+  }
+
   function renderAll() {
-    const { items, page, loading, running } = state.all;
+    const { page, loading, running } = state.all;
+    const items = allForPlatform();
     const box = $('results');
     if ((loading || running) && !items.length) {
       box.classList.remove('is-stagger');
@@ -3127,39 +3615,50 @@ ${vars(dark)}
 
   async function doSearch(page = 1, keywordOverride = null, options = {}) {
     const keyword = String(keywordOverride ?? $('kw').value).trim();
-    if (!keyword) return false;
+    if (!keyword || state.platform === 'all') return false;
     const searchBtn = $('btn-search');
     if (!options.fromRefresh) setBusy(searchBtn, true);
     if ($('kw').value.trim() !== keyword) $('kw').value = keyword;
     state.mode = 'search';
-    state.all.items = [];
     state.search = { keyword, page: 1, items: [], loading: true, pages: 1, partial: false };
     renderSearch();
+    const platform = state.platform;
+    const endpoint =
+      platform === 'maoyan'
+        ? `/api/maoyan/search?q=${encodeURIComponent(keyword)}`
+        : `/api/search?q=${encodeURIComponent(keyword)}`;
     try {
-      const res = await api(`/api/search?q=${encodeURIComponent(keyword)}`);
+      const res = await api(addRefreshFlag(endpoint, options.fromRefresh));
       state.search.loading = false;
       if (!res || !res.ok) {
-        state.search.items = [];
         renderSearch();
         if (!options.fromRefresh) toast(res?.error || t('toast.searchFailed'), 'err');
         return false;
       }
-      state.search.items = res.items || [];
-      state.search.pages = res.pages || 1;
+      state.search.items = (res.items || []).map((item) => ({ ...item, platform }));
       state.search.partial = !!res.partial;
-      state.search.page = Math.min(Math.max(1, page), state.search.pages);
+      state.search.pages = 1;
+      state.search.page = 1;
       renderSearch();
       if (options.fromRefresh) closePagePicker();
       return true;
+    } catch (err) {
+      state.search.loading = false;
+      renderSearch();
+      if (!options.fromRefresh) toast(t('toast.searchFailed'), 'err');
+      return false;
     } finally {
       if (!options.fromRefresh) setBusy(searchBtn, false);
     }
   }
 
   async function loadCities() {
-    const res = await api('/api/cities');
-    if (!res || !res.ok || !res.items || !res.items.length) return;
-    state.cities = res.items;
+    const [bili, maoyan] = await Promise.allSettled([api('/api/cities'), api('/api/maoyan/cities')]);
+    const biliRes = bili.status === 'fulfilled' ? bili.value : null;
+    const maoyanRes = maoyan.status === 'fulfilled' ? maoyan.value : null;
+    if (biliRes?.ok && Array.isArray(biliRes.items) && biliRes.items.length) state.citiesBili = biliRes.items;
+    if (maoyanRes?.ok && Array.isArray(maoyanRes.items) && maoyanRes.items.length) state.citiesMaoyan = maoyanRes.items;
+    syncCitySource();
     renderCityTrigger();
     if (state.cityPicker.open) renderCityList();
   }
@@ -3179,11 +3678,30 @@ ${vars(dark)}
     const label = $('city-trigger-label');
     if (!label) return;
     if (!state.cityArea) {
-      label.textContent = t('cat.nationwide');
+      label.textContent = state.platform === 'maoyan' ? t('city.maoyanAggregate') : t('cat.nationwide');
       return;
     }
     const city = state.cities.find((item) => Number(item.id) === Number(state.cityArea));
     label.textContent = city ? city.name : state.cityName || t('cat.nationwide');
+  }
+
+  const HOT_CITIES = ['北京', '上海', '广州', '深圳', '杭州', '成都', '武汉', '南京', '西安', '重庆', '天津', '长沙'];
+
+  function hotCities() {
+    const seen = new Set();
+    return HOT_CITIES.map((name) => findCityByName(state.cities, name))
+      .filter((city) => {
+        if (!city || seen.has(city.id)) return false;
+        seen.add(city.id);
+        return true;
+      });
+  }
+
+  function cityChip(city) {
+    const active = Number(city.id) === Number(state.cityArea);
+    return `<button type="button" class="city-chip${active ? ' is-active' : ''}" data-city-id="${city.id}" data-city-name="${esc(
+      city.name
+    )}"><span>${esc(city.name)}</span>${city.num ? `<em>${city.num}</em>` : ''}</button>`;
   }
 
   function positionCityPicker(anchor) {
@@ -3213,8 +3731,11 @@ ${vars(dark)}
     const query = String(state.cityPicker.filter || '').trim().toLowerCase();
     all.innerHTML = `<button type="button" class="city-chip is-all${
       !state.cityArea ? ' is-active' : ''
-    }" data-city-id="0" data-city-name="${esc(t('cat.nationwide'))}">${esc(t('cat.nationwide'))}</button>`;
+    }" data-city-id="0" data-city-name="">${esc(
+      state.platform === 'maoyan' ? t('city.maoyanAggregate') : t('cat.nationwide')
+    )}</button>`;
     let shown = 0;
+    const hot = query ? [] : hotCities();
     const html = cityGroups()
       .map(([letter, cities], gi) => {
         const matches = cities.filter((city) => {
@@ -3226,17 +3747,16 @@ ${vars(dark)}
         if (!matches.length) return '';
         shown += matches.length;
         return `<section class="city-group" style="--gi:${gi}"><h4>${esc(letter)}</h4><div class="city-grid">${matches
-          .map(
-            (city) => `<button type="button" class="city-chip${
-              Number(city.id) === Number(state.cityArea) ? ' is-active' : ''
-            }" data-city-id="${city.id}" data-city-name="${esc(city.name)}"><span>${esc(city.name)}</span>${
-              city.num ? `<em>${city.num}</em>` : ''
-            }</button>`
-          )
+          .map(cityChip)
           .join('')}</div></section>`;
       })
       .join('');
-    box.innerHTML = html || `<div class="city-empty">${esc(t('city.empty'))}</div>`;
+    const hotHtml = hot.length
+      ? `<section class="city-group city-hot" style="--gi:0"><h4>${t('city.hot')}</h4><div class="city-grid">${hot
+          .map(cityChip)
+          .join('')}</div></section>`
+      : '';
+    box.innerHTML = hotHtml + html || `<div class="city-empty">${esc(t('city.empty'))}</div>`;
     if (count) count.textContent = t('city.count', { n: shown });
   }
 
@@ -3271,7 +3791,7 @@ ${vars(dark)}
       positionCityPicker(trigger);
       centerCitySelection();
     });
-    if (!state.cities.length) loadCities();
+    if (!state.cities.length && !state.citiesBili.length && !state.citiesMaoyan.length) loadCities();
   }
 
   function closeCityPicker() {
@@ -3283,8 +3803,16 @@ ${vars(dark)}
   }
 
   function selectCity(id, name) {
-    state.cityArea = Number(id) || 0;
-    state.cityName = name || '';
+    const raw = String(name || '').trim();
+    const nationwide = !Number(id) || !raw || raw === t('cat.nationwide');
+    state.cityName = nationwide ? '' : raw;
+    if (state.platform === 'maoyan') {
+      state.maoyanArea = nationwide ? 0 : Number(id) || 0;
+      state.cityArea = state.maoyanArea;
+    } else {
+      state.biliArea = nationwide ? 0 : Number(id) || 0;
+      state.cityArea = state.biliArea;
+    }
     renderCityTrigger();
     closeCityPicker();
     const active = document.querySelector('#type-chips .chip.is-active');
@@ -3295,24 +3823,38 @@ ${vars(dark)}
   }
 
   async function loadList(pType, area, page = 1, options = {}) {
+    if (state.platform === 'all') return false;
     state.mode = 'list';
     state.search.keyword = '';
     state.list = { type: pType, area, page: 1, items: [], loading: true, pages: 1, partial: false };
     renderList();
-    const res = await api(`/api/list?type=${encodeURIComponent(pType)}&area=${area}`);
-    state.list.loading = false;
-    if (!res || !res.ok) {
-      state.list.items = [];
+    const platform = state.platform;
+    const url =
+      platform === 'maoyan'
+        ? addRefreshFlag(`/api/maoyan/list?city=${Math.max(0, Number(area) || 0)}`, options.fromRefresh)
+        : `/api/list?type=${encodeURIComponent(pType)}&area=${Math.max(0, Number(area) || 0)}`;
+    try {
+      const res = await api(url);
+      state.list.loading = false;
+      if (!res || !res.ok) {
+        renderList();
+        if (!options.fromRefresh) toast(res?.error || t('toast.searchFailed'), 'err');
+        return false;
+      }
+      let items = res.items || [];
+      if (platform === 'maoyan') items = filterMaoyanByType(items, pType);
+      state.list.items = items.map((item) => ({ ...item, platform }));
+      state.list.partial = platform === 'maoyan' ? !!(res.partial || !Number(area)) : !!res.partial;
+      state.list.pages = Math.max(1, Math.ceil(state.list.items.length / PAGE_SIZE));
+      state.list.page = Math.min(Math.max(1, page), state.list.pages);
       renderList();
-      if (!options.fromRefresh) toast(res?.error || t('toast.searchFailed'), 'err');
+      return true;
+    } catch (err) {
+      state.list.loading = false;
+      renderList();
+      if (!options.fromRefresh) toast(t('toast.searchFailed'), 'err');
       return false;
     }
-    state.list.items = res.items || [];
-    state.list.pages = res.pages || 1;
-    state.list.partial = !!res.partial;
-    state.list.page = Math.min(Math.max(1, page), state.list.pages);
-    renderList();
-    return true;
   }
 
   function renderList() {
@@ -3356,6 +3898,10 @@ ${vars(dark)}
   }
 
   async function refreshResults() {
+    if (state.platform === 'all') {
+      await refreshPlatformStats();
+      return;
+    }
     if (refreshingResults) return;
     const mode = state.mode;
     refreshingResults = true;
@@ -3372,7 +3918,7 @@ ${vars(dark)}
         const res = await api('/api/all');
         if (res && res.ok) {
           state.all.items = res.items || state.all.items;
-          const pages = Math.max(1, Math.ceil(state.all.items.length / PAGE_SIZE));
+          const pages = Math.max(1, Math.ceil(allForPlatform().length / PAGE_SIZE));
           state.all.page = Math.min(state.all.page, pages);
           state.all.loading = false;
           state.all.running = false;
@@ -3421,8 +3967,9 @@ ${vars(dark)}
     strip.classList.toggle('is-indeterminate', indeterminate);
     if (fill && !indeterminate) fill.style.width = `${Math.min(100, Math.round((done / total) * 100))}%`;
     if (count) {
-      count.textContent = state.all.items.length
-        ? t('new.total', { n: state.all.items.length })
+      const visible = allForPlatform();
+      count.textContent = visible.length
+        ? t('new.total', { n: visible.length })
         : t('new.loadingAll', { extra: '' });
     }
   }
@@ -3441,8 +3988,9 @@ ${vars(dark)}
     setAllScan(false);
     setBusy(allBtn, false);
     renderAll();
-    if (ok && state.all.items.length) {
-      toast(t('toast.allLoaded', { n: state.all.items.length }));
+    const visible = allForPlatform();
+    if (ok && visible.length) {
+      toast(t('toast.allLoaded', { n: visible.length }));
       if (motionOK() && state.mode === 'all') {
         $('results')?.scrollIntoView({ block: 'start', behavior: 'smooth' });
       }
@@ -3452,7 +4000,7 @@ ${vars(dark)}
   }
 
   async function doAll() {
-    if (state.all.running) return;
+    if (state.all.running || state.platform !== 'bili') return;
     const allBtn = $('btn-all');
     setBusy(allBtn, true);
     state.mode = 'all';
@@ -3469,6 +4017,7 @@ ${vars(dark)}
       return;
     }
     state.all.items = res.items || [];
+    renderAll();
     if (!res.running) {
       finishAllScan(true);
       return;
@@ -3508,10 +4057,11 @@ ${vars(dark)}
       };
     }
     if (state.mode === 'all') {
+      const items = allForPlatform();
       return {
         page: state.all.page || 1,
-        pages: Math.max(1, Math.ceil((state.all.items.length || 0) / PAGE_SIZE)),
-        total: state.all.items.length || 0,
+        pages: Math.max(1, Math.ceil((items.length || 0) / PAGE_SIZE)),
+        total: items.length || 0,
       };
     }
     return { page: 1, pages: 1, total: 0 };
@@ -4445,6 +4995,14 @@ ${vars(dark)}
       btn.addEventListener('click', (event) => chooseTheme(btn.dataset.themeValue, event));
     });
 
+    $('platform-switch').addEventListener('click', (event) => {
+      const btn = event.target.closest('[data-platform]');
+      if (btn) setPlatform(btn.dataset.platform);
+    });
+    document.querySelectorAll('.platform-card[data-enter]').forEach((card) => {
+      card.addEventListener('click', () => setPlatform(card.dataset.enter));
+    });
+
     $('lang').addEventListener('change', (e) => setLanguage(e.target.value, true));
     $('set-lang').addEventListener('change', (e) => setLanguage(e.target.value, true));
 
@@ -4522,13 +5080,16 @@ ${vars(dark)}
     window.addEventListener('resize', () => {
       if (state.cityPicker.open) positionCityPicker($('city-trigger'));
     });
-    window.addEventListener('scroll', (event) => {
+    const closeCityOnOutsideScroll = (event) => {
       if (!state.cityPicker.open) return;
       const target = event.target;
       if (target instanceof Element && target.closest('#city-popover, #city-trigger')) return;
       if (performance.now() - (state.cityPicker.openedAt || 0) < 400) return;
       closeCityPicker();
-    }, true);
+    };
+    // 只响应真实滚轮 / 触摸，不监听 scroll：列表加载后的 scrollIntoView 不应把弹层关掉。
+    window.addEventListener('wheel', closeCityOnOutsideScroll, { passive: true });
+    window.addEventListener('touchmove', closeCityOnOutsideScroll, { passive: true });
 
     $('btn-save').addEventListener('click', saveSettings);
 
@@ -4769,6 +5330,7 @@ ${vars(dark)}
     applyFontSettings();
     applyTheme(THEMES.includes(storedTheme) ? storedTheme : 'system');
     applyI18n();
+    applyPlatformShell();
     initMotion();
     watchFlow();
     loadFonts();
@@ -4783,6 +5345,7 @@ ${vars(dark)}
     });
 
     loadCities();
+    loadPlatformStats().then(() => refreshPlatformStats(false));
     refresh();
     applyFpsLimit();
     updateFpsUI(false);

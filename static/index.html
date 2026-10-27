@@ -127,10 +127,65 @@
         </div>
         <button class="btn" id="btn-search" data-i18n="new.search">搜索</button>
         <button class="btn ghost" id="btn-all" data-i18n="new.all">全国展会</button>
-        <button class="btn ghost refresh-btn" id="btn-refresh" type="button" data-i18n-title="new.refresh" data-i18n-aria="new.refresh" aria-label="刷新当前结果">
+      </div>
+      <div class="platform-bar">
+        <div class="platform-switch" id="platform-switch" role="tablist" aria-label="平台">
+        <span class="platform-glider" aria-hidden="true"></span>
+        <button type="button" class="platform-btn is-active" data-platform="all" role="tab" aria-selected="true">
+          <span class="platform-mark is-all" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          <span data-i18n="platform.all">全部平台</span>
+          <i class="platform-count" data-count="all"></i>
+        </button>
+        <button type="button" class="platform-btn" data-platform="bili" role="tab" aria-selected="false">
+          <span class="platform-mark is-bili" aria-hidden="true">B</span>
+          <span data-i18n="platform.bili">B站</span>
+          <i class="platform-count" data-count="bili"></i>
+        </button>
+        <button type="button" class="platform-btn" data-platform="maoyan" role="tab" aria-selected="false">
+          <span class="platform-mark is-maoyan" aria-hidden="true">猫</span>
+          <span data-i18n="platform.maoyan">猫眼</span>
+          <i class="platform-count" data-count="maoyan"></i>
+        </button>
+      </div>
+        <button class="btn ghost refresh-btn global-refresh" id="btn-refresh" type="button" data-i18n-title="new.refresh" data-i18n-aria="new.refresh" aria-label="刷新当前平台活动">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.4 11.2a8.4 8.4 0 1 0-2.2 6.1"/><path d="M20.6 4.6v5h-5"/></svg>
           <span class="refresh-halo" aria-hidden="true"></span>
         </button>
+      </div>
+      <div class="platform-overview" id="platform-overview">
+        <div class="overview-head">
+          <div class="overview-copy">
+            <span class="overview-kicker" data-i18n="overview.kicker">平台总览</span>
+            <h3 data-i18n="overview.title">选择一个平台开始</h3>
+            <p data-i18n="overview.sub">两个平台的城市、全国范围和活动数量完全独立</p>
+          </div>
+        </div>
+        <div class="overview-grid">
+          <button type="button" class="platform-card is-bili" data-enter="bili">
+            <span class="platform-card-top">
+              <span class="platform-mark is-bili" aria-hidden="true">B</span>
+              <span class="platform-card-name" data-i18n="platform.bili">B站</span>
+              <span class="platform-card-arrow" aria-hidden="true">→</span>
+            </span>
+            <span class="platform-card-scope" data-i18n="overview.biliScope">全国</span>
+            <span class="platform-card-count"><b data-stat-count="bili">—</b><em data-i18n="overview.unit">场</em></span>
+            <span class="platform-card-meta" data-stat-meta="bili">尚未更新</span>
+            <span class="platform-card-enter" data-i18n="overview.enterBili">进入 B站</span>
+            <span class="platform-card-glow" aria-hidden="true"></span>
+          </button>
+          <button type="button" class="platform-card is-maoyan" data-enter="maoyan">
+            <span class="platform-card-top">
+              <span class="platform-mark is-maoyan" aria-hidden="true">猫</span>
+              <span class="platform-card-name" data-i18n="platform.maoyan">猫眼</span>
+              <span class="platform-card-arrow" aria-hidden="true">→</span>
+            </span>
+            <span class="platform-card-scope" data-i18n="overview.maoyanScope">热门城市聚合</span>
+            <span class="platform-card-count"><b data-stat-count="maoyan">—</b><em data-i18n="overview.unit">场</em></span>
+            <span class="platform-card-meta" data-stat-meta="maoyan">尚未更新</span>
+            <span class="platform-card-enter" data-i18n="overview.enterMaoyan">进入猫眼</span>
+            <span class="platform-card-glow" aria-hidden="true"></span>
+          </button>
+        </div>
       </div>
       <div class="all-scan" id="all-scan" aria-live="polite">
         <span class="scan-spin" id="all-scan-spin" aria-hidden="true"></span>

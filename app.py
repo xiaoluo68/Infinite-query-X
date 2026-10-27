@@ -59,11 +59,12 @@ if str(_ROOT.parent) not in sys.path:  # 源码运行时，核心模块在上一
     sys.path.insert(0, str(_ROOT.parent))
 
 import bili_ticket_monitor_search as core  # noqa: E402
+import maoyan_adapter as maoyan  # noqa: E402
 from notify_hub import NotifyHub  # noqa: E402
 
 APP_NAME = "Infinite query X"
-APP_VERSION = "1.1.3"
-APP_BUILD = "20261022.4"  # 每次打包递增；用来识别残留的旧实例
+APP_VERSION = "2.0.0"
+APP_BUILD = "20261027.3"  # 每次打包递增；用来识别残留的旧实例
 APP_AUTHOR = "小羅同学"
 APP_CONTACT = "https://t.me/InfinitequeryX"
 APP_REPO = "https://github.com/TaiMiao/Bili_Ticket_Monitor"
@@ -123,6 +124,7 @@ def _state_dir() -> Path:
 STATE_DIR = _state_dir()
 CONFIG_FILE = STATE_DIR / "config.json"
 PORT_FILE = STATE_DIR / "port.json"
+PLATFORM_STATS_FILE = STATE_DIR / "platform_stats.json"
 FONT_DIR = STATE_DIR / "fonts"
 FONTS_FILE = STATE_DIR / "fonts.json"
 _FONT_LOCK = threading.Lock()
@@ -688,6 +690,131 @@ def fetch_all(force: bool = False) -> None:
             _ALL_STATE["running"] = False
 
 
+# ---------------- 平台数量缓存 ----------------
+_PLATFORM_STATS_LOCK = threading.Lock()
+_PLATFORM_STATS_REFRESHING = False
+_PLATFORM_STATS: dict[str, dict[str, Any]] = {
+    "bili": {"count": 0, "updatedAt": 0, "scope": "nationwide", "partial": True, "error": ""},
+    "maoyan": {"count": 0, "updatedAt": 0, "scope": "aggregate", "partial": True, "error": ""},
+}
+
+
+def _load_platform_stats() -> dict[str, dict[str, Any]]:
+    try:
+        raw = json.loads(PLATFORM_STATS_FILE.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return {k: dict(v) for k, v in _PLATFORM_STATS.items()}
+    if not isinstance(raw, dict):
+        return {k: dict(v) for k, v in _PLATFORM_STATS.items()}
+    merged = {k: dict(v) for k, v in _PLATFORM_STATS.items()}
+    for key in ("bili", "maoyan"):
+        item = raw.get(key)
+        if not isinstance(item, dict):
+            continue
+        try:
+            merged[key]["count"] = max(0, int(item.get("count") or 0))
+        except (TypeError, ValueError):
+            continue
+        try:
+            merged[key]["updatedAt"] = max(0, int(item.get("updatedAt") or 0))
+        except (TypeError, ValueError):
+            merged[key]["updatedAt"] = 0
+        merged[key]["partial"] = bool(item.get("partial", True))
+        merged[key]["error"] = str(item.get("error") or "")[:200]
+        merged[key]["scope"] = "aggregate" if key == "maoyan" else "nationwide"
+    return merged
+
+
+def _save_platform_stats(stats: dict[str, dict[str, Any]]) -> None:
+    try:
+        tmp = PLATFORM_STATS_FILE.with_suffix(".tmp")
+        tmp.write_text(json.dumps(stats, ensure_ascii=False, indent=2), encoding="utf-8")
+        tmp.replace(PLATFORM_STATS_FILE)
+    except OSError:
+        pass
+
+
+_PLATFORM_STATS.update(_load_platform_stats())
+
+
+def _platform_stats_snapshot() -> dict[str, Any]:
+    with _PLATFORM_STATS_LOCK:
+        stats = json.loads(json.dumps(_PLATFORM_STATS))
+        refreshing = _PLATFORM_STATS_REFRESHING
+    return {"stats": stats, "refreshing": refreshing, "serverTime": int(time.time())}
+
+
+def _stats_set(key: str, count: int, partial: bool, error: str = "") -> None:
+    with _PLATFORM_STATS_LOCK:
+        _PLATFORM_STATS[key] = {
+            "count": max(0, int(count)),
+            "updatedAt": int(time.time()),
+            "scope": "aggregate" if key == "maoyan" else "nationwide",
+            "partial": bool(partial),
+            "error": str(error or "")[:200],
+        }
+        snapshot = json.loads(json.dumps(_PLATFORM_STATS))
+    _save_platform_stats(snapshot)
+
+
+def _count_bili_events() -> tuple[int, bool]:
+    """翻 B 站全国「全部类型」列表，返回 (去重后的活动数, 是否被页数上限截断)。
+
+    列表接口的 total 是「累计已返回条数」，不是总条数；而且翻到后面会重复
+    返回同一批活动。这里按 id 去重，连续 3 页没有新活动就认为已经翻完。
+    """
+    session = _session()
+    core._warm_session(session)
+    unique: set[str] = set()
+    partial = True
+    stagnant = 0
+    try:
+        for page in range(1, 31):
+            items, last, _running_total = list_projects_page(session, "", 0, page, 20)
+            before = len(unique)
+            for item in items:
+                key = str(item.get("id") or item.get("project_id") or "")
+                if key:
+                    unique.add(key)
+            stagnant = stagnant + 1 if len(unique) == before else 0
+            if last or not items or stagnant >= 3:
+                partial = False
+                break
+            time.sleep(core.Config.BROWSE_REQUEST_GAP)
+    finally:
+        session.close()
+    return len(unique), partial
+
+
+def _count_maoyan_events() -> tuple[int, bool]:
+    payload = maoyan.pool(0, "", True)
+    return int(payload.get("total") or len(payload.get("items") or [])), False
+
+
+def _refresh_platform_stats() -> None:
+    global _PLATFORM_STATS_REFRESHING
+    for key, counter in (("bili", _count_bili_events), ("maoyan", _count_maoyan_events)):
+        try:
+            count, partial = counter()
+            _stats_set(key, count, partial)
+        except Exception as exc:  # noqa: BLE001 一个平台失败不影响另一个
+            with _PLATFORM_STATS_LOCK:
+                current = dict(_PLATFORM_STATS.get(key) or {})
+            _stats_set(key, int(current.get("count") or 0), bool(current.get("partial", True)), f"{type(exc).__name__}: {exc}")
+    with _PLATFORM_STATS_LOCK:
+        _PLATFORM_STATS_REFRESHING = False
+
+
+def start_platform_stats_refresh() -> bool:
+    global _PLATFORM_STATS_REFRESHING
+    with _PLATFORM_STATS_LOCK:
+        if _PLATFORM_STATS_REFRESHING:
+            return False
+        _PLATFORM_STATS_REFRESHING = True
+    threading.Thread(target=_refresh_platform_stats, daemon=True).start()
+    return True
+
+
 # ---------------- 按日期查询 ----------------
 def valid_day(text: str) -> bool:
     try:
@@ -1042,6 +1169,10 @@ class Handler(BaseHTTPRequestHandler):
             self._json({"ok": True, **payload, "page": 1, "type": p_type, "area": area})
             return
 
+        if route == "/api/platform-stats":
+            self._json({"ok": True, **_platform_stats_snapshot()})
+            return
+
         if route == "/api/cities":
             try:
                 cities = fetch_cities()
@@ -1049,6 +1180,51 @@ class Handler(BaseHTTPRequestHandler):
                 self._json({"ok": False, "error": f"{type(exc).__name__}: {exc}", "items": []})
                 return
             self._json({"ok": True, "items": cities})
+            return
+
+        if route == "/api/maoyan/cities":
+            try:
+                items = maoyan.cities()
+            except Exception as exc:  # noqa: BLE001
+                self._json({"ok": False, "error": f"{type(exc).__name__}: {exc}", "items": []})
+                return
+            self._json({"ok": True, "items": items})
+            return
+
+        if route == "/api/maoyan/list":
+            try:
+                city_id = int((query.get("city") or ["0"])[0] or 0)
+            except ValueError:
+                city_id = 0
+            keyword = str((query.get("kw") or [""])[0]).strip()
+            force = (query.get("refresh") or ["0"])[0] == "1"
+            try:
+                payload = maoyan.pool(city_id, keyword, force)
+            except Exception as exc:  # noqa: BLE001
+                self._json({"ok": False, "error": f"{type(exc).__name__}: {exc}", "items": []})
+                return
+            self._json(payload)
+            return
+
+        if route == "/api/maoyan/search":
+            keyword = str((query.get("q") or [""])[0]).strip()
+            force = (query.get("refresh") or ["0"])[0] == "1"
+            try:
+                payload = maoyan.search(keyword, force)
+            except Exception as exc:  # noqa: BLE001
+                self._json({"ok": False, "error": f"{type(exc).__name__}: {exc}", "items": []})
+                return
+            self._json(payload)
+            return
+
+        if route == "/api/maoyan/detail":
+            pid = str((query.get("id") or [""])[0]).strip()
+            try:
+                payload = maoyan.detail(pid)
+            except Exception as exc:  # noqa: BLE001
+                self._json({"ok": False, "error": f"{type(exc).__name__}: {exc}"})
+                return
+            self._json({"ok": True, "item": payload})
             return
 
         if route == "/api/date":
@@ -1168,6 +1344,11 @@ class Handler(BaseHTTPRequestHandler):
             if NOTIFY_HUB is not None:
                 NOTIFY_HUB.push_sample(str(body.get("kind") or "new"))
             self._json({"ok": True})
+            return
+
+        if route == "/api/platform-stats/refresh":
+            started = start_platform_stats_refresh()
+            self._json({"ok": True, "started": started, **_platform_stats_snapshot()})
             return
 
         if route == "/api/tasks":
