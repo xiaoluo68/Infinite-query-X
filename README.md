@@ -36,9 +36,9 @@
 
 ## 界面
 
-| 平台总览 | 猫眼工作区 |
-| --- | --- |
-| ![平台总览](docs/images/preview-platforms.png) | ![猫眼工作区](docs/images/preview-maoyan.png) |
+| 平台总览 | B站工作区 | 猫眼工作区 |
+| --- | --- | --- |
+| ![平台总览](docs/images/preview-platforms.png) | ![B站工作区](docs/images/preview-bili.png) | ![猫眼工作区](docs/images/preview-maoyan.png) |
 
 | 日期选择器 | 日期小窗 |
 | --- | --- |
